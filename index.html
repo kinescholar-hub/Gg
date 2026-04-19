@@ -4,1149 +4,991 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surakshit Marg - GLP School Chamakkal</title>
+    <title>Surakshit Marg 2025-26 - G.L.P.S. Chamakkal</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #0f172a; /* Deep slate */
-            --secondary: #d97706; /* Golden amber */
-            --text-main: #334155;
-            --page-bg: #ffffff;
+            --maroon: #3d0c10; /* Darker, more professional maroon */
+            --green: #15803d; /* Vibrant leaf green */
+            --yellow: #f59e0b; /* Warm amber/yellow */
+            --bg-cream: #fdfbf7; 
+            --box-bg: #eaf5ec; 
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #e2e8f0;
-            color: var(--text-main);
+            font-family: 'Nunito', sans-serif;
+            background-color: #cbd5e1; /* Darker gray background for contrast behind the pages */
+            color: #333;
             line-height: 1.8;
             -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3, h4, .serif {
-            font-family: 'Playfair Display', serif;
-        }
+        h1, h2, h3, h4, .kid-font { font-family: 'Fredoka', sans-serif; }
 
-        /* Physical A4 Page simulation */
+        /* A4 Page Styling */
         .a4-page {
             width: 210mm;
-            min-height: 297mm; /* Standard A4 height */
-            /* 30mm left padding strictly for spiral binding */
-            padding: 20mm 20mm 20mm 30mm; 
+            min-height: 297mm;
+            padding: 20mm 20mm 20mm 30mm; /* 30mm left for spiral binding */
             margin: 2rem auto;
-            background: var(--page-bg);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            background: var(--bg-cream);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
             position: relative;
             box-sizing: border-box;
             page-break-after: always;
             display: flex;
             flex-direction: column;
+            border-right: 1px solid #e2e8f0;
+        }
+
+        /* Decorative Corners for Inner Pages */
+        .a4-page::before, .a4-page::after {
+            content: ''; position: absolute; width: 40px; height: 40px; pointer-events: none;
+        }
+        .a4-page::before {
+            top: 10mm; right: 10mm;
+            border-top: 3px solid var(--green); border-right: 3px solid var(--green);
+            border-top-right-radius: 12px;
+        }
+        .a4-page::after {
+            bottom: 10mm; left: 30mm; /* align with binding margin */
+            border-bottom: 3px solid var(--yellow); border-left: 3px solid var(--yellow);
+            border-bottom-left-radius: 12px;
         }
 
         /* Typography */
-        p { 
-            margin-bottom: 1.5rem; 
-            font-size: 11.5pt; 
-            text-align: justify; 
-            color: #334155;
-        }
-        
+        p { margin-bottom: 1.25rem; font-size: 13.5pt; text-align: justify; color: #475569; font-weight: 500;}
         .drop-cap::first-letter {
-            float: left;
-            font-size: 3.5rem;
-            line-height: 0.8;
-            padding-top: 4px;
-            padding-right: 8px;
-            padding-left: 3px;
-            font-family: 'Playfair Display', serif;
-            color: var(--secondary);
-            font-weight: bold;
+            float: left; font-size: 3.8rem; line-height: 0.8; padding: 4px 10px 0 0;
+            font-family: 'Fredoka', sans-serif; color: var(--green); font-weight: 700;
         }
-
         .chapter-title { 
-            font-size: 28pt; 
-            color: var(--primary); 
-            margin-bottom: 2rem; 
-            border-bottom: 2px solid var(--secondary); 
-            padding-bottom: 0.5rem; 
-            font-weight: 700;
+            font-size: 26pt; color: var(--maroon); margin-bottom: 1.5rem; 
+            border-bottom: 3px dashed var(--yellow); padding-bottom: 0.5rem; font-weight: 700;
         }
-        
-        .sub-heading { 
-            font-size: 18pt; 
-            color: var(--primary); 
-            margin-top: 2rem; 
-            margin-bottom: 1rem; 
-            font-weight: 600; 
-            font-style: italic;
-        }
+        .sub-heading { font-size: 18pt; color: var(--green); margin-top: 1.5rem; margin-bottom: 1rem; font-weight: 600; }
 
-        /* Header and Footer Design */
+        /* Header & Footer */
         .page-header {
-            position: absolute;
-            top: 10mm;
-            left: 30mm; /* Account for binding */
-            right: 20mm;
-            border-bottom: 1px solid #cbd5e1;
-            padding-bottom: 5px;
-            font-size: 8pt;
-            color: #94a3b8;
-            display: flex;
-            justify-content: space-between;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            position: absolute; top: 10mm; left: 30mm; right: 20mm;
+            border-bottom: 2px solid #cbd5e1; padding-bottom: 5px;
+            font-size: 9pt; color: var(--green); display: flex; justify-content: space-between;
+            font-family: 'Fredoka', sans-serif; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;
         }
-
         .page-footer {
-            margin-top: auto;
-            border-top: 1px solid #cbd5e1;
-            padding-top: 10px;
-            font-size: 9pt;
-            color: #64748b;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            margin-top: auto; border-top: 2px solid #cbd5e1; padding-top: 10px;
+            font-size: 10pt; color: var(--maroon); display: flex; justify-content: space-between; align-items: center;
+            font-family: 'Fredoka', sans-serif; font-weight: 600;
         }
-
         .page-number {
-            font-weight: bold;
-            color: var(--secondary);
-            font-size: 11pt;
+            font-weight: bold; color: white; background-color: var(--yellow);
+            width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; font-size: 11pt; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        /* Interactive Photo Upload Placeholders */
-        .photo-upload-label {
-            display: block;
-            background-color: #f8fafc;
-            border: 2px dashed #cbd5e1;
-            border-radius: 4px;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            margin: 1.5rem 0;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: cover;
+        /* --- ROBUST PHOTO UPLOAD SYSTEM --- */
+        .photo-box {
+            display: block; background-color: var(--box-bg);
+            border: 3px dashed var(--green); border-radius: 12px; cursor: pointer;
+            position: relative; overflow: hidden; transition: all 0.2s ease;
+            margin: 1.5rem 0; text-align: center; box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
         }
-
-        .photo-upload-label:hover {
-            border-color: var(--secondary);
-            background-color: #f1f5f9;
+        .photo-box:hover { border-color: #166534; background-color: #dcfce7; transform: translateY(-2px); box-shadow: 0 8px 15px rgba(0,0,0,0.05);}
+        .photo-box input[type="file"] { display: none; }
+        .photo-box img {
+            width: 100%; height: 100%; object-fit: contain; object-position: center;
+            display: none; border-radius: 8px; background-color: white; z-index: 5; position: relative;
         }
-
-        .photo-upload-label input[type="file"] {
-            display: none;
-        }
-
-        .placeholder-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            padding: 2rem;
-            background: rgba(255,255,255,0.8);
-        }
-
-        .photo-icon { font-size: 2.5rem; color: #94a3b8; margin-bottom: 0.5rem; }
-        .photo-label { font-weight: bold; color: #475569; font-size: 10pt; text-transform: uppercase; letter-spacing: 1px;}
-        .photo-instruction { font-size: 8pt; color: #64748b; margin-top: 5px; }
-        .photo-caption { font-size: 9.5pt; font-style: italic; color: #475569; text-align: center; margin-top: 0.5rem; display: block;}
-
-        /* Photo Dimensions */
-        .landscape { height: 220px; width: 100%; }
-        .portrait { height: 320px; width: 80%; margin-left: auto; margin-right: auto; }
-        .large { height: 350px; width: 100%; }
-        .full-page-image { height: 600px; width: 100%; }
-
-        /* Print Button UI */
-        .print-btn-container {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            z-index: 50;
+        .placeholder {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            height: 100%; padding: 2rem; color: var(--green); position: absolute; top:0; left:0; right:0; bottom:0;
         }
         
-        .print-btn {
-            background: linear-gradient(135deg, var(--secondary), #b45309);
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 10px 25px rgba(217, 119, 6, 0.4);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: transform 0.2s;
+        /* Interactive Elements for uploaded photos */
+        .photo-overlay {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.6); color: white; display: none; align-items: center; justify-content: center;
+            font-weight: bold; z-index: 10; font-family: 'Fredoka', sans-serif; font-size: 1.2rem;
+            backdrop-filter: blur(2px);
+        }
+        .photo-box.has-image:hover .photo-overlay { display: flex; }
+        
+        .remove-btn {
+            position: absolute; top: 12px; right: 12px; z-index: 20;
+            background: #ef4444; color: white; border: 2px solid white; border-radius: 50%;
+            width: 32px; height: 32px; display: none; align-items: center; justify-content: center;
+            font-weight: bold; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.3); transition: 0.2s;
+        }
+        .remove-btn:hover { background: #dc2626; transform: scale(1.1); }
+        .photo-box.has-image:hover .remove-btn { display: flex; }
+
+        .photo-caption { font-size: 11pt; font-style: italic; color: #64748b; text-align: center; margin-top: 0.5rem; display: block; font-weight: 600;}
+
+        /* Dimensions */
+        .landscape { height: 260px; width: 100%; }
+        .portrait { height: 360px; width: 85%; margin-left: auto; margin-right: auto; }
+        .large { height: 400px; width: 100%; }
+        .full-page { height: 550px; width: 100%; }
+
+        /* Cover Page Custom Styling */
+        .cover-page { padding: 0 !important; background: var(--bg-cream); border:none;}
+        .cover-page::before, .cover-page::after { display: none; }
+        .cover-border {
+            border: 10px solid var(--bg-cream); margin: 0; height: 100%;
+            background: repeating-linear-gradient(45deg, var(--green), var(--green) 15px, var(--yellow) 15px, var(--yellow) 30px);
+            padding: 8px; /* Inner spacing to show the striped border */
+        }
+        .cover-inner {
+            background: var(--bg-cream); height: 100%;
+            display: flex; flex-direction: column; padding: 2.5rem 3rem; 
         }
 
-        .print-btn:hover { transform: scale(1.05); }
+        /* Print Settings */
+        .print-btn-container { position: fixed; bottom: 2rem; right: 2rem; z-index: 100; }
+        .print-btn {
+            background: var(--maroon); color: white; border: 4px solid white; padding: 1rem 2rem;
+            font-size: 1.2rem; font-weight: bold; border-radius: 50px; cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); transition: 0.2s; font-family: 'Fredoka', sans-serif;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .print-btn:hover { transform: translateY(-3px); background: #5a151b;}
 
-        /* Print Media Query */
         @media print {
-            body { background-color: white; margin: 0; }
+            body { background-color: white; margin: 0; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important;}
             .a4-page {
-                margin: 0;
-                box-shadow: none;
-                width: 210mm;
-                height: 297mm;
-                padding: 20mm 20mm 20mm 30mm; /* Keep spiral binding margin! */
+                margin: 0; box-shadow: none; width: 210mm; height: 297mm;
+                padding: 20mm 20mm 20mm 30mm; border: none;
             }
-            @page {
-                size: A4;
-                margin: 0; 
-            }
+            .cover-page { padding: 0 !important; }
+            @page { size: A4; margin: 0; }
             .no-print { display: none !important; }
             
-            /* Hide the "Click to upload" text if printing without images */
-            .placeholder-content { display: none; }
-            .photo-upload-label { border: 1px solid #e2e8f0; background-color: #f8fafc;}
+            .photo-box { border: none !important; background: transparent !important; box-shadow: none !important; transform: none !important;}
+            .placeholder, .photo-overlay, .remove-btn { display: none !important; }
+            .photo-box img { display: block !important; border-radius: 8px;}
+            
+            /* Clean look for empty boxes when printing */
+            .photo-box:not(.has-image) { border: 2px solid #cbd5e1 !important; background: #f8fafc !important; }
+            .photo-box:not(.has-image)::after { content: "Photo Space"; display: flex; align-items: center; justify-content: center; height: 100%; color: #94a3b8; font-family: 'Nunito', sans-serif;}
         }
-
-        /* Cover Page Styling */
-        .cover-page {
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)), url('data:image/svg+xml;utf8,<svg width="40" height="40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="1" fill="%23d97706"/></svg>');
-        }
-        .cover-border { border: 4px solid var(--primary); padding: 3rem; border-radius: 2px; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
-        .cover-title { font-size: 48pt; font-weight: 700; color: var(--primary); line-height: 1.1; margin: 2rem 0; letter-spacing: -1px; }
-        .cover-subtitle { font-size: 18pt; color: var(--secondary); font-style: italic; font-family: 'Playfair Display', serif;}
-        .cover-school { font-size: 22pt; font-weight: bold; color: var(--primary); margin-top: 2rem; font-family: 'Inter', sans-serif; letter-spacing: 2px; text-transform: uppercase;}
     </style>
 </head>
 <body>
 
-    <!-- Floating Print Button -->
+    <!-- Print UI Elements -->
     <div class="print-btn-container no-print">
         <button onclick="prepareAndPrint()" class="print-btn">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
-            Print PDF Report
+            Print Document
         </button>
-        <p class="text-xs text-center text-gray-500 mt-2 font-semibold">Click boxes to add photos first!</p>
+        <div class="bg-white p-3 rounded-lg shadow-xl mt-3 text-sm text-center font-bold text-green-700 border-2 border-green-200">
+            Click dashed boxes to add photos.<br>Hover to change or remove.
+        </div>
     </div>
 
-    <!-- PAGE 1: Cover -->
+    <!-- PAGE 1: Perfected Cover -->
     <div class="a4-page cover-page">
         <div class="cover-border">
-            <div class="pt-8">
-                <h3 class="uppercase tracking-widest text-sm font-bold text-gray-400">A Comprehensive Project Report</h3>
-                <h1 class="cover-title">Surakshit Marg</h1>
-                <p class="cover-subtitle">Paving the Way for a Safer Tomorrow</p>
-            </div>
-
-            <!-- Upload Cover Photo -->
-            <label class="photo-upload-label portrait" style="height: 350px; width: 85%; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
-                <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                <div class="placeholder-content">
-                    <span class="photo-icon">📸</span>
-                    <span class="photo-label">Cover Photo (1)</span>
-                    <span class="photo-instruction">Click to select main image</span>
-                </div>
-            </label>
-
-            <div class="pb-8">
-                <h2 class="cover-school">GLP School Chamakkal</h2>
-                <p class="text-gray-500 mt-2 font-serif text-lg">Payyavoor, Kannur District, Kerala</p>
+            <div class="cover-inner relative">
                 
-                <div class="mt-8 pt-6 border-t border-gray-300 text-sm text-gray-500 mx-auto w-3/4 font-sans">
-                    <p>An initiative supported by</p>
-                    <p class="font-bold text-gray-800 tracking-wider">Kuttukaran Group & SCMS Group</p>
+                <!-- Left Aligned Report Text -->
+                <div class="w-full mt-4 text-left">
+                    <p class="text-gray-500 font-bold tracking-[3px] text-sm uppercase mb-6">Project Report</p>
                 </div>
+                
+                <!-- Centered Title Block -->
+                <div class="w-full text-center">
+                    <h1 class="text-[52pt] font-extrabold leading-none flex justify-center items-center text-[#1f2937]">
+                        Surakshit<span class="text-green-700 italic ml-2 relative">Marg
+                            <!-- Decorative leaf above the M -->
+                            <svg class="absolute -top-3 -left-2 w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 24 24"><path d="M17.5,2.5C17.5,2.5,12.5,2.5,7.5,7.5C2.5,12.5,2.5,17.5,2.5,17.5C2.5,17.5,7.5,17.5,12.5,12.5C17.5,7.5,17.5,2.5,17.5,2.5M14,14L10,10L14,14Z"/></svg>
+                        </span>
+                    </h1>
+                    <h2 class="text-[40pt] text-[#3f3f46] font-extrabold mt-1 mb-8">2025-26</h2>
+                </div>
+
+                <!-- Left Aligned "Report By" -->
+                <div class="w-full text-left">
+                    <p class="text-gray-600 text-xl font-semibold mb-1">Report by</p>
+                </div>
+
+                <!-- Centered School Name -->
+                <div class="w-full text-center mb-1">
+                    <h3 class="text-[30pt] text-[#3f3f46] font-extrabold tracking-wide drop-shadow-sm">G.L.P.S. CHAMAKKAL</h3>
+                </div>
+
+                <!-- Left Aligned Address -->
+                <div class="w-full text-left mb-4">
+                    <p class="text-gray-700 text-xl font-medium leading-tight">Payyavoor PO<br>Kannur District, Kerala</p>
+                </div>
+
+                <!-- Main Cover Photo Box -->
+                <div class="photo-box flex-grow w-full border-4" id="box-cover" onclick="triggerFile('input-cover')" style="min-height: 400px; border-style: dashed; background-color: #eaf5ec;">
+                    <img id="img-cover" src="">
+                    <div class="placeholder" id="ph-cover">
+                        <span class="text-5xl mb-3">🏕️</span>
+                        <span class="font-bold text-lg uppercase tracking-wide">Upload 'Varna Koodaram' Photo</span>
+                    </div>
+                    <div class="photo-overlay">Click to change</div>
+                    <button class="remove-btn" onclick="removeImage(event, 'box-cover', 'img-cover', 'ph-cover')">X</button>
+                    <input type="file" id="input-cover" accept="image/*" onchange="loadImage(event, 'box-cover', 'img-cover', 'ph-cover')">
+                </div>
+
             </div>
         </div>
     </div>
 
     <!-- PAGE 2: Acknowledgements -->
     <div class="a4-page">
-        <div class="page-header"><span>GLP School Chamakkal</span><span>Surakshit Marg</span></div>
+        <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Surakshit Marg</span></div>
         <div class="flex-grow flex flex-col justify-center">
             <h2 class="chapter-title text-center" style="border:none;">Acknowledgements</h2>
-            <p class="text-center italic text-xl max-w-2xl mx-auto text-gray-600 font-serif mb-12">
+            <p class="text-center italic text-xl max-w-2xl mx-auto text-green-700 font-bold mb-8 kid-font">
                 "It takes a village to raise a child, and it takes an entire community to keep them safe on the roads they travel."
             </p>
             <p>
-                This comprehensive report is a testament to the collective effort, unwavering dedication, and vibrant spirit of the GLP School Chamakkal family. We extend our deepest gratitude to everyone who made the 'Surakshit Marg' project a resounding success.
+                This beautifully crafted report is a heartfelt testament to the collective effort, unwavering love, and vibrant spirit of the G.L.P.S. Chamakkal family. We extend our deepest, most sincere gratitude to everyone who made the 'Surakshit Marg' project a resounding success for our little ones.
             </p>
             <p>
-                Our heartfelt thanks go to the <strong>Kuttukaran Group</strong> and the <strong>SCMS Group</strong> for their visionary leadership in launching the Surakshit Marg initiative. Your commitment to road safety has provided our small rural school with an extraordinary platform to effect real change.
+                Our immense thanks go to the <strong>Kuttukaran Group</strong> and the <strong>SCMS Group (SiRST)</strong> for their visionary leadership. Your commitment to road safety has provided our small, rural Lower Primary school with an extraordinary platform to effect real, lasting change.
             </p>
             <p>
-                We are incredibly grateful to the officers of the <strong>Payyavoor Police Station</strong>, especially Sub-Inspectors Sri P. P. Prabhakaran and Sri Tomy Thomas, for their enthusiastic participation and for bridging the gap between law enforcement and our young learners.
+                We are incredibly grateful to the kind-hearted officers of the <strong>Payyavoor Police Station</strong>, especially Sub-Inspectors Sri P. P. Prabhakaran and Sri Tomy Thomas, for their enthusiastic participation. You erased fear and built beautiful bridges of trust with our young learners.
             </p>
             <p>
-                A special mention goes to the NSS volunteers of <strong>PKM College of Education, Madampam</strong>, whose artistic talents brought our walls to life with meaningful messages. Finally, our deepest appreciation belongs to the 87 brilliant students of GLP Chamakkal, their supportive parents, and our dedicated staff.
+                A special mention goes to the wonderfully talented NSS volunteers of <strong>PKM College of Education, Madampam</strong>. Finally, our deepest love belongs to the 87 brilliant, energetic students of G.L.P.S. Chamakkal, their supportive parents, and our dedicated teachers.
             </p>
 
-            <label class="photo-upload-label large mt-8">
-                <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                <div class="placeholder-content">
-                    <span class="photo-icon">👥</span>
-                    <span class="photo-label">Photo 2: Group / Team</span>
-                    <span class="photo-instruction">Click to upload photo of staff/contributors</span>
-                </div>
-            </label>
-            <span class="photo-caption">The dedicated team behind the successful implementation of the project.</span>
+            <div class="photo-box portrait mt-8" style="height: 320px;" id="box-ack" onclick="triggerFile('input-ack')">
+                <img id="img-ack" src="">
+                <div class="placeholder" id="ph-ack"><span class="text-5xl mb-2">👨‍👩‍👧‍👦</span><span class="font-bold">Team Photo</span></div>
+                <div class="photo-overlay">Click to change</div>
+                <button class="remove-btn" onclick="removeImage(event, 'box-ack', 'img-ack', 'ph-ack')">X</button>
+                <input type="file" id="input-ack" accept="image/*" onchange="loadImage(event, 'box-ack', 'img-ack', 'ph-ack')">
+            </div>
+            <span class="photo-caption">The proud and dedicated team behind the success of the project.</span>
         </div>
-        <div class="page-footer"><span>Project Report 2026</span><span class="page-number">i</span></div>
+        <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">i</span></div>
     </div>
 
     <!-- PAGE 3: Table of Contents -->
     <div class="a4-page">
-        <div class="page-header"><span>GLP School Chamakkal</span><span>Table of Contents</span></div>
+        <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Table of Contents</span></div>
         <div class="flex-grow pt-8">
-            <h2 class="chapter-title">Table of Contents</h2>
+            <h2 class="chapter-title">What's Inside?</h2>
             
-            <div class="max-w-2xl mx-auto mt-12 font-serif">
-                <ul class="space-y-6 text-lg">
-                    <li class="flex justify-between border-b border-gray-200 pb-2 border-dotted">
-                        <span class="font-bold">Introduction: The Heart of Chamakkal</span><span>1</span>
-                    </li>
-                    <li class="flex justify-between border-b border-gray-200 pb-2 border-dotted">
-                        <span class="font-bold">The Vision: Surakshit Marg</span><span>3</span>
-                    </li>
-                    <li class="flex justify-between border-b border-gray-200 pb-2 border-dotted">
-                        <span class="font-bold">Chapter 1: The Grand Inauguration</span><span>5</span>
-                    </li>
-                    <li class="flex justify-between border-b border-gray-200 pb-2 border-dotted">
-                        <span class="font-bold">Chapter 2: Marking Our Territory</span><span>8</span>
-                    </li>
-                    <li class="flex justify-between border-b border-gray-200 pb-2 border-dotted">
-                        <span class="font-bold">Chapter 3: The Crown Jewel - 'Kuttikkavala'</span><span>10</span>
-                    </li>
-                    <li class="flex justify-between border-b border-gray-200 pb-2 border-dotted">
-                        <span class="font-bold">Chapter 4: Pledges and Signatures</span><span>13</span>
-                    </li>
-                    <li class="flex justify-between border-b border-gray-200 pb-2 border-dotted">
-                        <span class="font-bold">Chapter 5: Art, Awareness, and Collaboration</span><span>15</span>
-                    </li>
-                    <li class="flex justify-between border-b border-gray-200 pb-2 border-dotted">
-                        <span class="font-bold">Chapter 6: Action & Drama</span><span>18</span>
-                    </li>
-                    <li class="flex justify-between border-b border-gray-200 pb-2 border-dotted">
-                        <span class="font-bold">Chapter 7: Stepping Out - Community Engagement</span><span>21</span>
-                    </li>
-                    <li class="flex justify-between border-b border-gray-200 pb-2 border-dotted">
-                        <span class="font-bold">Conclusion: The Road Ahead</span><span>24</span>
-                    </li>
+            <div class="max-w-2xl mx-auto mt-8 kid-font text-xl">
+                <ul class="space-y-4">
+                    <li class="flex justify-between border-b-2 border-green-100 pb-1"><span class="text-gray-800 font-semibold">Introduction: The Heart of Chamakkal</span><span class="text-green-700">1</span></li>
+                    <li class="flex justify-between border-b-2 border-green-100 pb-1"><span class="text-gray-800 font-semibold">The Vision: Surakshit Marg</span><span class="text-green-700">3</span></li>
+                    <li class="flex justify-between border-b-2 border-green-100 pb-1"><span class="text-gray-800 font-semibold">Chapter 1: The Grand Inauguration</span><span class="text-green-700">5</span></li>
+                    <li class="flex justify-between border-b-2 border-green-100 pb-1"><span class="text-gray-800 font-semibold">Chapter 2: Marking Our Territory</span><span class="text-green-700">7</span></li>
+                    <li class="flex justify-between border-b-2 border-green-100 pb-1"><span class="text-gray-800 font-semibold">Chapter 3: The Crown Jewel - 'Kuttikkavala'</span><span class="text-green-700">9</span></li>
+                    <li class="flex justify-between border-b-2 border-green-100 pb-1"><span class="text-gray-800 font-semibold">Chapter 4: Pledges and Signatures</span><span class="text-green-700">12</span></li>
+                    <li class="flex justify-between border-b-2 border-green-100 pb-1"><span class="text-gray-800 font-semibold">Chapter 5: Art, Awareness, & Collaboration</span><span class="text-green-700">14</span></li>
+                    <li class="flex justify-between border-b-2 border-green-100 pb-1"><span class="text-gray-800 font-semibold">Chapter 6: Action & Drama</span><span class="text-green-700">17</span></li>
+                    <li class="flex justify-between border-b-2 border-green-100 pb-1"><span class="text-gray-800 font-semibold">Chapter 7: Community Engagement</span><span class="text-green-700">20</span></li>
+                    <li class="flex justify-between border-b-2 border-green-100 pb-1"><span class="text-gray-800 font-semibold">Conclusion: The Road Ahead</span><span class="text-green-700">22</span></li>
+                    <li class="flex justify-between border-b-2 border-green-100 pb-1"><span class="text-gray-800 font-semibold">Photo Gallery</span><span class="text-green-700">23</span></li>
                 </ul>
             </div>
             
-            <label class="photo-upload-label landscape mt-16 mx-auto w-3/4">
-                <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                <div class="placeholder-content">
-                    <span class="photo-icon">🏫</span>
-                    <span class="photo-label">Photo 3: Scenic view</span>
-                    <span class="photo-instruction">Click to upload scenic shot</span>
-                </div>
-            </label>
-            <span class="photo-caption">Our beautiful campus amidst the Western Ghats.</span>
+            <div class="photo-box landscape mt-12 mx-auto w-5/6" id="box-toc" onclick="triggerFile('input-toc')">
+                <img id="img-toc" src="">
+                <div class="placeholder" id="ph-toc"><span class="text-5xl mb-2">🌳</span><span class="font-bold">Scenic School View</span></div>
+                <div class="photo-overlay">Click to change</div>
+                <button class="remove-btn" onclick="removeImage(event, 'box-toc', 'img-toc', 'ph-toc')">X</button>
+                <input type="file" id="input-toc" accept="image/*" onchange="loadImage(event, 'box-toc', 'img-toc', 'ph-toc')">
+            </div>
         </div>
-        <div class="page-footer"><span>Project Report 2026</span><span class="page-number">ii</span></div>
+        <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">ii</span></div>
     </div>
 
-    <!-- PAGE 4: Introduction 1 -->
+    <!-- PAGE 4: Introduction -->
     <div class="a4-page">
-        <div class="page-header"><span>GLP School Chamakkal</span><span>Introduction</span></div>
+        <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Introduction</span></div>
         <div class="flex-grow pt-8">
             <h2 class="chapter-title">Introduction: The Heart of Chamakkal</h2>
             
             <p class="drop-cap">
-                Nestled comfortably against the breathtaking backdrop of the Western Ghats, within the hilly village panchayat of Payyavoor in the Kannur district, lies our beloved village of Chamakkal. It is here that GLP School Chamakkal has stood as a beacon of learning, growth, and community spirit for over six decades. 
+                Nestled comfortably against the breathtaking, lush green backdrop of the Western Ghats, within the hilly village panchayat of Payyavoor in the Kannur district, lies our beloved village of Chamakkal. It is right here that G.L.P.S. Chamakkal has stood as a warm beacon of learning, joyful growth, and community spirit for over six decades. 
             </p>
             <p>
-                When we look back at our humble beginnings in 1957, starting merely as a single-teacher institution, it fills our collective hearts with immense pride to see the vibrant educational hub we have become today. We are not just a building where syllabus is taught; we are a second home to our children. We are a sanctuary where innovative ideas take root early and blossom into life-changing habits that they carry into adulthood.
+                When we lovingly look back at our humble beginnings in 1957, starting merely as a single-teacher institution, it fills our collective hearts with immense pride to see the vibrant, colorful educational hub we have blossomed into today. We are far more than just a building where a syllabus is taught; we are a joyful second home to our young children.
             </p>
 
-            <label class="photo-upload-label large">
-                <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                <div class="placeholder-content">
-                    <span class="photo-icon">📸</span>
-                    <span class="photo-label">Photo 4: School Exterior</span>
-                    <span class="photo-instruction">Click to upload</span>
-                </div>
-            </label>
-            <span class="photo-caption">The proud facade of GLP School Chamakkal, a beacon of learning since 1957.</span>
+            <div class="photo-box large" id="box-intro1" onclick="triggerFile('input-intro1')">
+                <img id="img-intro1" src="">
+                <div class="placeholder" id="ph-intro1"><span class="text-5xl mb-2">🏫</span><span class="font-bold">School Exterior</span></div>
+                <div class="photo-overlay">Click to change</div>
+                <button class="remove-btn" onclick="removeImage(event, 'box-intro1', 'img-intro1', 'ph-intro1')">X</button>
+                <input type="file" id="input-intro1" accept="image/*" onchange="loadImage(event, 'box-intro1', 'img-intro1', 'ph-intro1')">
+            </div>
+            <span class="photo-caption">The welcoming facade of G.L.P.S. Chamakkal.</span>
 
             <p class="mt-6">
-                Our educational philosophy has always been to go leaps and bounds beyond the prescribed textbooks. We firmly believe that true education prepares a child for the unpredictable daily challenges of life. Over the years, our school has gained remarkable state-wide attention for our out-of-the-box initiatives. We introduced the <strong>"Mother's phone is mine"</strong> concept to gently regulate the overwhelming surge of smartphone usage among young minds.
+                Our educational philosophy has always been to go leaps and bounds beyond prescribed textbooks. We firmly believe that true education prepares a child for the unpredictable daily challenges of life outside the classroom walls.
             </p>
         </div>
-        <div class="page-footer"><span>Project Report 2026</span><span class="page-number">1</span></div>
+        <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">1</span></div>
     </div>
 
     <!-- PAGE 5: Introduction 2 -->
     <div class="a4-page">
-        <div class="page-header"><span>GLP School Chamakkal</span><span>Introduction</span></div>
+        <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Introduction</span></div>
         <div class="flex-grow pt-8">
             <p>
-                Furthermore, we gave our students their very own powerful voice through <strong>"Radio Cham,"</strong> the school's internal broadcast system. We actively addressed nutritional needs and childhood joy through our targeted program <strong>"Good Food is Good Mood,"</strong> ensuring diversity in midday meals. 
+                We introduced the highly effective <strong>"Mother's phone is mine"</strong> concept to gently regulate the overwhelming surge of smartphone usage among our young minds. Furthermore, we gave our students their very own powerful voice through <strong>"Radio Cham,"</strong> the school's internal, fun-filled broadcast system run by the children themselves. We actively addressed nutritional needs and childhood joy through our targeted program <strong>"Good Food is Good Mood."</strong> 
             </p>
             <p>
-                Our campus itself is designed to be a canvas of joy, featuring vibrantly painted walls, and our famous "Varna Koodaram" (Color Tents) provide beautiful, shaded play areas that naturally stimulate creativity and peace.
+                Our campus itself is designed to be a magical canvas of joy, featuring vibrantly painted walls, and our famous <strong>"Varna Koodaram" (Color Tents)</strong> provide beautiful, shaded play areas that naturally stimulate creativity, laughter, and peace among our little ones.
             </p>
 
-            <div class="grid grid-cols-2 gap-4 mt-8 mb-4">
-                <div>
-                    <label class="photo-upload-label portrait" style="width: 100%; height: 280px; margin: 0;">
-                        <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                        <div class="placeholder-content">
-                            <span class="photo-label">Photo 5: Activities</span>
-                        </div>
-                    </label>
-                    <span class="photo-caption text-sm block mt-2">Students engaged in campus activities.</span>
+            <div class="grid grid-cols-2 gap-6 mt-8 mb-4">
+                <div class="photo-box portrait w-full m-0 h-[320px]" id="box-intro2a" onclick="triggerFile('input-intro2a')">
+                    <img id="img-intro2a" src=""><div class="placeholder" id="ph-intro2a"><span class="font-bold">Activity Photo</span></div>
+                    <div class="photo-overlay">Change</div><button class="remove-btn" onclick="removeImage(event, 'box-intro2a', 'img-intro2a', 'ph-intro2a')">X</button>
+                    <input type="file" id="input-intro2a" accept="image/*" onchange="loadImage(event, 'box-intro2a', 'img-intro2a', 'ph-intro2a')">
                 </div>
-                <div>
-                    <label class="photo-upload-label portrait" style="width: 100%; height: 280px; margin: 0;">
-                        <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                        <div class="placeholder-content">
-                            <span class="photo-label">Photo 6: Campus Life</span>
-                        </div>
-                    </label>
-                    <span class="photo-caption text-sm block mt-2">Glimpses of our vibrant learning environment.</span>
+                <div class="photo-box portrait w-full m-0 h-[320px]" id="box-intro2b" onclick="triggerFile('input-intro2b')">
+                    <img id="img-intro2b" src=""><div class="placeholder" id="ph-intro2b"><span class="font-bold">Campus Life</span></div>
+                    <div class="photo-overlay">Change</div><button class="remove-btn" onclick="removeImage(event, 'box-intro2b', 'img-intro2b', 'ph-intro2b')">X</button>
+                    <input type="file" id="input-intro2b" accept="image/*" onchange="loadImage(event, 'box-intro2b', 'img-intro2b', 'ph-intro2b')">
                 </div>
             </div>
 
             <p class="mt-8">
-                It is exactly within this fertile, supportive ground of continuous innovation and deep community care that our most ambitious, community-centric project yet found its roots. A project that doesn't just aim to educate, but holds the absolute potential to save lives on our streets: the comprehensive road safety and traffic awareness initiative known to all as <strong>"Surakshit Marg"</strong>.
+                It is exactly within this fertile, incredibly supportive ground of continuous innovation and deep community care that our most ambitious project yet found its roots: the comprehensive road safety initiative known as <strong>"Surakshit Marg"</strong>.
             </p>
         </div>
-        <div class="page-footer"><span>Project Report 2026</span><span class="page-number">2</span></div>
+        <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">2</span></div>
     </div>
 
-    <!-- PAGE 6: The Vision 1 -->
+    <!-- PAGE 6: Vision -->
     <div class="a4-page">
-        <div class="page-header"><span>GLP School Chamakkal</span><span>The Vision</span></div>
+        <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>The Vision</span></div>
         <div class="flex-grow pt-8">
             <h2 class="chapter-title">The Vision: Surakshit Marg</h2>
-            
             <p class="drop-cap">
-                Every single day, we wake up to heartbreaking news of accidents on our roads. Often, the root cause is not a grand mechanical failure, but a fleeting moment of minor negligence, a lack of deep-seated awareness, or a casual disregard for established traffic rules. As the number of vehicles on our roads multiplies exponentially, the risk multiplies with it.
+                Every single day, we wake up to heartbreaking news of accidents on our roads. Often, the root cause is not a grand mechanical failure, but a fleeting moment of minor negligence or a casual disregard for established traffic rules. As the number of vehicles multiplies exponentially, the risk to our precious children multiplies with it.
             </p>
-            
             <p>
-                This pressing social issue caught the undivided attention of two major societal powerhouses: the <strong>Kuttukaran Group</strong>, an organization with an illustrious 85-year legacy in the automotive sector, and the <strong>SCMS Group</strong>, a leading name in higher education. Together, they conceptualized "Surakshit Marg" (Safe Path)—a road safety awareness program with a very specific, powerful target audience: school children.
+                This pressing social issue caught the undivided attention of two major societal powerhouses: the <strong>Kuttukaran Group</strong> and the <strong>SCMS Group</strong>. Together, they conceptualized "Surakshit Marg" (Safe Path)—a beautifully designed road safety awareness program with a specific target audience: school children.
             </p>
 
-            <label class="photo-upload-label large my-8">
-                <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                <div class="placeholder-content">
-                    <span class="photo-icon">🚩</span>
-                    <span class="photo-label">Photo 7: Project Banner</span>
-                    <span class="photo-instruction">Upload logo or project launch banner</span>
-                </div>
-            </label>
-            <span class="photo-caption">The proud banner of the Surakshit Marg initiative.</span>
+            <div class="photo-box large my-8" id="box-vis1" onclick="triggerFile('input-vis1')">
+                <img id="img-vis1" src="">
+                <div class="placeholder" id="ph-vis1"><span class="text-5xl mb-2">🚩</span><span class="font-bold">Project Banner</span></div>
+                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-vis1', 'img-vis1', 'ph-vis1')">X</button>
+                <input type="file" id="input-vis1" accept="image/*" onchange="loadImage(event, 'box-vis1', 'img-vis1', 'ph-vis1')">
+            </div>
 
             <h3 class="sub-heading">Why Start With Schools?</h3>
             <p>
-                The underlying philosophy behind Surakshit Marg is simple yet profoundly effective: "Road Safety Through Schools." History shows us that a culture of safe driving and responsible pedestrian behavior cannot be aggressively forced onto adults overnight. However, if we meticulously instill this traffic culture in our children from the very beginning, we are organically molding a generation that will naturally respect the roads.
+                History shows us that a culture of safe driving cannot be aggressively forced onto adults overnight. However, if we meticulously and playfully instill this traffic culture in our little children from the very beginning, we are organically molding a generation that will naturally respect the roads.
             </p>
         </div>
-        <div class="page-footer"><span>Project Report 2026</span><span class="page-number">3</span></div>
+        <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">3</span></div>
     </div>
 
-    <!-- PAGE 7: The Vision 2 -->
+    <!-- PAGE 7: Vision 2 -->
     <div class="a4-page">
-        <div class="page-header"><span>GLP School Chamakkal</span><span>The Vision</span></div>
+        <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>The Vision</span></div>
         <div class="flex-grow pt-8">
             <p>
-                Children are undeniably the best, most persistent ambassadors of change. When a child innocently asks their parent to buckle a seatbelt or secure a helmet, the emotional impact is immediate and far greater than the threat of any police fine. Activities conducted within the safe premises of the school have a unique, beautiful way of overflowing into the public sphere, creating endless ripples of awareness that touch every family in the village.
+                Children are undeniably the best, most persistent ambassadors of change. When a sweet child innocently asks their parent to buckle a seatbelt or secure a helmet, the emotional impact is immediate and far greater than the threat of any police fine. 
             </p>
 
-            <label class="photo-upload-label full-page-image my-6">
-                <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                <div class="placeholder-content">
-                    <span class="photo-icon">👨‍👧</span>
-                    <span class="photo-label">Photo 8: Student & Parent</span>
-                    <span class="photo-instruction">Upload a vertical shot of a child interacting about safety</span>
-                </div>
-            </label>
-            <span class="photo-caption">Children act as the primary catalysts for changing adult behavior regarding road safety.</span>
-
-            <p class="mt-6">
-                Across the vast Kannur district, 50 schools were handpicked to be partners in this noble journey. For GLP School Chamakkal, being chosen as one of these 50 was both an immense honor and an urgent call to action. We were thrilled. For an entire year, we dedicated ourselves entirely to this cause, turning our small campus into a formidable force for road safety.
-            </p>
+            <div class="photo-box full-page mt-6" id="box-vis2" onclick="triggerFile('input-vis2')">
+                <img id="img-vis2" src="">
+                <div class="placeholder" id="ph-vis2"><span class="text-5xl mb-2">👨‍👧</span><span class="font-bold">Student & Parent</span></div>
+                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-vis2', 'img-vis2', 'ph-vis2')">X</button>
+                <input type="file" id="input-vis2" accept="image/*" onchange="loadImage(event, 'box-vis2', 'img-vis2', 'ph-vis2')">
+            </div>
+            <span class="photo-caption mt-4">Children act as the primary catalysts for changing adult behavior regarding road safety.</span>
         </div>
-        <div class="page-footer"><span>Project Report 2026</span><span class="page-number">4</span></div>
+        <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">4</span></div>
     </div>
 
     <!-- PAGE 8: Chapter 1 -->
     <div class="a4-page">
-        <div class="page-header"><span>GLP School Chamakkal</span><span>Chapter 1</span></div>
+        <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 1</span></div>
         <div class="flex-grow pt-8">
             <h2 class="chapter-title">Chapter 1: The Grand Inauguration</h2>
-            
             <p class="drop-cap">
-                Every great journey begins with meticulous planning. Long before the public knew about our involvement in Surakshit Marg, the wheels were already in motion inside the school. The PTA and the Staff Council convened multiple times. Our dedicated Coordinator, Ms. P. Shilpa, took the floor to present a comprehensive, year-long roadmap of activities. The excitement in the room was palpable; we knew we were about to embark on something special.
+                Every great journey begins with meticulous planning. Long before the public knew about our exciting involvement in Surakshit Marg, the wheels were already in motion inside the school. The PTA and the Staff Council convened multiple times. Our dedicated Coordinator, Ms. P. Shilpa, took the floor to present a comprehensive, year-long roadmap of fun-filled activities.
             </p>
-
             <p>
-                The official dawn of the project arrived on November 2nd. We decided to make it a memorable, grand event for the children. 
+                The official dawn of the project arrived on November 2nd. We decided to make it a memorable, grand, and joyful event for the children. 
             </p>
 
-            <label class="photo-upload-label large my-6">
-                <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                <div class="placeholder-content">
-                    <span class="photo-icon">🎤</span>
-                    <span class="photo-label">Photo 9: Inauguration Stage</span>
-                    <span class="photo-instruction">Upload photo of dignitaries on stage</span>
-                </div>
-            </label>
-            <span class="photo-caption">Dignitaries formally launching the Surakshit Marg project at our school.</span>
+            <div class="photo-box large my-6" id="box-ch1a" onclick="triggerFile('input-ch1a')">
+                <img id="img-ch1a" src="">
+                <div class="placeholder" id="ph-ch1a"><span class="text-5xl mb-2">🎤</span><span class="font-bold">Inauguration Stage</span></div>
+                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch1a', 'img-ch1a', 'ph-ch1a')">X</button>
+                <input type="file" id="input-ch1a" accept="image/*" onchange="loadImage(event, 'box-ch1a', 'img-ch1a', 'ph-ch1a')">
+            </div>
 
             <p class="mt-6">
-                We were honored to have Sub-Inspector Sri P. P. Prabhakaran from the Payyavoor Police Station as our esteemed chief guest to officially inaugurate the initiative. Seeing a high-ranking police officer in uniform in their school initially brought awe to the children, but his warm, engaging manner quickly turned that awe into active, joyful participation. 
+                We were deeply honored to have Sub-Inspector Sri P. P. Prabhakaran from the Payyavoor Police Station as our esteemed chief guest to officially inaugurate the initiative. Seeing a high-ranking police officer in uniform initially brought wide-eyed awe to the children, but his warm manner quickly turned that awe into joyful participation. 
             </p>
         </div>
-        <div class="page-footer"><span>Project Report 2026</span><span class="page-number">5</span></div>
+        <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">5</span></div>
     </div>
 
-    <!-- PAGE 9: Chapter 1 (Cont) -->
+    <!-- PAGE 9: Chapter 1 Cont -->
     <div class="a4-page">
-        <div class="page-header"><span>GLP School Chamakkal</span><span>Chapter 1</span></div>
+        <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 1</span></div>
         <div class="flex-grow pt-8">
             <p>
-                SI Prabhakaran didn't just give a monotonous speech; he stepped down and interacted with the students, explaining the critical nuances of traffic awareness in a simple language they could easily grasp. He officially released the Surakshit Marg project logo to thunderous applause from the student body.
+                SI Prabhakaran didn't just give a monotonous speech; he stepped right down and interacted with the students, explaining the critical nuances of traffic awareness in a simple, playful language they could easily grasp. He officially released the beautifully designed Surakshit Marg project logo to thunderous applause.
             </p>
 
             <div class="grid grid-cols-2 gap-6 my-8">
-                <div>
-                    <label class="photo-upload-label portrait" style="width: 100%; height: 320px; margin: 0;">
-                        <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                        <div class="placeholder-content">
-                            <span class="photo-label">Photo 10: SI Speech</span>
-                        </div>
-                    </label>
-                    <span class="photo-caption text-sm block mt-2 text-center">SI P.P. Prabhakaran engaging the students.</span>
+                <div class="photo-box portrait w-full m-0 h-[340px]" id="box-ch1b" onclick="triggerFile('input-ch1b')">
+                    <img id="img-ch1b" src=""><div class="placeholder" id="ph-ch1b"><span class="font-bold">SI Interacting</span></div>
+                    <div class="photo-overlay">Change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch1b', 'img-ch1b', 'ph-ch1b')">X</button>
+                    <input type="file" id="input-ch1b" accept="image/*" onchange="loadImage(event, 'box-ch1b', 'img-ch1b', 'ph-ch1b')">
                 </div>
-                <div>
-                    <label class="photo-upload-label portrait" style="width: 100%; height: 320px; margin: 0;">
-                        <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                        <div class="placeholder-content">
-                            <span class="photo-label">Photo 11: Logo Release</span>
-                        </div>
-                    </label>
-                    <span class="photo-caption text-sm block mt-2 text-center">The official release of the project logo.</span>
+                <div class="photo-box portrait w-full m-0 h-[340px]" id="box-ch1c" onclick="triggerFile('input-ch1c')">
+                    <img id="img-ch1c" src=""><div class="placeholder" id="ph-ch1c"><span class="font-bold">Logo Release</span></div>
+                    <div class="photo-overlay">Change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch1c', 'img-ch1c', 'ph-ch1c')">X</button>
+                    <input type="file" id="input-ch1c" accept="image/*" onchange="loadImage(event, 'box-ch1c', 'img-ch1c', 'ph-ch1c')">
                 </div>
             </div>
 
             <p>
-                The inaugural event was a beautiful display of institutional unity. Coordinator P. Shilpa detailed the upcoming projects to the rapt audience. Inspiring words were shared by our Headmaster, Sri E. P. Jayaprakash, PTA President Sri K. G. Shibu, MPTA President Smt. Soumya Dinesh, and our proud School Leader, Edwin Rejeesh. 
-            </p>
-            <p>
-                The event concluded on a wonderfully sweet note—quite literally. The Payyavoor Police surprised our children by distributing sweets to everyone present, cementing a positive, friendly relationship between the students and law enforcement right from day one.
+                The event concluded on a wonderfully sweet note—quite literally. The Payyavoor Police surprised our children by distributing yummy sweets to everyone present, cementing a highly positive, friendly relationship between the young students and law enforcement right from day one.
             </p>
         </div>
-        <div class="page-footer"><span>Project Report 2026</span><span class="page-number">6</span></div>
+        <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">6</span></div>
     </div>
 
     <!-- PAGE 10: Chapter 2 -->
     <div class="a4-page">
-        <div class="page-header"><span>GLP School Chamakkal</span><span>Chapter 2</span></div>
+        <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 2</span></div>
         <div class="flex-grow pt-8">
             <h2 class="chapter-title">Chapter 2: Marking Our Territory</h2>
-            
             <p class="drop-cap">
-                Awareness needs to be highly visible to be effective. If we truly wanted the community to know that GLP School Chamakkal was now a central hub for road safety, we needed to make a bold, unmissable statement right at our doorstep. 
+                Awareness needs to be highly visible and colorful to be truly effective. If we truly wanted the community to know that our little G.L.P.S. Chamakkal was now a central hub for road safety, we needed to make a bold, unmissable statement right at our doorstep. 
             </p>
-
             <h3 class="sub-heading">The Surakshit Marg Gateway</h3>
             <p>
-                The very next day, on November 3rd, we completely transformed the main entrance of our school. A beautifully designed, highly attractive Surakshit Marg board was erected prominently right at the school gate. Created meticulously in the specified layout and dimensions, and proudly bearing the project's colorful emblem, the board serves as a daily, powerful reminder. Every student walking in, and every parent dropping them off, immediately knows that safety is our ultimate priority.
+                On November 3rd, we transformed the main entrance of our school. A beautifully designed, highly attractive Surakshit Marg board was erected prominently right at the school gate. Every student skipping in, and every parent dropping them off, immediately knows that safety is our ultimate priority.
             </p>
 
-            <label class="photo-upload-label landscape my-8" style="height: 280px;">
-                <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                <div class="placeholder-content">
-                    <span class="photo-icon">🖼️</span>
-                    <span class="photo-label">Photo 12: Gateway Board</span>
-                    <span class="photo-instruction">Upload photo of the board at the school gate</span>
-                </div>
-            </label>
-            <span class="photo-caption">The proud Surakshit Marg installation welcoming everyone at the school gate.</span>
+            <div class="photo-box landscape my-8" id="box-ch2a" onclick="triggerFile('input-ch2a')">
+                <img id="img-ch2a" src="">
+                <div class="placeholder" id="ph-ch2a"><span class="text-5xl mb-2">🖼️</span><span class="font-bold">Gateway Board</span></div>
+                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch2a', 'img-ch2a', 'ph-ch2a')">X</button>
+                <input type="file" id="input-ch2a" accept="image/*" onchange="loadImage(event, 'box-ch2a', 'img-ch2a', 'ph-ch2a')">
+            </div>
 
             <p class="mt-6">
-                But our sense of responsibility extended far beyond our iron gates. The Payyavoor-Kunnathur road that runs directly near our school is a bustling, often dangerous stretch. Years ago, a warning board had been placed there to alert speeding drivers to slow down, but time, rain, and weather had completely destroyed it, leaving a highly hazardous blind spot for the community.
+                But our deep sense of responsibility extended far beyond our iron gates. The Payyavoor-Kunnathur road that runs directly near our school is a bustling, often dangerous stretch. Years ago, a warning board had been placed there, but time and heavy rain had completely destroyed it.
             </p>
         </div>
-        <div class="page-footer"><span>Project Report 2026</span><span class="page-number">7</span></div>
+        <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">7</span></div>
     </div>
 
-    <!-- PAGE 11: Chapter 2 (Cont) -->
+    <!-- PAGE 11: Chapter 2 Cont -->
     <div class="a4-page">
-        <div class="page-header"><span>GLP School Chamakkal</span><span>Chapter 2</span></div>
+        <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 2</span></div>
         <div class="flex-grow pt-8">
             <h3 class="sub-heading mt-0">Protecting the Community</h3>
             <p>
-                Recognizing this danger, on November 8th, stepping up as true community guardians, we utilized the project framework and funds to securely install a brand new, highly reflective Speed Restriction Warning Board on the road. 
+                Recognizing this danger to our little ones, on November 8th, stepping up as true community guardians, we utilized the project framework and funds to securely install a brand new, highly reflective Speed Restriction Warning Board right on the road. 
             </p>
 
-            <label class="photo-upload-label full-page-image my-6" style="height: 450px;">
-                <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                <div class="placeholder-content">
-                    <span class="photo-icon">🛑</span>
-                    <span class="photo-label">Photo 13: Warning Board Install</span>
-                    <span class="photo-instruction">Upload photo of the street warning board installation</span>
-                </div>
-            </label>
-            <span class="photo-caption">Students and teachers taking charge to install the new Speed Restriction Warning Board.</span>
-
+            <div class="photo-box full-page my-6" id="box-ch2b" onclick="triggerFile('input-ch2b')">
+                <img id="img-ch2b" src="">
+                <div class="placeholder" id="ph-ch2b"><span class="text-5xl mb-2">🛑</span><span class="font-bold">Warning Board Installation</span></div>
+                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch2b', 'img-ch2b', 'ph-ch2b')">X</button>
+                <input type="file" id="input-ch2b" accept="image/*" onchange="loadImage(event, 'box-ch2b', 'img-ch2b', 'ph-ch2b')">
+            </div>
+            
             <p class="mt-6">
-                This board was strategically placed in a manner that it not only effectively controls vehicle speeds near our own school, thereby preventing potential accidents, but it also immensely benefits the neighboring school located further down the road. It was our first tangible, structural contribution to the public infrastructure under this project, and the response from local daily commuters was overwhelmingly positive. We were no longer just learning; we were protecting.
+                This bright board was strategically placed in a manner that it not only effectively controls vehicle speeds near our own school, but it also immensely benefits the neighboring school located further down the road. It was our first tangible, structural contribution to the public infrastructure under this project.
             </p>
         </div>
-        <div class="page-footer"><span>Project Report 2026</span><span class="page-number">8</span></div>
+        <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">8</span></div>
     </div>
 
     <!-- PAGE 12: Chapter 3 -->
     <div class="a4-page">
-        <div class="page-header"><span>GLP School Chamakkal</span><span>Chapter 3</span></div>
+        <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 3</span></div>
         <div class="flex-grow pt-8">
             <h2 class="chapter-title">Chapter 3: The Crown Jewel - 'Kuttikkavala'</h2>
-            
             <p class="drop-cap">
-                If there is one single aspect of our Surakshit Marg journey that fills our hearts with absolute joy, unparalleled pride, and constant amusement, it is the creation of <strong>'Kuttikkavala'</strong>—our very own, fully functional Children's Traffic Junction.
+                If there is one single aspect of our Surakshit Marg journey that fills our hearts with absolute joy, unparalleled pride, and constant amusement, it is the creation of <strong>'Kuttikkavala'</strong>—our very own, fully functional, beautifully colorful Children's Traffic Junction.
             </p>
-
             <p>
-                We wanted to move drastically beyond theoretical blackboard lectures. How do you effectively teach a lively five-year-old about the dangers of a blind spot, or the sanctity of a zebra crossing, in a way they will never, ever forget? You put them in the driver's seat. 
+                We wanted to move drastically beyond boring, theoretical blackboard lectures. How do you effectively teach a lively five-year-old about the absolute sanctity of a zebra crossing in a way they will never, ever forget? You put them in the driver's seat of a miniature car!
             </p>
 
-            <label class="photo-upload-label large my-6" style="height: 380px;">
-                <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                <div class="placeholder-content">
-                    <span class="photo-icon">🛣️</span>
-                    <span class="photo-label">Photo 14: Kuttikkavala Wide Shot</span>
-                    <span class="photo-instruction">Upload a wide shot of the model road</span>
-                </div>
-            </label>
-            <span class="photo-caption">A panoramic view of 'Kuttikkavala', our model road built within the school courtyard.</span>
+            <div class="photo-box large my-6" id="box-ch3a" onclick="triggerFile('input-ch3a')">
+                <img id="img-ch3a" src="">
+                <div class="placeholder" id="ph-ch3a"><span class="text-5xl mb-2">🛣️</span><span class="font-bold">Kuttikkavala Wide Shot</span></div>
+                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch3a', 'img-ch3a', 'ph-ch3a')">X</button>
+                <input type="file" id="input-ch3a" accept="image/*" onchange="loadImage(event, 'box-ch3a', 'img-ch3a', 'ph-ch3a')">
+            </div>
 
             <p class="mt-6">
-                We purposefully selected a specific, wide area of our interlocked courtyard—the exact space typically used by our pre-primary and primary sections for free play. Here, with incredible attention to engineering detail and scale, we constructed a highly realistic model road system. 
+                We purposefully selected a specific, wide area of our interlocked courtyard. Here, with incredible attention to engineering detail and scale perfectly suited for little legs, we constructed a highly realistic model road system right next to the Varna Koodaram. 
             </p>
         </div>
-        <div class="page-footer"><span>Project Report 2026</span><span class="page-number">9</span></div>
+        <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">9</span></div>
     </div>
 
-    <!-- PAGE 13: Chapter 3 (Cont) -->
+    <!-- PAGE 13: Chapter 3 Cont -->
     <div class="a4-page">
-        <div class="page-header"><span>GLP School Chamakkal</span><span>Chapter 3</span></div>
+        <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 3</span></div>
         <div class="flex-grow pt-8">
             <p>
-                The 'Kuttikkavala' is absolutely not just a few lines hastily painted on the ground. It features distinct, bright road markings, perfectly spaced zebra crossings, proper lane dividers, and even real convex mirrors strategically placed at "blind curves" to teach them how to look before turning. To make it truly immersive, we provided miniature drivable vehicles. Suddenly, the school yard was transformed into a bustling, miniature city street, with tiny drivers and tiny pedestrians navigating safely around each other.
+                The 'Kuttikkavala' is absolutely not just a few lines hastily painted on the ground. It features distinct, bright road markings, perfectly spaced black-and-white zebra crossings, proper lane dividers, and even real convex mirrors strategically placed at "blind curves". To make it truly immersive, we provided fun, miniature drivable vehicles.
             </p>
 
             <div class="grid grid-cols-2 gap-6 my-8">
-                <div>
-                    <label class="photo-upload-label portrait" style="width: 100%; height: 300px; margin: 0;">
-                        <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                        <div class="placeholder-content">
-                            <span class="photo-label">Photo 15: Zebra Crossing</span>
-                        </div>
-                    </label>
-                    <span class="photo-caption text-sm block mt-2 text-center">Learning the right of way at the zebra crossing.</span>
+                <div class="photo-box portrait w-full m-0 h-[320px]" id="box-ch3b" onclick="triggerFile('input-ch3b')">
+                    <img id="img-ch3b" src=""><div class="placeholder" id="ph-ch3b"><span class="font-bold">Zebra Crossing</span></div>
+                    <div class="photo-overlay">Change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch3b', 'img-ch3b', 'ph-ch3b')">X</button>
+                    <input type="file" id="input-ch3b" accept="image/*" onchange="loadImage(event, 'box-ch3b', 'img-ch3b', 'ph-ch3b')">
                 </div>
-                <div>
-                    <label class="photo-upload-label portrait" style="width: 100%; height: 300px; margin: 0;">
-                        <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                        <div class="placeholder-content">
-                            <span class="photo-label">Photo 16: Convex Mirror</span>
-                        </div>
-                    </label>
-                    <span class="photo-caption text-sm block mt-2 text-center">Using the convex mirror at the blind curve.</span>
+                <div class="photo-box portrait w-full m-0 h-[320px]" id="box-ch3c" onclick="triggerFile('input-ch3c')">
+                    <img id="img-ch3c" src=""><div class="placeholder" id="ph-ch3c"><span class="font-bold">Convex Mirror</span></div>
+                    <div class="photo-overlay">Change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch3c', 'img-ch3c', 'ph-ch3c')">X</button>
+                    <input type="file" id="input-ch3c" accept="image/*" onchange="loadImage(event, 'box-ch3c', 'img-ch3c', 'ph-ch3c')">
                 </div>
             </div>
 
+            <h3 class="sub-heading">An Open-Air Classroom</h3>
             <p>
-                Adjacent to this dynamic model road, we thoughtfully developed a natural shade area using trees and canopies. This turned 'Kuttikkavala' into a profoundly pleasant, cool environment where children naturally and happily gravitate during their lunch breaks. It is a space that captures the immediate attention and admiration of absolutely anyone who visits our campus.
+                Teachers rapidly began using this space for their daily lessons. Students practically learn complex concepts of measurements in Mathematics by measuring the road width. Chapters strictly related to transportation in EVS are no longer just read; they are physically enacted on our model road.
             </p>
         </div>
-        <div class="page-footer"><span>Project Report 2026</span><span class="page-number">10</span></div>
+        <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">10</span></div>
     </div>
 
-    <!-- PAGE 14: Chapter 3 (Cont) -->
+    <!-- PAGE 14: Chapter 3 Full Page -->
     <div class="a4-page">
-        <div class="page-header"><span>GLP School Chamakkal</span><span>Chapter 3</span></div>
+        <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 3</span></div>
         <div class="flex-grow pt-8">
-            <h3 class="sub-heading mt-0">An Open-Air Classroom</h3>
             <p>
-                The true, underlying brilliance of 'Kuttikkavala' lies in its seamless academic integration. It is not designated just as a playground; it operates as an active, open-air laboratory. Teachers from various classes rapidly began using this space for their daily, standard lessons.
+                This practical, hands-on experience is entirely invaluable. It teaches them traffic rules through muscle memory and lived experience. The astounding success of 'Kuttikkavala' caught fire in the local media. We began receiving waves of visitors from other regional schools who wanted to see this marvel. 
             </p>
 
-            <label class="photo-upload-label landscape my-6" style="height: 320px;">
-                <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                <div class="placeholder-content">
-                    <span class="photo-icon">🧑‍🏫</span>
-                    <span class="photo-label">Photo 17: Outdoor Class</span>
-                    <span class="photo-instruction">Upload photo of a teacher using the model road for class</span>
-                </div>
-            </label>
-            <span class="photo-caption">Taking academics outside: A teacher conducting a practical lesson at the junction.</span>
-
-            <ul class="list-disc pl-8 mb-6 mt-6 space-y-4 text-[11.5pt] text-[#334155]">
-                <li><strong>Mathematics:</strong> Students practically learn complex concepts of measurements by physically measuring the road width, lane lengths, and zebra lines. They actively identify complex geometric shapes hidden within the various traffic signs.</li>
-                <li><strong>Environmental Studies (EVS):</strong> Chapters strictly related to transportation, civic duty, and physical safety are no longer just read boringly from a textbook; they are physically enacted on our model road.</li>
-            </ul>
-
-            <p>
-                This practical, hands-on experience is entirely invaluable. It teaches them traffic rules through muscle memory and lived experience. The astounding success of 'Kuttikkavala' caught fire in the local media. We began receiving waves of visitors from other regional schools who wanted to see this marvel. We proved undeniably that any small school, with limited funds but unlimited passion, can execute a top-tier educational project.
-            </p>
+            <div class="photo-box full-page mt-6" style="height: 520px;" id="box-ch3d" onclick="triggerFile('input-ch3d')">
+                <img id="img-ch3d" src="">
+                <div class="placeholder" id="ph-ch3d"><span class="text-5xl mb-2">🧑‍🏫</span><span class="font-bold">Outdoor Class in Session</span></div>
+                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch3d', 'img-ch3d', 'ph-ch3d')">X</button>
+                <input type="file" id="input-ch3d" accept="image/*" onchange="loadImage(event, 'box-ch3d', 'img-ch3d', 'ph-ch3d')">
+            </div>
         </div>
-        <div class="page-footer"><span>Project Report 2026</span><span class="page-number">11</span></div>
+        <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">11</span></div>
     </div>
 
     <!-- PAGE 15: Chapter 4 -->
     <div class="a4-page">
-        <div class="page-header"><span>GLP School Chamakkal</span><span>Chapter 4</span></div>
+        <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 4</span></div>
         <div class="flex-grow pt-8">
-            <h2 class="chapter-title">Chapter 4: Pledges and Signatures</h2>
-            
+            <h2 class="chapter-title">Chapter 4: Pledges & Signatures</h2>
             <p class="drop-cap">
                 Commitment is drastically stronger when it is declared aloud and signed in ink. To ensure the vital message of road safety lingered in living rooms and inside vehicles long after school hours ended, we boldly initiated the Road Safety Pledge campaign.
             </p>
-
             <p>
-                We carefully designed and printed beautiful, high-quality Road Safety Pledge Cards. These weren't mere pieces of paper; they contained essential traffic concepts, emergency numbers, and solemn promises. The distribution of these cards was a massive, school-wide festival of responsibility. Every single student received one, taking the heavy promise back to their parents. 
+                We carefully designed and printed beautiful, high-quality, colorful Road Safety Pledge Cards. These weren't mere pieces of paper; they contained essential traffic concepts, emergency numbers, and solemn promises written in a way children could understand. Every single little student received one.
             </p>
 
-            <label class="photo-upload-label large my-8" style="height: 380px;">
-                <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                <div class="placeholder-content">
-                    <span class="photo-icon">📜</span>
-                    <span class="photo-label">Photo 18: Pledge Cards</span>
-                    <span class="photo-instruction">Upload photo of students with pledge cards</span>
-                </div>
-            </label>
-            <span class="photo-caption">Students proudly displaying their personalized Road Safety Pledge Cards.</span>
+            <div class="photo-box large my-8" id="box-ch4a" onclick="triggerFile('input-ch4a')">
+                <img id="img-ch4a" src="">
+                <div class="placeholder" id="ph-ch4a"><span class="text-5xl mb-2">📜</span><span class="font-bold">Pledge Cards</span></div>
+                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch4a', 'img-ch4a', 'ph-ch4a')">X</button>
+                <input type="file" id="input-ch4a" accept="image/*" onchange="loadImage(event, 'box-ch4a', 'img-ch4a', 'ph-ch4a')">
+            </div>
 
             <p class="mt-6">
-                But we absolutely didn't stop at our own students. We handed these cards out as gifts to our school van and bus drivers. We stepped out of our comfort zone and presented them to random drivers passing by our school, and to every guest who visited our campus. Elected public representatives who received these cards were deeply moved and publicly commended the school for this highly thoughtful gesture.
+                But we absolutely didn't stop at our own students. We handed these cards out as sweet gifts to our school van and bus drivers. We stepped out of our comfort zone and presented them to random drivers passing by our school, and to every guest who visited our campus.
             </p>
         </div>
-        <div class="page-footer"><span>Project Report 2026</span><span class="page-number">12</span></div>
+        <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">12</span></div>
     </div>
 
-    <!-- PAGE 16: Chapter 4 (Cont) -->
+    <!-- PAGE 16: Chapter 4 Cont -->
     <div class="a4-page">
-        <div class="page-header"><span>GLP School Chamakkal</span><span>Chapter 4</span></div>
+        <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 4</span></div>
         <div class="flex-grow pt-8">
             <h3 class="sub-heading mt-0">Reading the Language of the Road</h3>
             <p>
-                The absolute foundation of traffic literacy is understanding road signs. They are the universal language of safety, spoken identically across the globe. To ensure our students became utterly fluent in this language, we made a substantial permanent investment.
+                The absolute foundation of traffic literacy is understanding road signs. They are the universal language of safety, spoken identically across the globe. To ensure our young students became utterly fluent in this language, we made a substantial permanent investment.
             </p>
 
-            <label class="photo-upload-label landscape my-8" style="height: 350px;">
-                <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                <div class="placeholder-content">
-                    <span class="photo-icon">🚸</span>
-                    <span class="photo-label">Photo 19: Wall Signs</span>
-                    <span class="photo-instruction">Upload photo of the permanent aluminum signs</span>
-                </div>
-            </label>
-            <span class="photo-caption">The permanent, high-quality aluminum traffic signs installed for daily familiarization.</span>
+            <div class="photo-box landscape my-8" style="height: 380px;" id="box-ch4b" onclick="triggerFile('input-ch4b')">
+                <img id="img-ch4b" src="">
+                <div class="placeholder" id="ph-ch4b"><span class="text-5xl mb-2">🚸</span><span class="font-bold">Permanent Wall Signs</span></div>
+                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch4b', 'img-ch4b', 'ph-ch4b')">X</button>
+                <input type="file" id="input-ch4b" accept="image/*" onchange="loadImage(event, 'box-ch4b', 'img-ch4b', 'ph-ch4b')">
+            </div>
 
             <p class="mt-8">
-                Through high-quality aluminum fabrication, we created and permanently displayed various essential road traffic signs across the school premises. These aren't just decorative artwork; they are active, daily learning tools. Teachers regularly conduct identification games, and students frequently incorporate these signs into their skits and daily activities. This constant visual reinforcement ensures they can instantly, without hesitation, recognize a "No Entry," "School Zone," or "Pedestrian Crossing" sign anywhere in the real world.
+                Through high-quality aluminum fabrication, we created and permanently displayed various essential road traffic signs across the school premises. Teachers regularly conduct identification games with these signs. This constant visual reinforcement ensures they can instantly, without hesitation, recognize a "No Entry" or "Pedestrian Crossing" sign anywhere in the real world.
             </p>
         </div>
-        <div class="page-footer"><span>Project Report 2026</span><span class="page-number">13</span></div>
+        <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">13</span></div>
     </div>
 
     <!-- PAGE 17: Chapter 5 -->
     <div class="a4-page">
-        <div class="page-header"><span>GLP School Chamakkal</span><span>Chapter 5</span></div>
+        <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 5</span></div>
         <div class="flex-grow pt-8">
-            <h2 class="chapter-title">Chapter 5: Art, Awareness, and Collaboration</h2>
-            
+            <h2 class="chapter-title">Chapter 5: Art & Collaboration</h2>
             <p class="drop-cap">
                 The Surakshit Marg initiative was deliberately not an isolated school bubble; it was designed as a powerful magnet for regional collaboration. One of our most phenomenally fruitful partnerships was with the highly active NSS (National Service Scheme) Unit of the PKM College of Education, Madampam.
             </p>
-
             <p>
-                During their intense seven-day community camp, the NSS volunteers dedicated an entire day to exclusively visiting our school. It was a beautiful inter-generational exchange of ideas. Our Headmaster, Sri E. P. Jayaprakash, conducted a highly detailed special seminar for the volunteers, explicitly detailing our Surakshit Marg methodology and activities. We proudly gave them a tour of our 'Kuttikkavala'.
+                During their intense seven-day community camp, the NSS volunteers dedicated an entire day to exclusively visiting our school. Our Headmaster, Sri E. P. Jayaprakash, conducted a highly detailed special seminar for the volunteers, explicitly detailing our Surakshit Marg methodology.
             </p>
 
-            <label class="photo-upload-label large my-8" style="height: 380px;">
-                <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                <div class="placeholder-content">
-                    <span class="photo-icon">🤝</span>
-                    <span class="photo-label">Photo 20: NSS Seminar</span>
-                    <span class="photo-instruction">Upload photo of HM taking class for NSS volunteers</span>
-                </div>
-            </label>
-            <span class="photo-caption">Headmaster E.P. Jayaprakash sharing the Surakshit Marg vision with the NSS volunteers.</span>
+            <div class="photo-box large my-8" id="box-ch5a" onclick="triggerFile('input-ch5a')">
+                <img id="img-ch5a" src="">
+                <div class="placeholder" id="ph-ch5a"><span class="text-5xl mb-2">🤝</span><span class="font-bold">NSS Seminar</span></div>
+                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch5a', 'img-ch5a', 'ph-ch5a')">X</button>
+                <input type="file" id="input-ch5a" accept="image/*" onchange="loadImage(event, 'box-ch5a', 'img-ch5a', 'ph-ch5a')">
+            </div>
+            
+            <p class="mt-6">
+                Deeply inspired by our foundational work, the NSS volunteers decided they needed to leave a permanent, visible mark on our campus walls.
+            </p>
         </div>
-        <div class="page-footer"><span>Project Report 2026</span><span class="page-number">14</span></div>
+        <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">14</span></div>
     </div>
 
-    <!-- PAGE 18: Chapter 5 (Cont) -->
+    <!-- PAGE 18: Chapter 5 Cont -->
     <div class="a4-page">
-        <div class="page-header"><span>GLP School Chamakkal</span><span>Chapter 5</span></div>
+        <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 5</span></div>
         <div class="flex-grow pt-8">
             <p>
-                Deeply inspired by our foundational work, the NSS volunteers decided they needed to leave a permanent, visible mark. Over the following days, the immensely talented artists among the volunteers took up brushes, palettes, and paints. They miraculously transformed the blank exterior walls of our classrooms into vibrant, stunning murals depicting essential traffic rules and complex road safety scenarios. 
+                Over the following days, the immensely talented artists among the volunteers miraculously transformed the blank exterior walls of our classrooms into vibrant, stunning murals depicting essential traffic rules and complex road safety scenarios. 
             </p>
 
             <div class="grid grid-cols-2 gap-6 my-8">
-                <div>
-                    <label class="photo-upload-label portrait" style="width: 100%; height: 300px; margin: 0;">
-                        <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                        <div class="placeholder-content">
-                            <span class="photo-label">Photo 21: Painting Process</span>
-                        </div>
-                    </label>
-                    <span class="photo-caption text-sm block mt-2 text-center">NSS Volunteers actively painting the murals.</span>
+                <div class="photo-box portrait w-full m-0 h-[320px]" id="box-ch5b" onclick="triggerFile('input-ch5b')">
+                    <img id="img-ch5b" src=""><div class="placeholder" id="ph-ch5b"><span class="font-bold">Painting Process</span></div>
+                    <div class="photo-overlay">Change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch5b', 'img-ch5b', 'ph-ch5b')">X</button>
+                    <input type="file" id="input-ch5b" accept="image/*" onchange="loadImage(event, 'box-ch5b', 'img-ch5b', 'ph-ch5b')">
                 </div>
-                <div>
-                    <label class="photo-upload-label portrait" style="width: 100%; height: 300px; margin: 0;">
-                        <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                        <div class="placeholder-content">
-                            <span class="photo-label">Photo 22: Completed Mural</span>
-                        </div>
-                    </label>
-                    <span class="photo-caption text-sm block mt-2 text-center">The stunning, completed artwork on our walls.</span>
+                <div class="photo-box portrait w-full m-0 h-[320px]" id="box-ch5c" onclick="triggerFile('input-ch5c')">
+                    <img id="img-ch5c" src=""><div class="placeholder" id="ph-ch5c"><span class="font-bold">Completed Mural</span></div>
+                    <div class="photo-overlay">Change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch5c', 'img-ch5c', 'ph-ch5c')">X</button>
+                    <input type="file" id="input-ch5c" accept="image/*" onchange="loadImage(event, 'box-ch5c', 'img-ch5c', 'ph-ch5c')">
                 </div>
             </div>
 
             <p>
-                The visual impact on the campus was profound. These massive murals didn't just beautify the school architecture; they served as permanent, larger-than-life textbooks. The collaboration caught the immediate eye of local social media and established newspapers, bringing our core message to an exponentially wider audience.
+                These massive murals didn't just beautify the school architecture; they served as permanent, larger-than-life textbooks for our little ones.
             </p>
         </div>
-        <div class="page-footer"><span>Project Report 2026</span><span class="page-number">15</span></div>
+        <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">15</span></div>
     </div>
 
-    <!-- PAGE 19: Chapter 5 (Cont) -->
+    <!-- PAGE 19: Chapter 5 Art Comp -->
     <div class="a4-page">
-        <div class="page-header"><span>GLP School Chamakkal</span><span>Chapter 5</span></div>
+        <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 5</span></div>
         <div class="flex-grow pt-8">
             <h3 class="sub-heading mt-0">Colors of Safety</h3>
             <p>
                 To effectively harness our own students' burgeoning creativity, we organized a special, highly anticipated Road Safety Drawing Competition on January 28th. The competition was enthusiastically opened to all students, ranging from the tiny tots in pre-primary all the way up to the fourth standard.
             </p>
 
-            <label class="photo-upload-label full-page-image my-6" style="height: 400px;">
-                <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                <div class="placeholder-content">
-                    <span class="photo-icon">🎨</span>
-                    <span class="photo-label">Photo 23: Drawing Competition</span>
-                    <span class="photo-instruction">Upload photo of students drawing</span>
-                </div>
-            </label>
-            <span class="photo-caption">Young minds translating the rules of the road onto paper with vibrant colors.</span>
+            <div class="photo-box full-page my-6" id="box-ch5d" onclick="triggerFile('input-ch5d')">
+                <img id="img-ch5d" src="">
+                <div class="placeholder" id="ph-ch5d"><span class="text-5xl mb-2">🎨</span><span class="font-bold">Drawing Competition</span></div>
+                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch5d', 'img-ch5d', 'ph-ch5d')">X</button>
+                <input type="file" id="input-ch5d" accept="image/*" onchange="loadImage(event, 'box-ch5d', 'img-ch5d', 'ph-ch5d')">
+            </div>
 
             <p class="mt-8">
-                Watching the little ones mentally translate their understanding of traffic rules onto paper with wax crayons and watercolors was a deeply moving experience. They painstakingly drew helmets, complex traffic light sequences, and striped zebra crossings. The best artworks were carefully curated into a beautiful school exhibition, and highly attractive prizes were awarded to the proud winners, intensely encouraging them to keep blending fine art with critical social awareness.
+                Watching the little ones mentally translate their understanding of traffic rules onto paper with wax crayons and watercolors was a deeply moving experience. The best artworks were carefully curated into a beautiful school exhibition, and highly attractive prizes were awarded.
             </p>
         </div>
-        <div class="page-footer"><span>Project Report 2026</span><span class="page-number">16</span></div>
+        <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">16</span></div>
     </div>
 
     <!-- PAGE 20: Chapter 6 -->
     <div class="a4-page">
-        <div class="page-header"><span>GLP School Chamakkal</span><span>Chapter 6</span></div>
+        <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 6</span></div>
         <div class="flex-grow pt-8">
             <h2 class="chapter-title">Chapter 6: Action & Drama</h2>
-            
             <p class="drop-cap">
                 Information is retained best when it is experienced with genuine emotion and physical action. As part of the prestigious National Road Safety Month observances, our school buzzed with theatrical, dramatic energy.
             </p>
-
             <h3 class="sub-heading">The Safe Life Skit</h3>
             <p>
-                On December 2nd, the brave third-standard students took the stage—or rather, they aggressively took to the 'Kuttikkavala'. Based entirely on the "Safe Life" chapter from their Environmental Studies syllabus, the children brilliantly wrote, directed, and performed a highly engaging skit about navigating dangerous traffic safely.
+                On December 2nd, the brave third-standard students aggressively took to the 'Kuttikkavala'. Based entirely on the "Safe Life" chapter from their EVS syllabus, the children brilliantly wrote, directed, and performed a highly engaging skit about navigating dangerous traffic safely.
             </p>
 
-            <label class="photo-upload-label large my-8" style="height: 350px;">
-                <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                <div class="placeholder-content">
-                    <span class="photo-icon">🎭</span>
-                    <span class="photo-label">Photo 24: Drama/Skit</span>
-                    <span class="photo-instruction">Upload photo of the students performing the skit</span>
-                </div>
-            </label>
-            <span class="photo-caption">Third-standard students delivering a powerful performance during their "Safe Life" skit.</span>
+            <div class="photo-box large my-8" id="box-ch6a" onclick="triggerFile('input-ch6a')">
+                <img id="img-ch6a" src="">
+                <div class="placeholder" id="ph-ch6a"><span class="text-5xl mb-2">🎭</span><span class="font-bold">Drama / Skit</span></div>
+                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch6a', 'img-ch6a', 'ph-ch6a')">X</button>
+                <input type="file" id="input-ch6a" accept="image/*" onchange="loadImage(event, 'box-ch6a', 'img-ch6a', 'ph-ch6a')">
+            </div>
 
             <p class="mt-6">
-                Utilizing the miniature road, the painted lines, and the signs as their highly realistic set, they acted out complex scenarios of crossing the road safely and dealing with reckless drivers. It was highly entertaining and incredibly informative. By watching their peers perform with such conviction, the rest of the school absorbed the life-saving lessons effortlessly.
+                Utilizing the miniature road, the painted lines, and the signs as their highly realistic set, they acted out complex scenarios of crossing the road safely and dealing with reckless drivers. 
             </p>
         </div>
-        <div class="page-footer"><span>Project Report 2026</span><span class="page-number">17</span></div>
+        <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">17</span></div>
     </div>
 
-    <!-- PAGE 21: Chapter 6 (Cont) -->
+    <!-- PAGE 21: Chapter 6 Candy -->
     <div class="a4-page">
-        <div class="page-header"><span>GLP School Chamakkal</span><span>Chapter 6</span></div>
+        <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 6</span></div>
         <div class="flex-grow pt-8">
             <h3 class="sub-heading mt-0">"A Candy for a Helmet"</h3>
             <p>
-                Of all our many initiatives, perhaps absolutely none captured the public's imagination and the media's lenses quite like our bold "A Candy for a Helmet" campaign, organized primarily by the School Safety Club during National Road Safety Month.
+                Of all our many initiatives, absolutely none captured the public's imagination and the media's lenses quite like our bold "A Candy for a Helmet" campaign. Led fiercely by our teachers, the dedicated Safety Club members lined up safely by the side of the busy main road right in front of our school. 
             </p>
 
-            <p>
-                We collectively decided to use the psychology of positive reinforcement on the adults in our community. Led fiercely by our teachers, the dedicated Safety Club members lined up safely by the side of the busy main road right in front of our school. We weren't there to protest angrily; we were there to reward good behavior.
-            </p>
+            <div class="photo-box full-page my-6" id="box-ch6b" onclick="triggerFile('input-ch6b')">
+                <img id="img-ch6b" src="">
+                <div class="placeholder" id="ph-ch6b"><span class="text-5xl mb-2">🍬</span><span class="font-bold">Offering Candy</span></div>
+                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch6b', 'img-ch6b', 'ph-ch6b')">X</button>
+                <input type="file" id="input-ch6b" accept="image/*" onchange="loadImage(event, 'box-ch6b', 'img-ch6b', 'ph-ch6b')">
+            </div>
 
-            <label class="photo-upload-label full-page-image my-6" style="height: 450px;">
-                <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                <div class="placeholder-content">
-                    <span class="photo-icon">🍬</span>
-                    <span class="photo-label">Photo 25: Offering Candy</span>
-                    <span class="photo-instruction">Upload photo of a student giving candy to a biker</span>
-                </div>
-            </label>
-            <span class="photo-caption">A moment of pure joy: Rewarding a compliant rider with a sweet token of appreciation.</span>
+            <p class="mt-6">
+                Every single time a two-wheeler passed by with the rider securely wearing a helmet, or a car passed with the driver safely wearing a seatbelt, our enthusiastic students would gesture them to stop. They would then offer the bewildered but happy driver a sweet candy with a massive, bright smile.
+            </p>
         </div>
-        <div class="page-footer"><span>Project Report 2026</span><span class="page-number">18</span></div>
+        <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">18</span></div>
     </div>
 
-    <!-- PAGE 22: Chapter 6 (Cont) -->
+    <!-- PAGE 22: Chapter 6 Candy 2 -->
     <div class="a4-page">
-        <div class="page-header"><span>GLP School Chamakkal</span><span>Chapter 6</span></div>
+        <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 6</span></div>
         <div class="flex-grow pt-8">
             <p>
-                Every single time a two-wheeler passed by with the rider securely wearing a helmet, or a car passed with the driver safely wearing a seatbelt, our enthusiastic students would gesture them to stop. They would then offer the bewildered but happy driver a sweet candy with a massive, bright smile. 
-            </p>
-
-            <label class="photo-upload-label landscape my-8" style="height: 300px;">
-                <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                <div class="placeholder-content">
-                    <span class="photo-icon">👮</span>
-                    <span class="photo-label">Photo 26: Police at Campaign</span>
-                    <span class="photo-instruction">Upload photo of SI Tomy Thomas inaugurating the candy campaign</span>
-                </div>
-            </label>
-            <span class="photo-caption">SI Tomy Thomas inaugurating the highly successful "Candy for a Helmet" campaign.</span>
-
-            <p class="mt-8">
                 For those unfortunate few who were found violating the rules, there was absolutely no anger, only polite, firm education. The students respectfully handed them a Road Safety Pledge card, gently looking them in the eye and requesting them to protect their own lives. 
             </p>
-            <p>
-                The highly visible event was officially inaugurated by Payyavoor SI Tomy Thomas. The shocking sight of tiny children teaching grown adults about the critical importance of helmets and seatbelts was powerful. It resonated deeply with the riders and garnered immense news coverage, amplifying our message across the entire district.
+
+            <div class="photo-box landscape my-8" style="height: 350px;" id="box-ch6c" onclick="triggerFile('input-ch6c')">
+                <img id="img-ch6c" src="">
+                <div class="placeholder" id="ph-ch6c"><span class="text-5xl mb-2">👮</span><span class="font-bold">Police at Campaign</span></div>
+                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch6c', 'img-ch6c', 'ph-ch6c')">X</button>
+                <input type="file" id="input-ch6c" accept="image/*" onchange="loadImage(event, 'box-ch6c', 'img-ch6c', 'ph-ch6c')">
+            </div>
+
+            <p class="mt-8">
+                The highly visible event was officially inaugurated by Payyavoor SI Tomy Thomas. The shocking sight of tiny children teaching grown adults about the critical importance of helmets and seatbelts was powerful. It resonated deeply with the riders and garnered immense news coverage.
             </p>
         </div>
-        <div class="page-footer"><span>Project Report 2026</span><span class="page-number">19</span></div>
+        <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">19</span></div>
     </div>
 
     <!-- PAGE 23: Chapter 7 -->
     <div class="a4-page">
-        <div class="page-header"><span>GLP School Chamakkal</span><span>Chapter 7</span></div>
+        <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 7</span></div>
         <div class="flex-grow pt-8">
-            <h2 class="chapter-title">Chapter 7: Stepping Out</h2>
-            
+            <h2 class="chapter-title">Chapter 7: Community Engagement</h2>
             <p class="drop-cap">
                 The final, culminating phase of our intense year-long project involved stepping entirely out of our comfort zone, beyond the school gates, and taking direct civic action. We wanted our children to deeply understand how civil society, local infrastructure, and law enforcement operate together.
             </p>
-
             <h3 class="sub-heading">Restoring the Warnings</h3>
             <p>
-                The main Payyavoor-Kunnathur road had several old road warning signs that had faded under the harsh sun to the point of being completely invisible. The School Safety Club boldly took matters into their own hands. Armed heavily with cleaning supplies and brand new, highly reflective stickers, the students and teachers scrubbed the old boards clean and meticulously applied the new warning stickers, single-handedly restoring visibility to a crucial traffic junction.
+                The main Payyavoor-Kunnathur road had several old road warning signs that had faded to the point of being completely invisible. Armed heavily with cleaning supplies and brand new, highly reflective stickers, the students and teachers scrubbed the old boards clean and meticulously applied the new warning stickers.
             </p>
 
-            <label class="photo-upload-label large my-8" style="height: 380px;">
-                <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                <div class="placeholder-content">
-                    <span class="photo-icon">🧽</span>
-                    <span class="photo-label">Photo 27: Cleaning Boards</span>
-                    <span class="photo-instruction">Upload photo of students restoring the street signs</span>
-                </div>
-            </label>
-            <span class="photo-caption">Taking ownership of public safety: Students restoring faded warning boards on the main road.</span>
+            <div class="photo-box large my-8" id="box-ch7a" onclick="triggerFile('input-ch7a')">
+                <img id="img-ch7a" src="">
+                <div class="placeholder" id="ph-ch7a"><span class="text-5xl mb-2">🧽</span><span class="font-bold">Cleaning Boards</span></div>
+                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch7a', 'img-ch7a', 'ph-ch7a')">X</button>
+                <input type="file" id="input-ch7a" accept="image/*" onchange="loadImage(event, 'box-ch7a', 'img-ch7a', 'ph-ch7a')">
+            </div>
         </div>
-        <div class="page-footer"><span>Project Report 2026</span><span class="page-number">20</span></div>
+        <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">20</span></div>
     </div>
 
-    <!-- PAGE 24: Chapter 7 (Cont) -->
+    <!-- PAGE 24: Chapter 7 Police -->
     <div class="a4-page">
-        <div class="page-header"><span>GLP School Chamakkal</span><span>Chapter 7</span></div>
+        <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 7</span></div>
         <div class="flex-grow pt-8">
             <h3 class="sub-heading mt-0">A Day with the Police</h3>
             <p>
                 To completely demystify law enforcement and remove the inherent fear of police from young minds, we organized an official field trip for the Safety Club members to the Payyavoor Police Station. It was an unprecedented, historic event for our school.
             </p>
-
             <p>
-                The children were welcomed with incredible warmth. They sat down confidently for a formal, structured interview with the Sub-Inspector. With professional notepads in hand, these young, sharp reporters asked pressing questions about road accidents, traffic laws, and exactly what the police do daily to keep people safe. They meticulously took down notes of the officers' detailed answers.
+                The children were welcomed with incredible warmth. They sat down confidently for a formal, structured interview with the Sub-Inspector. With professional notepads in hand, these young, sharp reporters asked pressing questions about road accidents and traffic laws.
             </p>
 
-            <label class="photo-upload-label full-page-image my-6" style="height: 420px;">
-                <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                <div class="placeholder-content">
-                    <span class="photo-icon">📝</span>
-                    <span class="photo-label">Photo 28: Police Interview</span>
-                    <span class="photo-instruction">Upload photo of students interviewing the SI</span>
-                </div>
-            </label>
-            <span class="photo-caption">Young reporters at work: Students interviewing the Sub-Inspector at Payyavoor Police Station.</span>
-        </div>
-        <div class="page-footer"><span>Project Report 2026</span><span class="page-number">21</span></div>
-    </div>
+            <div class="photo-box full-page my-6" style="height: 400px;" id="box-ch7b" onclick="triggerFile('input-ch7b')">
+                <img id="img-ch7b" src="">
+                <div class="placeholder" id="ph-ch7b"><span class="text-5xl mb-2">📝</span><span class="font-bold">Police Interview</span></div>
+                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch7b', 'img-ch7b', 'ph-ch7b')">X</button>
+                <input type="file" id="input-ch7b" accept="image/*" onchange="loadImage(event, 'box-ch7b', 'img-ch7b', 'ph-ch7b')">
+            </div>
 
-    <!-- PAGE 25: Chapter 7 (Cont) -->
-    <div class="a4-page">
-        <div class="page-header"><span>GLP School Chamakkal</span><span>Chapter 7</span></div>
-        <div class="flex-grow pt-8">
-            <p>
-                But they absolutely weren't just there to ask questions; they came with a very specific civic purpose. The students officially submitted a formal, written petition to the police force, formally requesting the immediate installation of a new, larger warning board in front of the school zone. 
-            </p>
-
-            <label class="photo-upload-label landscape my-8" style="height: 320px;">
-                <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                <div class="placeholder-content">
-                    <span class="photo-icon">✉️</span>
-                    <span class="photo-label">Photo 29: Handing Petition</span>
-                    <span class="photo-instruction">Upload photo of students handing the petition to the police</span>
-                </div>
-            </label>
-            <span class="photo-caption">A moment of civic duty: Submitting the formal petition for a new warning board.</span>
-
-            <p class="mt-8">
-                The seasoned officers were visibly moved. They noted on record that it was the very first time in the station's long history that primary school children had visited specifically to file a petition for a public safety cause. They celebrated this amazing, historic moment by sharing sweets and laughter with the children, creating an unbreakable bond of trust and mutual respect between the youth and the law.
+            <p class="mt-6">
+                But they absolutely weren't just there to ask questions; they came with a very specific civic purpose. The students officially submitted a formal, written petition to the police force, formally requesting the immediate installation of a new, larger warning board in front of the school zone. The officers celebrated this amazing, historic moment by sharing sweets with the children.
             </p>
         </div>
-        <div class="page-footer"><span>Project Report 2026</span><span class="page-number">22</span></div>
+        <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">21</span></div>
     </div>
 
-    <!-- PAGE 26: Conclusion -->
+    <!-- PAGE 25: Conclusion -->
     <div class="a4-page">
-        <div class="page-header"><span>GLP School Chamakkal</span><span>Conclusion</span></div>
+        <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Conclusion</span></div>
         <div class="flex-grow pt-8">
             <h2 class="chapter-title">Conclusion: The Road Ahead</h2>
-            
             <p class="drop-cap">
-                As we meticulously compile the final pages of this report, we sit back and reflect heavily on the monumental, undeniable shift that has occurred within GLP School Chamakkal and the surrounding Payyavoor community. What started simply as a mandate under the 'Surakshit Marg' project evolved rapidly into a passionate, fiery movement led by our youngest, bravest citizens.
+                As we meticulously compile the final pages of this report, we sit back and reflect heavily on the monumental, undeniable shift that has occurred within G.L.P.S. Chamakkal and the surrounding Payyavoor community. What started simply as a mandate under the 'Surakshit Marg' project evolved rapidly into a passionate, fiery movement led by our youngest, bravest citizens.
             </p>
-
             <p>
-                Through a diverse, non-stop array of activities—from the highly immersive play at 'Kuttikkavala' to the bold, direct "Candy for a Helmet" campaign, from vibrant art on the walls to formal petitions at the police station—we have proven beyond a shadow of a doubt that no school is too small to make a massive, life-altering impact. We have successfully ingrained the absolute, vital importance of traffic rules into these young minds through deep, experiential learning.
+                Through a diverse, non-stop array of activities—from the highly immersive play at 'Kuttikkavala' to the bold, direct "Candy for a Helmet" campaign, from vibrant art on the walls to formal petitions at the police station—we have proven beyond a shadow of a doubt that no school is too small to make a massive, life-altering impact. 
             </p>
 
-            <p>
-                These children are no longer just passive passengers in the backseat; they are vocal, active advocates for safety. They carry within them a profound, unshakeable sense of civic responsibility, which is the exact cornerstone required for building a safe, aware, and responsible society for tomorrow.
-            </p>
+            <div class="photo-box large my-8" id="box-conc" onclick="triggerFile('input-conc')">
+                <img id="img-conc" src="">
+                <div class="placeholder" id="ph-conc"><span class="text-5xl mb-2">🌟</span><span class="font-bold">Final Group Shot</span></div>
+                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-conc', 'img-conc', 'ph-conc')">X</button>
+                <input type="file" id="input-conc" accept="image/*" onchange="loadImage(event, 'box-conc', 'img-conc', 'ph-conc')">
+            </div>
 
-            <p>
-                We have successfully managed to project these inner school-level activities into the broader public consciousness through extensive media coverage and direct interaction, provoking serious thought and, more importantly, actual behavioral change among the adults in our village.
-            </p>
-
-            <p>
-                None of this miracle would have been remotely possible without the guiding light of the Surakshit Marg project team. To the Kuttukaran Group, the SCMS Institute, the local police force, our incredibly hardworking teachers, dedicated parents, and most importantly, our wonderful 87 students: Thank you. 
-            </p>
-
-            <p class="text-center italic font-bold mt-16 text-2xl" style="color: var(--secondary); font-family: 'Playfair Display', serif;">
-                The journey for safer roads doesn't end here; it has only just begun.
+            <p class="mt-6">
+                None of this miracle would have been remotely possible without the guiding light of the Surakshit Marg project team. To the Kuttukaran Group, the SCMS Institute, the local police force, our incredibly hardworking teachers, dedicated parents, and most importantly, our wonderful 87 students: Thank you. The journey for safer roads doesn't end here; it has only just begun.
             </p>
         </div>
-        <div class="page-footer"><span>Project Report 2026</span><span class="page-number">23</span></div>
+        <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">22</span></div>
     </div>
 
-    <!-- PAGE 27: Photo Gallery -->
-    <div class="a4-page" style="background-color: #f8fafc;">
-        <div class="page-header"><span>GLP School Chamakkal</span><span>Gallery</span></div>
+    <!-- PAGE 26: Gallery -->
+    <div class="a4-page">
+        <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Gallery</span></div>
         <div class="flex-grow pt-8">
             <h2 class="chapter-title text-center" style="border:none;">Memories in Pictures</h2>
             
             <div class="grid grid-cols-2 gap-4 mt-8">
-                <label class="photo-upload-label portrait" style="width: 100%; height: 250px; margin: 0; background-color: white;">
-                    <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                    <div class="placeholder-content">
-                        <span class="photo-label">Photo 30</span>
-                    </div>
-                </label>
-                
-                <label class="photo-upload-label portrait" style="width: 100%; height: 250px; margin: 0; background-color: white;">
-                    <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                    <div class="placeholder-content">
-                        <span class="photo-label">Photo 31</span>
-                    </div>
-                </label>
-                
-                <label class="photo-upload-label portrait" style="width: 100%; height: 250px; margin: 0; background-color: white;">
-                    <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                    <div class="placeholder-content">
-                        <span class="photo-label">Photo 32</span>
-                    </div>
-                </label>
-                
-                <label class="photo-upload-label portrait" style="width: 100%; height: 250px; margin: 0; background-color: white;">
-                    <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                    <div class="placeholder-content">
-                        <span class="photo-label">Photo 33</span>
-                    </div>
-                </label>
+                <div class="photo-box portrait w-full m-0 h-[380px]" id="box-g1" onclick="triggerFile('input-g1')">
+                    <img id="img-g1" src=""><div class="placeholder" id="ph-g1"><span class="font-bold">Gallery Photo 1</span></div>
+                    <div class="photo-overlay">Change</div><button class="remove-btn" onclick="removeImage(event, 'box-g1', 'img-g1', 'ph-g1')">X</button>
+                    <input type="file" id="input-g1" accept="image/*" onchange="loadImage(event, 'box-g1', 'img-g1', 'ph-g1')">
+                </div>
+                <div class="photo-box portrait w-full m-0 h-[380px]" id="box-g2" onclick="triggerFile('input-g2')">
+                    <img id="img-g2" src=""><div class="placeholder" id="ph-g2"><span class="font-bold">Gallery Photo 2</span></div>
+                    <div class="photo-overlay">Change</div><button class="remove-btn" onclick="removeImage(event, 'box-g2', 'img-g2', 'ph-g2')">X</button>
+                    <input type="file" id="input-g2" accept="image/*" onchange="loadImage(event, 'box-g2', 'img-g2', 'ph-g2')">
+                </div>
+                <div class="photo-box portrait w-full m-0 h-[380px]" id="box-g3" onclick="triggerFile('input-g3')">
+                    <img id="img-g3" src=""><div class="placeholder" id="ph-g3"><span class="font-bold">Gallery Photo 3</span></div>
+                    <div class="photo-overlay">Change</div><button class="remove-btn" onclick="removeImage(event, 'box-g3', 'img-g3', 'ph-g3')">X</button>
+                    <input type="file" id="input-g3" accept="image/*" onchange="loadImage(event, 'box-g3', 'img-g3', 'ph-g3')">
+                </div>
+                <div class="photo-box portrait w-full m-0 h-[380px]" id="box-g4" onclick="triggerFile('input-g4')">
+                    <img id="img-g4" src=""><div class="placeholder" id="ph-g4"><span class="font-bold">Gallery Photo 4</span></div>
+                    <div class="photo-overlay">Change</div><button class="remove-btn" onclick="removeImage(event, 'box-g4', 'img-g4', 'ph-g4')">X</button>
+                    <input type="file" id="input-g4" accept="image/*" onchange="loadImage(event, 'box-g4', 'img-g4', 'ph-g4')">
+                </div>
+            </div>
+        </div>
+        <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">23</span></div>
+    </div>
+
+    <!-- PAGE 27: Media Gallery -->
+    <div class="a4-page">
+        <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Media</span></div>
+        <div class="flex-grow pt-8">
+            <h2 class="chapter-title text-center" style="border:none;">In The News</h2>
+            
+            <div class="photo-box full-page mt-8" style="height: 380px;" id="box-n1" onclick="triggerFile('input-n1')">
+                <img id="img-n1" src="">
+                <div class="placeholder" id="ph-n1"><span class="text-5xl mb-2">📰</span><span class="font-bold">Newspaper Clipping 1</span></div>
+                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-n1', 'img-n1', 'ph-n1')">X</button>
+                <input type="file" id="input-n1" accept="image/*" onchange="loadImage(event, 'box-n1', 'img-n1', 'ph-n1')">
             </div>
             
-            <label class="photo-upload-label landscape mt-4" style="height: 250px; background-color: white;">
-                <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                <div class="placeholder-content">
-                    <span class="photo-icon">📰</span>
-                    <span class="photo-label">Photo 34: Media Coverage</span>
-                    <span class="photo-instruction">Upload newspaper clippings here</span>
-                </div>
-            </label>
+            <div class="photo-box full-page mt-8" style="height: 380px;" id="box-n2" onclick="triggerFile('input-n2')">
+                <img id="img-n2" src="">
+                <div class="placeholder" id="ph-n2"><span class="text-5xl mb-2">📰</span><span class="font-bold">Newspaper Clipping 2</span></div>
+                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-n2', 'img-n2', 'ph-n2')">X</button>
+                <input type="file" id="input-n2" accept="image/*" onchange="loadImage(event, 'box-n2', 'img-n2', 'ph-n2')">
+            </div>
         </div>
-        <div class="page-footer"><span>Project Report 2026</span><span class="page-number">24</span></div>
+        <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">24</span></div>
     </div>
 
     <!-- PAGE 28: Back Cover -->
-    <div class="a4-page cover-page" style="background: var(--primary);">
-        <div class="w-full h-full border-4 border-yellow-600 flex flex-col justify-center items-center p-12">
-            
-            <label class="photo-upload-label portrait" style="height: 350px; width: 350px; border-radius: 50%; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border: 4px solid var(--secondary); background-color: white;">
-                <input type="file" accept="image/*" onchange="previewImage(event, this)">
-                <div class="placeholder-content">
-                    <span class="photo-icon">😊</span>
-                    <span class="photo-label">Photo 35: Closing Image</span>
-                    <span class="photo-instruction">A smiling face to close</span>
+    <div class="a4-page cover-page">
+        <div class="cover-border">
+            <div class="cover-inner justify-center items-center" style="background-color: #166534;">
+                
+                <div class="photo-box portrait" style="height: 350px; width: 350px; border-radius: 50%; border: 6px solid white; background-color: white; overflow: hidden; margin-top: 4rem; box-shadow: 0 10px 25px rgba(0,0,0,0.5);" id="box-back" onclick="triggerFile('input-back')">
+                    <img id="img-back" src="">
+                    <div class="placeholder" id="ph-back"><span class="text-6xl mb-2">😊</span><span class="font-bold text-maroon-700 mt-2">Closing Image</span></div>
+                    <div class="photo-overlay">Change</div><button class="remove-btn" onclick="removeImage(event, 'box-back', 'img-back', 'ph-back')">X</button>
+                    <input type="file" id="input-back" accept="image/*" onchange="loadImage(event, 'box-back', 'img-back', 'ph-back')">
                 </div>
-            </label>
 
-            <h2 class="text-white text-4xl font-bold font-serif mt-12 mb-4">GLP School Chamakkal</h2>
-            <p class="text-gray-300 text-xl font-serif italic mb-12">Building a Safer Tomorrow</p>
-            
-            <div class="text-yellow-500 font-bold tracking-widest uppercase text-sm mt-auto">
-                Surakshit Marg Project Report
+                <h2 class="text-white text-[45pt] font-extrabold kid-font mt-12 mb-2 tracking-wide drop-shadow-md">G.L.P.S. Chamakkal</h2>
+                <p class="text-yellow-300 text-[22pt] font-serif italic mb-12 drop-shadow">Building a Safer, Brighter Tomorrow</p>
+                
+                <div class="text-white font-bold tracking-[4px] uppercase text-xl mt-auto kid-font border-t-2 border-white/50 pt-4 w-1/2 mx-auto text-center mb-8">
+                    Thank You
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Function to handle image upload and preview
-        function previewImage(event, labelElement) {
+        function triggerFile(inputId) {
+            document.getElementById(inputId).click();
+        }
+
+        function loadImage(event, boxId, imgId, phId) {
             const file = event.target.files[0];
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    // Set the background image
-                    labelElement.style.backgroundImage = `url(${e.target.result})`;
-                    labelElement.style.backgroundSize = 'cover';
-                    labelElement.style.backgroundPosition = 'center';
-                    labelElement.style.border = 'none';
+                    const imgElement = document.getElementById(imgId);
+                    imgElement.src = e.target.result;
+                    imgElement.style.display = 'block';
                     
-                    // Hide the placeholder text/icon
-                    const placeholder = labelElement.querySelector('.placeholder-content');
-                    if (placeholder) {
-                        placeholder.style.display = 'none';
-                    }
+                    document.getElementById(phId).style.display = 'none';
+                    document.getElementById(boxId).classList.add('has-image');
+                    // Remove borders when an image is loaded so it looks clean
+                    document.getElementById(boxId).style.borderStyle = 'none';
                 }
-                reader.readAsDataURL(file);
+                reader.readAsDataURL(file); 
             }
         }
 
-        // Function to trigger print with a helpful alert
+        function removeImage(event, boxId, imgId, phId) {
+            event.stopPropagation(); 
+            const imgElement = document.getElementById(imgId);
+            imgElement.src = "";
+            imgElement.style.display = 'none';
+            
+            document.getElementById(phId).style.display = 'flex';
+            document.getElementById(boxId).classList.remove('has-image');
+            // Put the dashed border back
+            document.getElementById(boxId).style.borderStyle = 'dashed';
+            
+            const inputId = boxId.replace('box-', 'input-');
+            document.getElementById(inputId).value = "";
+        }
+
         function prepareAndPrint() {
-            alert("PRINTING INSTRUCTIONS:\n\nFor the best results, please ensure the following settings in your Print Dialog:\n\n1. Paper Size: A4\n2. Margins: Set to 'None' or 'Default' (the document has built-in margins for spiral binding)\n3. Options: Check 'Background graphics' (crucial for images and colors to show)\n4. Scale: 100% or Default");
+            const totalBoxes = document.querySelectorAll('.photo-box').length;
+            const filledBoxes = document.querySelectorAll('.photo-box.has-image').length;
+            
+            if(filledBoxes < totalBoxes) {
+                const proceed = confirm(`You have only added ${filledBoxes} out of ${totalBoxes} photos.\n\nEmpty boxes will print as neat, labeled placeholders.\n\nDo you want to proceed to print?`);
+                if(!proceed) return;
+            }
+
+            alert("PDF PRINTING CHECKLIST:\n\n1. Destination: 'Save as PDF'\n2. Paper Size: 'A4'\n3. Margins: Set to 'Default' or 'None'\n4. MUST CHECK: 'Background graphics' (This makes the borders and colors visible!)");
             window.print();
         }
     </script>
 </body>
 </html>
 
-
-```
