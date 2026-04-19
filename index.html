@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- STRICT viewport setting locks layout scaling across all mobile devices -->
+    <!-- STRICT viewport setting locks layout scaling across all mobile & tablet devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Surakshit Marg 2025-26 - G.L.P.S. Chamakkal</title>
     
@@ -36,7 +36,7 @@
 
         h1, h2, h3, h4, .kid-font { font-family: 'Fredoka', sans-serif; }
 
-        /* --- RESPONSIVE SCREEN VIEW --- */
+        /* --- RESPONSIVE SCREEN VIEW (A4 Approximation) --- */
         .a4-page {
             width: 100%;
             max-width: 210mm;
@@ -48,7 +48,8 @@
             padding: 2rem 1.5rem 2rem 2.5rem; 
         }
 
-        .a4-page::before, .a4-page::after { content: ''; position: absolute; width: 30px; height: 30px; pointer-events: none; }
+        /* Decorative Corners */
+        .a4-page::before, .a4-page::after { content: ''; position: absolute; width: 30px; height: 30px; pointer-events: none; z-index: 1;}
         .a4-page::before { top: 3%; right: 4%; border-top: 3px solid var(--green); border-right: 3px solid var(--green); border-top-right-radius: 10px; }
         .a4-page::after { bottom: 3%; left: 8%; border-bottom: 3px solid var(--yellow); border-left: 3px solid var(--yellow); border-bottom-left-radius: 10px; }
 
@@ -61,12 +62,13 @@
         /* Header & Footer */
         .page-header { font-size: 9pt; color: var(--green); display: flex; justify-content: space-between; font-family: 'Fredoka', sans-serif; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; border-bottom: 2px solid #cbd5e1; padding-bottom: 5px; margin-bottom: 1rem;}
         .page-footer { margin-top: auto; border-top: 2px solid #cbd5e1; padding-top: 10px; font-size: 10pt; color: var(--maroon); display: flex; justify-content: space-between; align-items: center; font-family: 'Fredoka', sans-serif; font-weight: 600; }
-        .page-number { font-weight: bold; color: white; background-color: var(--yellow); width: 25px; height: 25px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 10pt; }
+        .page-number { font-weight: bold; color: white; background-color: var(--yellow); width: 25px; height: 25px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 10pt; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
 
-        /* --- PHOTO UPLOAD SYSTEM --- */
+        /* --- PHOTO UPLOAD SYSTEM (ASPECT-RATIO LOCKED) --- */
         .photo-box {
             display: block; background-color: var(--box-bg); border: 3px dashed var(--green); border-radius: 10px; cursor: pointer;
             position: relative; overflow: hidden; transition: all 0.2s ease; margin: 0.75rem 0; text-align: center; width: 100%;
+            height: auto; /* Let aspect-ratio determine height */
         }
         .photo-box input[type="file"] { display: none; }
         .photo-box img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: none; background-color: white; z-index: 5; position: relative; }
@@ -79,17 +81,20 @@
         .photo-box.has-image:hover .remove-btn { display: flex; }
         .photo-caption { font-size: 10pt; font-style: italic; color: #64748b; text-align: center; margin-top: 0.2rem; display: block; font-weight: 600;}
 
-        /* CRITICAL HEIGHTS: Lowered to guarantee no iPad spillover */
-        .landscape { height: 190px; }
-        .portrait { height: 240px; width: 85%; margin-left: auto; margin-right: auto; }
-        .large { height: 280px; }
-        .full-page { height: 340px; }
+        /* MATHEMATICALLY LOCKED ASPECT RATIOS 
+           This guarantees preview ALWAYS perfectly matches print */
+        .ratio-cover     { aspect-ratio: 4 / 3; }
+        .ratio-landscape { aspect-ratio: 16 / 9; }
+        .ratio-portrait  { aspect-ratio: 4 / 3; width: 85%; margin-left: auto; margin-right: auto; }
+        .ratio-large     { aspect-ratio: 3 / 2; }
+        .ratio-full      { aspect-ratio: 16 / 10; }
+        .ratio-square    { aspect-ratio: 1 / 1; width: 300px; max-width: 80%; margin: 0 auto; }
 
-        /* Cover Page */
+        /* Cover Page Custom Styling */
         .cover-page { padding: 0 !important; background: var(--bg-cream); border:none;}
         .cover-page::before, .cover-page::after { display: none; }
-        .cover-border { border: 8px solid var(--bg-cream); margin: 0; height: 100%; background: repeating-linear-gradient(45deg, var(--green), var(--green) 15px, var(--yellow) 15px, var(--yellow) 30px); padding: 6px; }
-        .cover-inner { background: var(--bg-cream); height: 100%; display: flex; flex-direction: column; padding: 2rem 2rem; }
+        .cover-border { border: 8px solid var(--bg-cream); margin: 0; height: 100%; background: repeating-linear-gradient(45deg, var(--green), var(--green) 15px, var(--yellow) 15px, var(--yellow) 30px); padding: 6px; box-sizing: border-box; }
+        .cover-inner { background: var(--bg-cream); height: 100%; display: flex; flex-direction: column; padding: 2rem 2rem; box-sizing: border-box; }
 
         /* Print Settings UI */
         .print-btn-container { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 100; }
@@ -97,7 +102,6 @@
 
         /* =========================================
            BULLETPROOF UNIVERSAL PRINT CSS 
-           (Locks layout to perfectly fit A4)
            ========================================= */
         @media print {
             @page { size: A4 portrait; margin: 0 !important; }
@@ -106,7 +110,7 @@
             .a4-page {
                 width: 210mm !important; 
                 height: 297mm !important; 
-                max-height: 297mm !important; /* Forces strict bounds */
+                max-height: 297mm !important; 
                 padding: 20mm 20mm 20mm 30mm !important; 
                 margin: 0 !important; 
                 border: none !important; 
@@ -135,47 +139,45 @@
         }
 
         /* =========================================
-           SOLID, UNBREAKABLE CROPPER UI 
-           (Fixes iPad and Oppo transparency bugs)
+           SOLID, OPAQUE CROPPER UI
            ========================================= */
         #solidCropOverlay {
             display: none; 
             position: fixed; 
             top: 0; left: 0; width: 100%; height: 100%; 
-            background-color: rgba(0, 0, 0, 0.95); /* Solid fallback */
-            z-index: 2147483647; /* Absolute maximum z-index */
+            background-color: #000000; /* Absolute Solid Black */
+            z-index: 2147483647; 
         }
         
         #solidCropBox {
             position: absolute; 
-            top: 3%; left: 3%; width: 94%; height: 94%;
-            background-color: #ffffff; 
-            border-radius: 12px; 
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #111111; 
             display: flex; flex-direction: column; overflow: hidden;
-            box-shadow: 0 0 50px #000000;
         }
 
         @media (min-width: 768px) {
-            #solidCropBox { top: 5%; left: 10%; width: 80%; height: 90%; max-width: 800px; margin: 0 auto; }
+            #solidCropBox { top: 5%; left: 10%; width: 80%; height: 90%; max-width: 800px; border-radius: 12px; box-shadow: 0 0 50px #000000; }
         }
 
         #solidCropHeader { 
             background-color: #3d0c10; color: #ffffff; 
             padding: 15px 20px; font-family: 'Fredoka', sans-serif; font-size: 20px; 
             display: flex; justify-content: space-between; align-items: center; 
-            flex-shrink: 0;
+            flex-shrink: 0; z-index: 10;
         }
 
         #solidCropBody { 
             flex-grow: 1; 
-            background-color: #111111; /* Pure dark grey, blocks out everything */
+            background-color: #111111; 
             position: relative; width: 100%; height: 100%; overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
         }
 
         #solidCropFooter { 
             background-color: #f8fafc; padding: 15px 20px; 
             display: flex; gap: 15px; border-top: 2px solid #cbd5e1; 
-            flex-shrink: 0;
+            flex-shrink: 0; z-index: 10;
         }
 
         .crop-btn-cancel { background-color: #64748b; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; flex: 1; font-size: 16px; }
@@ -192,7 +194,7 @@
                 <span style="font-size:14px; opacity:0.9; font-weight:normal;">Pinch & Drag to Fit</span>
             </div>
             <div id="solidCropBody">
-                <img id="imageToCrop" src="" style="max-width: 100%; display: block;">
+                <img id="imageToCrop" src="" style="max-width: 100%; max-height: 100%; display: block;">
             </div>
             <div id="solidCropFooter">
                 <button onclick="cancelCrop()" class="crop-btn-cancel">Cancel</button>
@@ -217,9 +219,9 @@
                 </div>
                 <div class="w-full text-center">
                     <h1 class="text-[40pt] sm:text-[50pt] font-extrabold leading-none flex justify-center items-center text-[#1f2937]">
-                        Surakshit<span class="text-green-700 italic ml-1 relative">Marg
+                        Surakshit<span class="text-green-700 italic relative" style="margin-left: 2px;">Marg
                             <!-- Leaf directly above the M -->
-                            <svg class="absolute -top-4 -left-1 w-6 h-6 sm:w-8 sm:h-8 text-green-600" fill="currentColor" viewBox="0 0 24 24"><path d="M17.5,2.5C17.5,2.5,12.5,2.5,7.5,7.5C2.5,12.5,2.5,17.5,2.5,17.5C2.5,17.5,7.5,17.5,12.5,12.5C17.5,7.5,17.5,2.5,17.5,2.5M14,14L10,10L14,14Z"/></svg>
+                            <svg class="absolute -top-3 sm:-top-4 left-0 w-6 h-6 sm:w-8 sm:h-8 text-green-600" fill="currentColor" viewBox="0 0 24 24"><path d="M17.5,2.5C17.5,2.5,12.5,2.5,7.5,7.5C2.5,12.5,2.5,17.5,2.5,17.5C2.5,17.5,7.5,17.5,12.5,12.5C17.5,7.5,17.5,2.5,17.5,2.5M14,14L10,10L14,14Z"/></svg>
                         </span>
                     </h1>
                     <h2 class="text-[30pt] sm:text-[40pt] text-[#3f3f46] font-extrabold mt-1 mb-6">2025-26</h2>
@@ -234,7 +236,7 @@
                     <p class="text-gray-700 text-lg font-medium leading-tight">Payyavoor PO<br>Kannur District, Kerala</p>
                 </div>
 
-                <div class="photo-box flex-grow w-full border-4" id="box-cover" onclick="triggerFile('input-cover')" style="min-height: 280px; border-style: dashed; background-color: #eaf5ec;">
+                <div class="photo-box ratio-cover border-4" id="box-cover" onclick="triggerFile('input-cover')" style="border-style: dashed; background-color: #eaf5ec; flex-grow: 0;">
                     <img id="img-cover" src="">
                     <div class="placeholder" id="ph-cover">
                         <span class="text-5xl mb-3">🏕️</span>
@@ -266,7 +268,7 @@
                 We are incredibly grateful to the kind-hearted officers of the <strong>Payyavoor Police Station</strong>, especially Sub-Inspectors Sri P. P. Prabhakaran and Sri Tomy Thomas.
             </p>
 
-            <div class="photo-box large mt-4" id="box-ack" onclick="triggerFile('input-ack')">
+            <div class="photo-box ratio-large mt-4" id="box-ack" onclick="triggerFile('input-ack')">
                 <img id="img-ack" src="">
                 <div class="placeholder" id="ph-ack"><span class="text-4xl mb-2">👨‍👩‍👧‍👦</span><span class="font-bold">Team Photo</span></div>
                 <div class="photo-overlay">Crop Photo</div>
@@ -300,7 +302,7 @@
                 </ul>
             </div>
             
-            <div class="photo-box landscape mt-4 mx-auto" id="box-toc" onclick="triggerFile('input-toc')">
+            <div class="photo-box ratio-landscape mt-4 mx-auto w-11/12" id="box-toc" onclick="triggerFile('input-toc')">
                 <img id="img-toc" src="">
                 <div class="placeholder" id="ph-toc"><span class="text-4xl mb-2">🌳</span><span class="font-bold">Scenic School View</span></div>
                 <div class="photo-overlay">Crop Photo</div>
@@ -316,6 +318,7 @@
         <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Introduction</span></div>
         <div class="flex-grow flex flex-col justify-center">
             <h2 class="chapter-title">Introduction: The Heart of Chamakkal</h2>
+            
             <p class="drop-cap">
                 Nestled comfortably against the breathtaking, lush green backdrop of the Western Ghats, within the hilly village panchayat of Payyavoor in the Kannur district, lies our beloved village of Chamakkal. It is right here that G.L.P.S. Chamakkal has stood as a warm beacon of learning for over six decades. 
             </p>
@@ -323,13 +326,14 @@
                 When we lovingly look back at our humble beginnings in 1957, starting merely as a single-teacher institution, it fills our collective hearts with immense pride to see the vibrant, colorful educational hub we have blossomed into today. We are a joyful second home to our young children.
             </p>
 
-            <div class="photo-box large my-4" id="box-intro1" onclick="triggerFile('input-intro1')">
+            <div class="photo-box ratio-large my-4" id="box-intro1" onclick="triggerFile('input-intro1')">
                 <img id="img-intro1" src="">
                 <div class="placeholder" id="ph-intro1"><span class="text-4xl mb-2">🏫</span><span class="font-bold">School Exterior</span></div>
                 <div class="photo-overlay">Crop Photo</div>
                 <button class="remove-btn" onclick="removeImage(event, 'box-intro1', 'img-intro1', 'ph-intro1')">X</button>
                 <input type="file" id="input-intro1" accept="image/*" onchange="loadImage(event, 'box-intro1', 'img-intro1', 'ph-intro1')">
             </div>
+
             <p class="mt-2">
                 Our educational philosophy has always been to go leaps and bounds beyond prescribed textbooks. We firmly believe that true education prepares a child for the unpredictable daily challenges of life.
             </p>
@@ -346,17 +350,18 @@
             </p>
 
             <div class="grid grid-cols-2 gap-4 mt-4 mb-4">
-                <div class="photo-box portrait w-full m-0" id="box-intro2a" onclick="triggerFile('input-intro2a')">
+                <div class="photo-box ratio-portrait w-full m-0" id="box-intro2a" onclick="triggerFile('input-intro2a')">
                     <img id="img-intro2a" src=""><div class="placeholder" id="ph-intro2a"><span class="font-bold">Activity 1</span></div>
                     <div class="photo-overlay">Crop</div><button class="remove-btn" onclick="removeImage(event, 'box-intro2a', 'img-intro2a', 'ph-intro2a')">X</button>
                     <input type="file" id="input-intro2a" accept="image/*" onchange="loadImage(event, 'box-intro2a', 'img-intro2a', 'ph-intro2a')">
                 </div>
-                <div class="photo-box portrait w-full m-0" id="box-intro2b" onclick="triggerFile('input-intro2b')">
+                <div class="photo-box ratio-portrait w-full m-0" id="box-intro2b" onclick="triggerFile('input-intro2b')">
                     <img id="img-intro2b" src=""><div class="placeholder" id="ph-intro2b"><span class="font-bold">Activity 2</span></div>
                     <div class="photo-overlay">Crop</div><button class="remove-btn" onclick="removeImage(event, 'box-intro2b', 'img-intro2b', 'ph-intro2b')">X</button>
                     <input type="file" id="input-intro2b" accept="image/*" onchange="loadImage(event, 'box-intro2b', 'img-intro2b', 'ph-intro2b')">
                 </div>
             </div>
+
             <p class="mt-4">
                 It is exactly within this fertile, incredibly supportive ground of continuous innovation and deep community care that our most ambitious project yet found its roots: the comprehensive road safety initiative known as <strong>"Surakshit Marg"</strong>.
             </p>
@@ -376,7 +381,7 @@
                 This pressing social issue caught the undivided attention of two major societal powerhouses: the <strong>Kuttukaran Group</strong> and the <strong>SCMS Group</strong>. Together, they conceptualized "Surakshit Marg" (Safe Path)—a beautifully designed road safety awareness program with a specific target audience: school children.
             </p>
 
-            <div class="photo-box landscape my-4" id="box-vis1" onclick="triggerFile('input-vis1')">
+            <div class="photo-box ratio-landscape my-4" id="box-vis1" onclick="triggerFile('input-vis1')">
                 <img id="img-vis1" src="">
                 <div class="placeholder" id="ph-vis1"><span class="text-4xl mb-2">🚩</span><span class="font-bold">Project Banner</span></div>
                 <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-vis1', 'img-vis1', 'ph-vis1')">X</button>
@@ -399,7 +404,7 @@
                 Children are undeniably the best, most persistent ambassadors of change. When a sweet child innocently asks their parent to buckle a seatbelt or secure a helmet, the emotional impact is immediate and far greater than the threat of any police fine. 
             </p>
 
-            <div class="photo-box full-page my-4" id="box-vis2" onclick="triggerFile('input-vis2')">
+            <div class="photo-box ratio-full my-4" id="box-vis2" onclick="triggerFile('input-vis2')">
                 <img id="img-vis2" src="">
                 <div class="placeholder" id="ph-vis2"><span class="text-5xl mb-2">👨‍👧</span><span class="font-bold">Student & Parent</span></div>
                 <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-vis2', 'img-vis2', 'ph-vis2')">X</button>
@@ -422,7 +427,7 @@
                 The official dawn of the project arrived on November 2nd. We decided to make it a memorable, grand, and joyful event for the children. 
             </p>
 
-            <div class="photo-box large my-4" id="box-ch1a" onclick="triggerFile('input-ch1a')">
+            <div class="photo-box ratio-large my-4" id="box-ch1a" onclick="triggerFile('input-ch1a')">
                 <img id="img-ch1a" src="">
                 <div class="placeholder" id="ph-ch1a"><span class="text-4xl mb-2">🎤</span><span class="font-bold">Inauguration Stage</span></div>
                 <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-ch1a', 'img-ch1a', 'ph-ch1a')">X</button>
@@ -445,12 +450,12 @@
             </p>
 
             <div class="grid grid-cols-2 gap-4 my-4">
-                <div class="photo-box portrait w-full m-0" id="box-ch1b" onclick="triggerFile('input-ch1b')">
+                <div class="photo-box ratio-portrait w-full m-0" id="box-ch1b" onclick="triggerFile('input-ch1b')">
                     <img id="img-ch1b" src=""><div class="placeholder" id="ph-ch1b"><span class="font-bold">SI Interacting</span></div>
                     <div class="photo-overlay">Crop</div><button class="remove-btn" onclick="removeImage(event, 'box-ch1b', 'img-ch1b', 'ph-ch1b')">X</button>
                     <input type="file" id="input-ch1b" accept="image/*" onchange="loadImage(event, 'box-ch1b', 'img-ch1b', 'ph-ch1b')">
                 </div>
-                <div class="photo-box portrait w-full m-0" id="box-ch1c" onclick="triggerFile('input-ch1c')">
+                <div class="photo-box ratio-portrait w-full m-0" id="box-ch1c" onclick="triggerFile('input-ch1c')">
                     <img id="img-ch1c" src=""><div class="placeholder" id="ph-ch1c"><span class="font-bold">Logo Release</span></div>
                     <div class="photo-overlay">Crop</div><button class="remove-btn" onclick="removeImage(event, 'box-ch1c', 'img-ch1c', 'ph-ch1c')">X</button>
                     <input type="file" id="input-ch1c" accept="image/*" onchange="loadImage(event, 'box-ch1c', 'img-ch1c', 'ph-ch1c')">
@@ -477,7 +482,7 @@
                 On November 3rd, we transformed the main entrance of our school. A beautifully designed, highly attractive Surakshit Marg board was erected prominently right at the school gate.
             </p>
 
-            <div class="photo-box landscape my-4" id="box-ch2a" onclick="triggerFile('input-ch2a')">
+            <div class="photo-box ratio-landscape my-4" id="box-ch2a" onclick="triggerFile('input-ch2a')">
                 <img id="img-ch2a" src="">
                 <div class="placeholder" id="ph-ch2a"><span class="text-4xl mb-2">🖼️</span><span class="font-bold">Gateway Board</span></div>
                 <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-ch2a', 'img-ch2a', 'ph-ch2a')">X</button>
@@ -500,7 +505,7 @@
                 Recognizing this danger to our little ones, on November 8th, stepping up as true community guardians, we utilized the project framework and funds to securely install a brand new, highly reflective Speed Restriction Warning Board right on the road. 
             </p>
 
-            <div class="photo-box full-page my-4" id="box-ch2b" onclick="triggerFile('input-ch2b')">
+            <div class="photo-box ratio-full my-4" id="box-ch2b" onclick="triggerFile('input-ch2b')">
                 <img id="img-ch2b" src="">
                 <div class="placeholder" id="ph-ch2b"><span class="text-5xl mb-2">🛑</span><span class="font-bold">Warning Board</span></div>
                 <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-ch2b', 'img-ch2b', 'ph-ch2b')">X</button>
@@ -522,7 +527,7 @@
                 How do you effectively teach a lively five-year-old about the absolute sanctity of a zebra crossing in a way they will never forget? You put them in the driver's seat of a miniature car!
             </p>
 
-            <div class="photo-box large my-4" id="box-ch3a" onclick="triggerFile('input-ch3a')">
+            <div class="photo-box ratio-large my-4" id="box-ch3a" onclick="triggerFile('input-ch3a')">
                 <img id="img-ch3a" src="">
                 <div class="placeholder" id="ph-ch3a"><span class="text-4xl mb-2">🛣️</span><span class="font-bold">Kuttikkavala View</span></div>
                 <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-ch3a', 'img-ch3a', 'ph-ch3a')">X</button>
@@ -545,12 +550,12 @@
             </p>
 
             <div class="grid grid-cols-2 gap-4 my-4">
-                <div class="photo-box portrait w-full m-0" id="box-ch3b" onclick="triggerFile('input-ch3b')">
+                <div class="photo-box ratio-portrait w-full m-0" id="box-ch3b" onclick="triggerFile('input-ch3b')">
                     <img id="img-ch3b" src=""><div class="placeholder" id="ph-ch3b"><span class="font-bold">Zebra Crossing</span></div>
                     <div class="photo-overlay">Crop</div><button class="remove-btn" onclick="removeImage(event, 'box-ch3b', 'img-ch3b', 'ph-ch3b')">X</button>
                     <input type="file" id="input-ch3b" accept="image/*" onchange="loadImage(event, 'box-ch3b', 'img-ch3b', 'ph-ch3b')">
                 </div>
-                <div class="photo-box portrait w-full m-0" id="box-ch3c" onclick="triggerFile('input-ch3c')">
+                <div class="photo-box ratio-portrait w-full m-0" id="box-ch3c" onclick="triggerFile('input-ch3c')">
                     <img id="img-ch3c" src=""><div class="placeholder" id="ph-ch3c"><span class="font-bold">Convex Mirror</span></div>
                     <div class="photo-overlay">Crop</div><button class="remove-btn" onclick="removeImage(event, 'box-ch3c', 'img-ch3c', 'ph-ch3c')">X</button>
                     <input type="file" id="input-ch3c" accept="image/*" onchange="loadImage(event, 'box-ch3c', 'img-ch3c', 'ph-ch3c')">
@@ -573,7 +578,7 @@
                 This practical, hands-on experience is entirely invaluable. It teaches them traffic rules through muscle memory and lived experience. The astounding success of 'Kuttikkavala' caught fire in the local media. 
             </p>
 
-            <div class="photo-box full-page mt-4" id="box-ch3d" onclick="triggerFile('input-ch3d')">
+            <div class="photo-box ratio-full mt-4" id="box-ch3d" onclick="triggerFile('input-ch3d')">
                 <img id="img-ch3d" src="">
                 <div class="placeholder" id="ph-ch3d"><span class="text-5xl mb-2">🧑‍🏫</span><span class="font-bold">Outdoor Class in Session</span></div>
                 <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-ch3d', 'img-ch3d', 'ph-ch3d')">X</button>
@@ -595,7 +600,7 @@
                 We carefully designed and printed beautiful, high-quality, colorful Road Safety Pledge Cards. These contained essential traffic concepts, emergency numbers, and solemn promises.
             </p>
 
-            <div class="photo-box large my-4" id="box-ch4a" onclick="triggerFile('input-ch4a')">
+            <div class="photo-box ratio-large my-4" id="box-ch4a" onclick="triggerFile('input-ch4a')">
                 <img id="img-ch4a" src="">
                 <div class="placeholder" id="ph-ch4a"><span class="text-4xl mb-2">📜</span><span class="font-bold">Pledge Cards</span></div>
                 <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-ch4a', 'img-ch4a', 'ph-ch4a')">X</button>
@@ -618,7 +623,7 @@
                 The absolute foundation of traffic literacy is understanding road signs. They are the universal language of safety. To ensure our young students became utterly fluent in this language, we made a substantial permanent investment.
             </p>
 
-            <div class="photo-box landscape my-4" id="box-ch4b" onclick="triggerFile('input-ch4b')">
+            <div class="photo-box ratio-landscape my-4" id="box-ch4b" onclick="triggerFile('input-ch4b')">
                 <img id="img-ch4b" src="">
                 <div class="placeholder" id="ph-ch4b"><span class="text-5xl mb-2">🚸</span><span class="font-bold">Permanent Wall Signs</span></div>
                 <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-ch4b', 'img-ch4b', 'ph-ch4b')">X</button>
@@ -641,7 +646,7 @@
                 The Surakshit Marg initiative was designed as a powerful magnet for regional collaboration. One of our most phenomenally fruitful partnerships was with the highly active NSS Unit of the PKM College of Education, Madampam.
             </p>
 
-            <div class="photo-box large my-4" id="box-ch5a" onclick="triggerFile('input-ch5a')">
+            <div class="photo-box ratio-large my-4" id="box-ch5a" onclick="triggerFile('input-ch5a')">
                 <img id="img-ch5a" src="">
                 <div class="placeholder" id="ph-ch5a"><span class="text-5xl mb-2">🤝</span><span class="font-bold">NSS Seminar</span></div>
                 <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-ch5a', 'img-ch5a', 'ph-ch5a')">X</button>
@@ -664,12 +669,12 @@
             </p>
 
             <div class="grid grid-cols-2 gap-4 my-4">
-                <div class="photo-box portrait w-full m-0" id="box-ch5b" onclick="triggerFile('input-ch5b')">
+                <div class="photo-box ratio-portrait w-full m-0" id="box-ch5b" onclick="triggerFile('input-ch5b')">
                     <img id="img-ch5b" src=""><div class="placeholder" id="ph-ch5b"><span class="font-bold">Painting Process</span></div>
                     <div class="photo-overlay">Crop</div><button class="remove-btn" onclick="removeImage(event, 'box-ch5b', 'img-ch5b', 'ph-ch5b')">X</button>
                     <input type="file" id="input-ch5b" accept="image/*" onchange="loadImage(event, 'box-ch5b', 'img-ch5b', 'ph-ch5b')">
                 </div>
-                <div class="photo-box portrait w-full m-0" id="box-ch5c" onclick="triggerFile('input-ch5c')">
+                <div class="photo-box ratio-portrait w-full m-0" id="box-ch5c" onclick="triggerFile('input-ch5c')">
                     <img id="img-ch5c" src=""><div class="placeholder" id="ph-ch5c"><span class="font-bold">Completed Mural</span></div>
                     <div class="photo-overlay">Crop</div><button class="remove-btn" onclick="removeImage(event, 'box-ch5c', 'img-ch5c', 'ph-ch5c')">X</button>
                     <input type="file" id="input-ch5c" accept="image/*" onchange="loadImage(event, 'box-ch5c', 'img-ch5c', 'ph-ch5c')">
@@ -692,7 +697,7 @@
                 To effectively harness our own students' burgeoning creativity, we organized a special, highly anticipated Road Safety Drawing Competition on January 28th. The competition was enthusiastically opened to all students.
             </p>
 
-            <div class="photo-box full-page my-4" id="box-ch5d" onclick="triggerFile('input-ch5d')">
+            <div class="photo-box ratio-full my-4" id="box-ch5d" onclick="triggerFile('input-ch5d')">
                 <img id="img-ch5d" src="">
                 <div class="placeholder" id="ph-ch5d"><span class="text-5xl mb-2">🎨</span><span class="font-bold">Drawing Competition</span></div>
                 <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-ch5d', 'img-ch5d', 'ph-ch5d')">X</button>
@@ -719,7 +724,7 @@
                 On December 2nd, the brave third-standard students aggressively took to the 'Kuttikkavala'. Based entirely on the "Safe Life" chapter from their EVS syllabus, they brilliantly performed an engaging skit.
             </p>
 
-            <div class="photo-box large my-4" id="box-ch6a" onclick="triggerFile('input-ch6a')">
+            <div class="photo-box ratio-large my-4" id="box-ch6a" onclick="triggerFile('input-ch6a')">
                 <img id="img-ch6a" src="">
                 <div class="placeholder" id="ph-ch6a"><span class="text-5xl mb-2">🎭</span><span class="font-bold">Drama / Skit</span></div>
                 <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-ch6a', 'img-ch6a', 'ph-ch6a')">X</button>
@@ -738,7 +743,7 @@
                 Of all our many initiatives, absolutely none captured the public's imagination and the media's lenses quite like our bold "A Candy for a Helmet" campaign. Led fiercely by our teachers, the Safety Club lined up by the busy main road.
             </p>
 
-            <div class="photo-box full-page my-4" id="box-ch6b" onclick="triggerFile('input-ch6b')">
+            <div class="photo-box ratio-full my-4" id="box-ch6b" onclick="triggerFile('input-ch6b')">
                 <img id="img-ch6b" src="">
                 <div class="placeholder" id="ph-ch6b"><span class="text-5xl mb-2">🍬</span><span class="font-bold">Offering Candy</span></div>
                 <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-ch6b', 'img-ch6b', 'ph-ch6b')">X</button>
@@ -760,7 +765,7 @@
                 For those unfortunate few who were found violating the rules, there was absolutely no anger, only polite, firm education. The students respectfully handed them a Road Safety Pledge card, gently requesting them to protect their own lives. 
             </p>
 
-            <div class="photo-box landscape my-4" id="box-ch6c" onclick="triggerFile('input-ch6c')">
+            <div class="photo-box ratio-landscape my-4" id="box-ch6c" onclick="triggerFile('input-ch6c')">
                 <img id="img-ch6c" src="">
                 <div class="placeholder" id="ph-ch6c"><span class="text-5xl mb-2">👮</span><span class="font-bold">Police at Campaign</span></div>
                 <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-ch6c', 'img-ch6c', 'ph-ch6c')">X</button>
@@ -787,7 +792,7 @@
                 The main Payyavoor-Kunnathur road had several old road warning signs that had faded. Armed heavily with cleaning supplies and brand new, highly reflective stickers, the students and teachers scrubbed the old boards clean.
             </p>
 
-            <div class="photo-box large my-4" id="box-ch7a" onclick="triggerFile('input-ch7a')">
+            <div class="photo-box ratio-large my-4" id="box-ch7a" onclick="triggerFile('input-ch7a')">
                 <img id="img-ch7a" src="">
                 <div class="placeholder" id="ph-ch7a"><span class="text-5xl mb-2">🧽</span><span class="font-bold">Cleaning Boards</span></div>
                 <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-ch7a', 'img-ch7a', 'ph-ch7a')">X</button>
@@ -806,7 +811,7 @@
                 To completely demystify law enforcement and remove the inherent fear of police from young minds, we organized an official field trip for the Safety Club members to the Payyavoor Police Station.
             </p>
 
-            <div class="photo-box full-page my-4" id="box-ch7b" onclick="triggerFile('input-ch7b')">
+            <div class="photo-box ratio-full my-4" id="box-ch7b" onclick="triggerFile('input-ch7b')">
                 <img id="img-ch7b" src="">
                 <div class="placeholder" id="ph-ch7b"><span class="text-5xl mb-2">📝</span><span class="font-bold">Police Interview</span></div>
                 <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-ch7b', 'img-ch7b', 'ph-ch7b')">X</button>
@@ -829,7 +834,7 @@
                 As we meticulously compile the final pages of this report, we sit back and reflect heavily on the monumental, undeniable shift that has occurred within G.L.P.S. Chamakkal and the surrounding Payyavoor community. What started simply as a mandate under the 'Surakshit Marg' project evolved rapidly into a passionate, fiery movement led by our youngest, bravest citizens.
             </p>
 
-            <div class="photo-box large my-4" id="box-conc" onclick="triggerFile('input-conc')">
+            <div class="photo-box ratio-large my-4" id="box-conc" onclick="triggerFile('input-conc')">
                 <img id="img-conc" src="">
                 <div class="placeholder" id="ph-conc"><span class="text-5xl mb-2">🌟</span><span class="font-bold">Final Group Shot</span></div>
                 <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-conc', 'img-conc', 'ph-conc')">X</button>
@@ -850,22 +855,22 @@
             <h2 class="chapter-title text-center" style="border:none;">Memories in Pictures</h2>
             
             <div class="grid grid-cols-2 gap-4 mt-4">
-                <div class="photo-box portrait w-full m-0 h-[340px]" id="box-g1" onclick="triggerFile('input-g1')">
+                <div class="photo-box ratio-portrait w-full m-0" id="box-g1" onclick="triggerFile('input-g1')">
                     <img id="img-g1" src=""><div class="placeholder" id="ph-g1"><span class="font-bold">Gallery Photo 1</span></div>
                     <div class="photo-overlay">Crop</div><button class="remove-btn" onclick="removeImage(event, 'box-g1', 'img-g1', 'ph-g1')">X</button>
                     <input type="file" id="input-g1" accept="image/*" onchange="loadImage(event, 'box-g1', 'img-g1', 'ph-g1')">
                 </div>
-                <div class="photo-box portrait w-full m-0 h-[340px]" id="box-g2" onclick="triggerFile('input-g2')">
+                <div class="photo-box ratio-portrait w-full m-0" id="box-g2" onclick="triggerFile('input-g2')">
                     <img id="img-g2" src=""><div class="placeholder" id="ph-g2"><span class="font-bold">Gallery Photo 2</span></div>
                     <div class="photo-overlay">Crop</div><button class="remove-btn" onclick="removeImage(event, 'box-g2', 'img-g2', 'ph-g2')">X</button>
                     <input type="file" id="input-g2" accept="image/*" onchange="loadImage(event, 'box-g2', 'img-g2', 'ph-g2')">
                 </div>
-                <div class="photo-box portrait w-full m-0 h-[340px]" id="box-g3" onclick="triggerFile('input-g3')">
+                <div class="photo-box ratio-portrait w-full m-0" id="box-g3" onclick="triggerFile('input-g3')">
                     <img id="img-g3" src=""><div class="placeholder" id="ph-g3"><span class="font-bold">Gallery Photo 3</span></div>
                     <div class="photo-overlay">Crop</div><button class="remove-btn" onclick="removeImage(event, 'box-g3', 'img-g3', 'ph-g3')">X</button>
                     <input type="file" id="input-g3" accept="image/*" onchange="loadImage(event, 'box-g3', 'img-g3', 'ph-g3')">
                 </div>
-                <div class="photo-box portrait w-full m-0 h-[340px]" id="box-g4" onclick="triggerFile('input-g4')">
+                <div class="photo-box ratio-portrait w-full m-0" id="box-g4" onclick="triggerFile('input-g4')">
                     <img id="img-g4" src=""><div class="placeholder" id="ph-g4"><span class="font-bold">Gallery Photo 4</span></div>
                     <div class="photo-overlay">Crop</div><button class="remove-btn" onclick="removeImage(event, 'box-g4', 'img-g4', 'ph-g4')">X</button>
                     <input type="file" id="input-g4" accept="image/*" onchange="loadImage(event, 'box-g4', 'img-g4', 'ph-g4')">
@@ -881,14 +886,14 @@
         <div class="flex-grow flex flex-col justify-center">
             <h2 class="chapter-title text-center" style="border:none;">In The News</h2>
             
-            <div class="photo-box full-page mt-4" style="height: 340px;" id="box-n1" onclick="triggerFile('input-n1')">
+            <div class="photo-box ratio-full mt-4" id="box-n1" onclick="triggerFile('input-n1')">
                 <img id="img-n1" src="">
                 <div class="placeholder" id="ph-n1"><span class="text-5xl mb-2">📰</span><span class="font-bold">Newspaper Clipping 1</span></div>
                 <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-n1', 'img-n1', 'ph-n1')">X</button>
                 <input type="file" id="input-n1" accept="image/*" onchange="loadImage(event, 'box-n1', 'img-n1', 'ph-n1')">
             </div>
             
-            <div class="photo-box full-page mt-4" style="height: 340px;" id="box-n2" onclick="triggerFile('input-n2')">
+            <div class="photo-box ratio-full mt-4" id="box-n2" onclick="triggerFile('input-n2')">
                 <img id="img-n2" src="">
                 <div class="placeholder" id="ph-n2"><span class="text-5xl mb-2">📰</span><span class="font-bold">Newspaper Clipping 2</span></div>
                 <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-n2', 'img-n2', 'ph-n2')">X</button>
@@ -903,7 +908,7 @@
         <div class="cover-border">
             <div class="cover-inner justify-center items-center" style="background-color: #166534;">
                 
-                <div class="photo-box portrait" style="height: 300px; width: 300px; border-radius: 50%; border: 6px solid white; background-color: white; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.5);" id="box-back" onclick="triggerFile('input-back')">
+                <div class="photo-box ratio-square" style="border-radius: 50%; border: 6px solid white; background-color: white; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.5);" id="box-back" onclick="triggerFile('input-back')">
                     <img id="img-back" src="">
                     <div class="placeholder" id="ph-back"><span class="text-6xl mb-2">😊</span><span class="font-bold text-maroon-700 mt-2">Closing Image</span></div>
                     <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-back', 'img-back', 'ph-back')">X</button>
@@ -929,6 +934,22 @@
             document.getElementById(inputId).click();
         }
 
+        // Locks scrolling on ALL devices perfectly, including iOS Safari
+        function lockScroll() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${scrollTop}px`;
+            document.body.style.width = '100%';
+        }
+
+        function unlockScroll() {
+            const scrollTop = Math.abs(parseInt(document.body.style.top || '0', 10));
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            window.scrollTo(0, scrollTop);
+        }
+
         function loadImage(event, boxId, imgId, phId) {
             const file = event.target.files[0];
             if (file) {
@@ -940,11 +961,12 @@
                     // Display the solid modal block
                     const modal = document.getElementById('solidCropOverlay');
                     modal.style.display = 'block'; 
-                    document.body.style.overflow = 'hidden'; // Stop background scrolling
+                    lockScroll(); // Freeze background
                     
                     const imageElement = document.getElementById('imageToCrop');
                     imageElement.src = e.target.result;
                     
+                    // Get perfectly accurate aspect ratio based on physical CSS box dimensions
                     const targetBox = document.getElementById(boxId);
                     const isCircle = boxId === 'box-back'; 
                     const targetRatio = isCircle ? 1 : (targetBox.clientWidth / targetBox.clientHeight);
@@ -954,7 +976,7 @@
                     // Initialize cropper with strict boundaries
                     cropper = new Cropper(imageElement, {
                         aspectRatio: targetRatio,
-                        viewMode: 1, // Restrict crop box to not exceed canvas
+                        viewMode: 1, 
                         dragMode: 'move', 
                         background: false, // Turn off checkerboard to use our solid black background
                         zoomable: true,
@@ -1001,7 +1023,7 @@
         function closeModal() {
             const modal = document.getElementById('solidCropOverlay');
             modal.style.display = 'none';
-            document.body.style.overflow = ''; 
+            unlockScroll(); // Restore scrolling
             if (cropper) {
                 cropper.destroy();
                 cropper = null;
