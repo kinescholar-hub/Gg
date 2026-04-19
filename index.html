@@ -3,14 +3,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- STRICT viewport setting locks layout scaling across all mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Surakshit Marg 2025-26 - G.L.P.S. Chamakkal</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
-    <!-- Cropper.js for Image Cropping -->
+    <!-- Cropper.js -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
 
@@ -23,254 +23,227 @@
             --box-bg: #eaf5ec; 
         }
 
+        * { box-sizing: border-box; }
+
         body {
             font-family: 'Nunito', sans-serif;
-            background-color: #cbd5e1;
+            background-color: #94a3b8; 
             color: #333;
-            line-height: 1.8;
+            line-height: 1.5; 
             -webkit-font-smoothing: antialiased;
+            margin: 0; padding: 0; overflow-x: hidden;
         }
 
         h1, h2, h3, h4, .kid-font { font-family: 'Fredoka', sans-serif; }
 
-        /* A4 Page Styling */
+        /* --- RESPONSIVE SCREEN VIEW --- */
         .a4-page {
-            width: 210mm;
-            min-height: 297mm;
-            padding: 20mm 20mm 20mm 30mm; /* 30mm left for spiral binding */
-            margin: 2rem auto;
+            width: 100%;
+            max-width: 210mm;
             background: var(--bg-cream);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
             position: relative;
-            box-sizing: border-box;
-            page-break-after: always;
-            display: flex;
-            flex-direction: column;
-            border-right: 1px solid #e2e8f0;
+            display: flex; flex-direction: column;
+            margin: 1.5rem auto;
+            padding: 2rem 1.5rem 2rem 2.5rem; 
         }
 
-        /* Decorative Corners */
-        .a4-page::before, .a4-page::after {
-            content: ''; position: absolute; width: 40px; height: 40px; pointer-events: none;
-        }
-        .a4-page::before {
-            top: 10mm; right: 10mm;
-            border-top: 3px solid var(--green); border-right: 3px solid var(--green);
-            border-top-right-radius: 12px;
-        }
-        .a4-page::after {
-            bottom: 10mm; left: 30mm; 
-            border-bottom: 3px solid var(--yellow); border-left: 3px solid var(--yellow);
-            border-bottom-left-radius: 12px;
-        }
+        .a4-page::before, .a4-page::after { content: ''; position: absolute; width: 30px; height: 30px; pointer-events: none; }
+        .a4-page::before { top: 3%; right: 4%; border-top: 3px solid var(--green); border-right: 3px solid var(--green); border-top-right-radius: 10px; }
+        .a4-page::after { bottom: 3%; left: 8%; border-bottom: 3px solid var(--yellow); border-left: 3px solid var(--yellow); border-bottom-left-radius: 10px; }
 
         /* Typography */
-        p { margin-bottom: 1.25rem; font-size: 13.5pt; text-align: justify; color: #475569; font-weight: 500;}
-        .drop-cap::first-letter {
-            float: left; font-size: 3.8rem; line-height: 0.8; padding: 4px 10px 0 0;
-            font-family: 'Fredoka', sans-serif; color: var(--green); font-weight: 700;
-        }
-        .chapter-title { 
-            font-size: 26pt; color: var(--maroon); margin-bottom: 1.5rem; 
-            border-bottom: 3px dashed var(--yellow); padding-bottom: 0.5rem; font-weight: 700;
-        }
-        .sub-heading { font-size: 18pt; color: var(--green); margin-top: 1.5rem; margin-bottom: 1rem; font-weight: 600; }
+        p { margin-bottom: 0.75rem; font-size: 12.5pt; text-align: justify; color: #334155; font-weight: 500;}
+        .drop-cap::first-letter { float: left; font-size: 3.5rem; line-height: 0.8; padding: 4px 10px 0 0; font-family: 'Fredoka', sans-serif; color: var(--green); font-weight: 700; }
+        .chapter-title { font-size: 22pt; color: var(--maroon); margin-bottom: 0.75rem; border-bottom: 3px dashed var(--yellow); padding-bottom: 0.25rem; font-weight: 700; }
+        .sub-heading { font-size: 15pt; color: var(--green); margin-top: 0.75rem; margin-bottom: 0.5rem; font-weight: 600; }
 
         /* Header & Footer */
-        .page-header {
-            position: absolute; top: 10mm; left: 30mm; right: 20mm;
-            border-bottom: 2px solid #cbd5e1; padding-bottom: 5px;
-            font-size: 9pt; color: var(--green); display: flex; justify-content: space-between;
-            font-family: 'Fredoka', sans-serif; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;
-        }
-        .page-footer {
-            margin-top: auto; border-top: 2px solid #cbd5e1; padding-top: 10px;
-            font-size: 10pt; color: var(--maroon); display: flex; justify-content: space-between; align-items: center;
-            font-family: 'Fredoka', sans-serif; font-weight: 600;
-        }
-        .page-number {
-            font-weight: bold; color: white; background-color: var(--yellow);
-            width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
-            border-radius: 50%; font-size: 11pt; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
+        .page-header { font-size: 9pt; color: var(--green); display: flex; justify-content: space-between; font-family: 'Fredoka', sans-serif; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; border-bottom: 2px solid #cbd5e1; padding-bottom: 5px; margin-bottom: 1rem;}
+        .page-footer { margin-top: auto; border-top: 2px solid #cbd5e1; padding-top: 10px; font-size: 10pt; color: var(--maroon); display: flex; justify-content: space-between; align-items: center; font-family: 'Fredoka', sans-serif; font-weight: 600; }
+        .page-number { font-weight: bold; color: white; background-color: var(--yellow); width: 25px; height: 25px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 10pt; }
 
-        /* --- ROBUST PHOTO UPLOAD SYSTEM --- */
+        /* --- PHOTO UPLOAD SYSTEM --- */
         .photo-box {
-            display: block; background-color: var(--box-bg);
-            border: 3px dashed var(--green); border-radius: 12px; cursor: pointer;
-            position: relative; overflow: hidden; transition: all 0.2s ease;
-            margin: 1.5rem 0; text-align: center; box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
+            display: block; background-color: var(--box-bg); border: 3px dashed var(--green); border-radius: 10px; cursor: pointer;
+            position: relative; overflow: hidden; transition: all 0.2s ease; margin: 0.75rem 0; text-align: center; width: 100%;
         }
-        .photo-box:hover { border-color: #166534; background-color: #dcfce7; transform: translateY(-2px); box-shadow: 0 8px 15px rgba(0,0,0,0.05);}
         .photo-box input[type="file"] { display: none; }
-        .photo-box img {
-            width: 100%; height: 100%; object-fit: cover; object-position: center; /* PERFECT FIT */
-            display: none; border-radius: 8px; background-color: white; z-index: 5; position: relative;
-        }
-        .placeholder {
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            height: 100%; padding: 2rem; color: var(--green); position: absolute; top:0; left:0; right:0; bottom:0;
-        }
+        .photo-box img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: none; background-color: white; z-index: 5; position: relative; }
         
-        .photo-overlay {
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.6); color: white; display: none; align-items: center; justify-content: center;
-            font-weight: bold; z-index: 10; font-family: 'Fredoka', sans-serif; font-size: 1.2rem;
-            backdrop-filter: blur(2px);
-        }
+        .placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 1rem; color: var(--green); position: absolute; top:0; left:0; right:0; bottom:0; }
+        .photo-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); color: white; display: none; align-items: center; justify-content: center; font-weight: bold; z-index: 10; font-family: 'Fredoka', sans-serif; font-size: 1.2rem; }
         .photo-box.has-image:hover .photo-overlay { display: flex; }
         
-        .remove-btn {
-            position: absolute; top: 12px; right: 12px; z-index: 20;
-            background: #ef4444; color: white; border: 2px solid white; border-radius: 50%;
-            width: 32px; height: 32px; display: none; align-items: center; justify-content: center;
-            font-weight: bold; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.3); transition: 0.2s;
-        }
-        .remove-btn:hover { background: #dc2626; transform: scale(1.1); }
+        .remove-btn { position: absolute; top: 8px; right: 8px; z-index: 20; background: #ef4444; color: white; border: 2px solid white; border-radius: 50%; width: 30px; height: 30px; display: none; align-items: center; justify-content: center; font-weight: bold; cursor: pointer; }
         .photo-box.has-image:hover .remove-btn { display: flex; }
+        .photo-caption { font-size: 10pt; font-style: italic; color: #64748b; text-align: center; margin-top: 0.2rem; display: block; font-weight: 600;}
 
-        .photo-caption { font-size: 11pt; font-style: italic; color: #64748b; text-align: center; margin-top: 0.5rem; display: block; font-weight: 600;}
+        /* CRITICAL HEIGHTS: Lowered to guarantee no iPad spillover */
+        .landscape { height: 190px; }
+        .portrait { height: 240px; width: 85%; margin-left: auto; margin-right: auto; }
+        .large { height: 280px; }
+        .full-page { height: 340px; }
 
-        /* Dimensions */
-        .landscape { height: 260px; width: 100%; }
-        .portrait { height: 360px; width: 85%; margin-left: auto; margin-right: auto; }
-        .large { height: 400px; width: 100%; }
-        .full-page { height: 550px; width: 100%; }
-
-        /* Cover Page Custom Styling */
+        /* Cover Page */
         .cover-page { padding: 0 !important; background: var(--bg-cream); border:none;}
         .cover-page::before, .cover-page::after { display: none; }
-        .cover-border {
-            border: 10px solid var(--bg-cream); margin: 0; height: 100%;
-            background: repeating-linear-gradient(45deg, var(--green), var(--green) 15px, var(--yellow) 15px, var(--yellow) 30px);
-            padding: 8px; 
-        }
-        .cover-inner {
-            background: var(--bg-cream); height: 100%;
-            display: flex; flex-direction: column; padding: 2.5rem 3rem; 
-        }
+        .cover-border { border: 8px solid var(--bg-cream); margin: 0; height: 100%; background: repeating-linear-gradient(45deg, var(--green), var(--green) 15px, var(--yellow) 15px, var(--yellow) 30px); padding: 6px; }
+        .cover-inner { background: var(--bg-cream); height: 100%; display: flex; flex-direction: column; padding: 2rem 2rem; }
 
-        /* Print Settings */
-        .print-btn-container { position: fixed; bottom: 2rem; right: 2rem; z-index: 100; }
-        .print-btn {
-            background: var(--maroon); color: white; border: 4px solid white; padding: 1rem 2rem;
-            font-size: 1.2rem; font-weight: bold; border-radius: 50px; cursor: pointer;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); transition: 0.2s; font-family: 'Fredoka', sans-serif;
-            display: flex; align-items: center; gap: 10px;
-        }
-        .print-btn:hover { transform: translateY(-3px); background: #5a151b;}
+        /* Print Settings UI */
+        .print-btn-container { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 100; }
+        .print-btn { background: var(--maroon); color: white; border: 3px solid white; padding: 0.75rem 1.5rem; font-size: 1.1rem; font-weight: bold; border-radius: 50px; cursor: pointer; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4); font-family: 'Fredoka', sans-serif; display: flex; align-items: center; gap: 8px; }
 
+        /* =========================================
+           BULLETPROOF UNIVERSAL PRINT CSS 
+           (Locks layout to perfectly fit A4)
+           ========================================= */
         @media print {
-            body { background-color: white; margin: 0; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important;}
-            .a4-page { margin: 0; box-shadow: none; width: 210mm; height: 297mm; padding: 20mm 20mm 20mm 30mm; border: none; }
+            @page { size: A4 portrait; margin: 0 !important; }
+            body, html { margin: 0 !important; padding: 0 !important; width: 210mm !important; height: 297mm !important; background: white !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+            
+            .a4-page {
+                width: 210mm !important; 
+                height: 297mm !important; 
+                max-height: 297mm !important; /* Forces strict bounds */
+                padding: 20mm 20mm 20mm 30mm !important; 
+                margin: 0 !important; 
+                border: none !important; 
+                box-shadow: none !important; 
+                border-radius: 0 !important;
+                overflow: hidden !important; 
+                page-break-after: always !important; 
+                page-break-inside: avoid !important; 
+                position: relative !important;
+            }
+            
             .cover-page { padding: 0 !important; }
-            @page { size: A4; margin: 0; }
             .no-print { display: none !important; }
             
             .photo-box { border: none !important; background: transparent !important; box-shadow: none !important; transform: none !important;}
             .placeholder, .photo-overlay, .remove-btn { display: none !important; }
-            .photo-box img { display: block !important; border-radius: 8px;}
-            
+            .photo-box img { display: block !important; border-radius: 6px !important;}
             .photo-box:not(.has-image) { border: 2px solid #cbd5e1 !important; background: #f8fafc !important; }
             .photo-box:not(.has-image)::after { content: "Photo Space"; display: flex; align-items: center; justify-content: center; height: 100%; color: #94a3b8; font-family: 'Nunito', sans-serif;}
+
+            .page-header { position: absolute !important; top: 10mm !important; left: 30mm !important; right: 20mm !important; margin: 0 !important; }
+            .page-footer { position: absolute !important; bottom: 10mm !important; left: 30mm !important; right: 20mm !important; margin: 0 !important; }
+            .a4-page::before { top: 10mm !important; right: 10mm !important; }
+            .a4-page::after { bottom: 10mm !important; left: 30mm !important; }
+            .a4-page > div.flex-grow { padding-top: 10mm !important; }
         }
 
-        /* Cropper Modal Styles */
-        .cropper-modal {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85); z-index: 9999; flex-direction: column; align-items: center; justify-content: center;
-            backdrop-filter: blur(5px);
+        /* =========================================
+           SOLID, UNBREAKABLE CROPPER UI 
+           (Fixes iPad and Oppo transparency bugs)
+           ========================================= */
+        #solidCropOverlay {
+            display: none; 
+            position: fixed; 
+            top: 0; left: 0; width: 100%; height: 100%; 
+            background-color: rgba(0, 0, 0, 0.95); /* Solid fallback */
+            z-index: 2147483647; /* Absolute maximum z-index */
         }
-        .cropper-container-box {
-            background: white; width: 90%; max-width: 800px; height: 80vh; border-radius: 12px;
-            display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        
+        #solidCropBox {
+            position: absolute; 
+            top: 3%; left: 3%; width: 94%; height: 94%;
+            background-color: #ffffff; 
+            border-radius: 12px; 
+            display: flex; flex-direction: column; overflow: hidden;
+            box-shadow: 0 0 50px #000000;
         }
-        .cropper-header {
-            padding: 1rem 1.5rem; background: var(--maroon); color: white; font-family: 'Fredoka', sans-serif;
-            font-size: 1.25rem; display: flex; justify-content: space-between; align-items: center;
+
+        @media (min-width: 768px) {
+            #solidCropBox { top: 5%; left: 10%; width: 80%; height: 90%; max-width: 800px; margin: 0 auto; }
         }
-        .cropper-body {
-            flex-grow: 1; background: #e2e8f0; position: relative; overflow: hidden;
+
+        #solidCropHeader { 
+            background-color: #3d0c10; color: #ffffff; 
+            padding: 15px 20px; font-family: 'Fredoka', sans-serif; font-size: 20px; 
+            display: flex; justify-content: space-between; align-items: center; 
+            flex-shrink: 0;
         }
-        .cropper-footer {
-            padding: 1rem 1.5rem; background: white; display: flex; justify-content: flex-end; gap: 1rem; border-top: 1px solid #cbd5e1;
+
+        #solidCropBody { 
+            flex-grow: 1; 
+            background-color: #111111; /* Pure dark grey, blocks out everything */
+            position: relative; width: 100%; height: 100%; overflow: hidden;
         }
-        .btn-cancel { background: #94a3b8; color: white; padding: 0.5rem 1.5rem; border-radius: 8px; font-weight: bold; cursor: pointer; }
-        .btn-save { background: var(--green); color: white; padding: 0.5rem 1.5rem; border-radius: 8px; font-weight: bold; cursor: pointer; }
+
+        #solidCropFooter { 
+            background-color: #f8fafc; padding: 15px 20px; 
+            display: flex; gap: 15px; border-top: 2px solid #cbd5e1; 
+            flex-shrink: 0;
+        }
+
+        .crop-btn-cancel { background-color: #64748b; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; flex: 1; font-size: 16px; }
+        .crop-btn-save { background-color: #15803d; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; flex: 2; font-size: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
     </style>
 </head>
 <body>
 
-    <!-- Image Cropper Modal -->
-    <div id="cropperModal" class="cropper-modal no-print">
-        <div class="cropper-container-box">
-            <div class="cropper-header">
-                <span>Crop Photo to Fit</span>
-                <span class="text-sm opacity-80 font-normal">Scroll to zoom. Drag to move.</span>
+    <!-- COMPLETELY ISOLATED, SOLID HTML CROPPER -->
+    <div id="solidCropOverlay" class="no-print">
+        <div id="solidCropBox">
+            <div id="solidCropHeader">
+                <span>Adjust Photo</span>
+                <span style="font-size:14px; opacity:0.9; font-weight:normal;">Pinch & Drag to Fit</span>
             </div>
-            <div class="cropper-body">
+            <div id="solidCropBody">
                 <img id="imageToCrop" src="" style="max-width: 100%; display: block;">
             </div>
-            <div class="cropper-footer">
-                <button onclick="cancelCrop()" class="btn-cancel">Cancel</button>
-                <button onclick="saveCrop()" class="btn-save">Save & Place Image</button>
+            <div id="solidCropFooter">
+                <button onclick="cancelCrop()" class="crop-btn-cancel">Cancel</button>
+                <button onclick="saveCrop()" class="crop-btn-save">Save Perfect Fit</button>
             </div>
         </div>
     </div>
 
-    <!-- Print UI Elements -->
+    <!-- Print UI -->
     <div class="print-btn-container no-print">
         <button onclick="prepareAndPrint()" class="print-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
-            Print Document
+            🖨️ Print PDF
         </button>
-        <div class="bg-white p-3 rounded-lg shadow-xl mt-3 text-sm text-center font-bold text-green-700 border-2 border-green-200">
-            Click dashed boxes to add & crop photos.
-        </div>
     </div>
 
-    <!-- PAGE 1: Perfected Cover -->
+    <!-- PAGE 1: Cover -->
     <div class="a4-page cover-page">
         <div class="cover-border">
             <div class="cover-inner relative">
-                
-                <div class="w-full mt-4 text-left">
-                    <p class="text-gray-500 font-bold tracking-[3px] text-sm uppercase mb-6">Project Report</p>
+                <div class="w-full text-left">
+                    <p class="text-gray-500 font-bold tracking-[2px] text-sm uppercase mb-4 mt-2">Project Report</p>
                 </div>
-                
                 <div class="w-full text-center">
-                    <h1 class="text-[52pt] font-extrabold leading-none flex justify-center items-center text-[#1f2937]">
-                        Surakshit<span class="text-green-700 italic ml-2 relative">Marg
-                            <svg class="absolute -top-3 -left-2 w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 24 24"><path d="M17.5,2.5C17.5,2.5,12.5,2.5,7.5,7.5C2.5,12.5,2.5,17.5,2.5,17.5C2.5,17.5,7.5,17.5,12.5,12.5C17.5,7.5,17.5,2.5,17.5,2.5M14,14L10,10L14,14Z"/></svg>
+                    <h1 class="text-[40pt] sm:text-[50pt] font-extrabold leading-none flex justify-center items-center text-[#1f2937]">
+                        Surakshit<span class="text-green-700 italic ml-1 relative">Marg
+                            <!-- Leaf directly above the M -->
+                            <svg class="absolute -top-4 -left-1 w-6 h-6 sm:w-8 sm:h-8 text-green-600" fill="currentColor" viewBox="0 0 24 24"><path d="M17.5,2.5C17.5,2.5,12.5,2.5,7.5,7.5C2.5,12.5,2.5,17.5,2.5,17.5C2.5,17.5,7.5,17.5,12.5,12.5C17.5,7.5,17.5,2.5,17.5,2.5M14,14L10,10L14,14Z"/></svg>
                         </span>
                     </h1>
-                    <h2 class="text-[40pt] text-[#3f3f46] font-extrabold mt-1 mb-8">2025-26</h2>
+                    <h2 class="text-[30pt] sm:text-[40pt] text-[#3f3f46] font-extrabold mt-1 mb-6">2025-26</h2>
                 </div>
-
                 <div class="w-full text-left">
-                    <p class="text-gray-600 text-xl font-semibold mb-1">Report by</p>
+                    <p class="text-gray-600 text-lg font-semibold mb-1">Report by</p>
                 </div>
-
                 <div class="w-full text-center mb-1">
-                    <h3 class="text-[30pt] text-[#3f3f46] font-extrabold tracking-wide drop-shadow-sm">G.L.P.S. CHAMAKKAL</h3>
+                    <h3 class="text-[22pt] sm:text-[28pt] text-[#3f3f46] font-extrabold tracking-wide drop-shadow-sm">G.L.P.S. CHAMAKKAL</h3>
+                </div>
+                <div class="w-full text-left mb-2">
+                    <p class="text-gray-700 text-lg font-medium leading-tight">Payyavoor PO<br>Kannur District, Kerala</p>
                 </div>
 
-                <div class="w-full text-left mb-4">
-                    <p class="text-gray-700 text-xl font-medium leading-tight">Payyavoor PO<br>Kannur District, Kerala</p>
-                </div>
-
-                <!-- Main Cover Photo Box -->
-                <div class="photo-box flex-grow w-full border-4" id="box-cover" onclick="triggerFile('input-cover')" style="min-height: 400px; border-style: dashed; background-color: #eaf5ec;">
+                <div class="photo-box flex-grow w-full border-4" id="box-cover" onclick="triggerFile('input-cover')" style="min-height: 280px; border-style: dashed; background-color: #eaf5ec;">
                     <img id="img-cover" src="">
                     <div class="placeholder" id="ph-cover">
                         <span class="text-5xl mb-3">🏕️</span>
-                        <span class="font-bold text-lg uppercase tracking-wide">Upload 'Varna Koodaram' Photo</span>
+                        <span class="font-bold text-[10pt] sm:text-lg uppercase tracking-wide">Upload 'Varna Koodaram'</span>
                     </div>
-                    <div class="photo-overlay">Click to change</div>
+                    <div class="photo-overlay">Crop Photo</div>
                     <button class="remove-btn" onclick="removeImage(event, 'box-cover', 'img-cover', 'ph-cover')">X</button>
                     <input type="file" id="input-cover" accept="image/*" onchange="loadImage(event, 'box-cover', 'img-cover', 'ph-cover')">
                 </div>
-
             </div>
         </div>
     </div>
@@ -280,30 +253,27 @@
         <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Surakshit Marg</span></div>
         <div class="flex-grow flex flex-col justify-center">
             <h2 class="chapter-title text-center" style="border:none;">Acknowledgements</h2>
-            <p class="text-center italic text-xl max-w-2xl mx-auto text-green-700 font-bold mb-8 kid-font">
+            <p class="text-center italic text-lg max-w-2xl mx-auto text-green-700 font-bold mb-4 kid-font">
                 "It takes a village to raise a child, and it takes an entire community to keep them safe on the roads they travel."
             </p>
             <p>
-                This beautifully crafted report is a heartfelt testament to the collective effort, unwavering love, and vibrant spirit of the G.L.P.S. Chamakkal family. We extend our deepest, most sincere gratitude to everyone who made the 'Surakshit Marg' project a resounding success for our little ones.
+                This beautifully crafted report is a heartfelt testament to the collective effort, unwavering love, and vibrant spirit of the G.L.P.S. Chamakkal family. We extend our deepest gratitude to everyone who made the 'Surakshit Marg' project a resounding success.
             </p>
             <p>
-                Our immense thanks go to the <strong>Kuttukaran Group</strong> and the <strong>SCMS Group (SiRST)</strong> for their visionary leadership. Your commitment to road safety has provided our small, rural Lower Primary school with an extraordinary platform to effect real, lasting change.
+                Our immense thanks go to the <strong>Kuttukaran Group</strong> and the <strong>SCMS Group (SiRST)</strong> for their visionary leadership. Your commitment to road safety has provided our small, rural Lower Primary school with an extraordinary platform to effect real change.
             </p>
             <p>
-                We are incredibly grateful to the kind-hearted officers of the <strong>Payyavoor Police Station</strong>, especially Sub-Inspectors Sri P. P. Prabhakaran and Sri Tomy Thomas, for their enthusiastic participation. You erased fear and built beautiful bridges of trust with our young learners.
-            </p>
-            <p>
-                A special mention goes to the wonderfully talented NSS volunteers of <strong>PKM College of Education, Madampam</strong>. Finally, our deepest love belongs to the 87 brilliant, energetic students of G.L.P.S. Chamakkal, their supportive parents, and our dedicated teachers.
+                We are incredibly grateful to the kind-hearted officers of the <strong>Payyavoor Police Station</strong>, especially Sub-Inspectors Sri P. P. Prabhakaran and Sri Tomy Thomas.
             </p>
 
-            <div class="photo-box portrait mt-8" style="height: 320px;" id="box-ack" onclick="triggerFile('input-ack')">
+            <div class="photo-box large mt-4" id="box-ack" onclick="triggerFile('input-ack')">
                 <img id="img-ack" src="">
-                <div class="placeholder" id="ph-ack"><span class="text-5xl mb-2">👨‍👩‍👧‍👦</span><span class="font-bold">Team Photo</span></div>
-                <div class="photo-overlay">Click to change</div>
+                <div class="placeholder" id="ph-ack"><span class="text-4xl mb-2">👨‍👩‍👧‍👦</span><span class="font-bold">Team Photo</span></div>
+                <div class="photo-overlay">Crop Photo</div>
                 <button class="remove-btn" onclick="removeImage(event, 'box-ack', 'img-ack', 'ph-ack')">X</button>
                 <input type="file" id="input-ack" accept="image/*" onchange="loadImage(event, 'box-ack', 'img-ack', 'ph-ack')">
             </div>
-            <span class="photo-caption">The proud and dedicated team behind the success of the project.</span>
+            <span class="photo-caption">The proud team behind the success of the project.</span>
         </div>
         <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">i</span></div>
     </div>
@@ -311,11 +281,11 @@
     <!-- PAGE 3: Table of Contents -->
     <div class="a4-page">
         <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Table of Contents</span></div>
-        <div class="flex-grow pt-8">
+        <div class="flex-grow flex flex-col justify-center">
             <h2 class="chapter-title">What's Inside?</h2>
             
-            <div class="max-w-2xl mx-auto mt-8 kid-font text-xl">
-                <ul class="space-y-4">
+            <div class="w-full mx-auto mt-2 kid-font text-[11pt] sm:text-[13pt]">
+                <ul class="space-y-2">
                     <li class="flex justify-between border-b-2 border-green-100 pb-1"><span class="text-gray-800 font-semibold">Introduction: The Heart of Chamakkal</span><span class="text-green-700">1</span></li>
                     <li class="flex justify-between border-b-2 border-green-100 pb-1"><span class="text-gray-800 font-semibold">The Vision: Surakshit Marg</span><span class="text-green-700">3</span></li>
                     <li class="flex justify-between border-b-2 border-green-100 pb-1"><span class="text-gray-800 font-semibold">Chapter 1: The Grand Inauguration</span><span class="text-green-700">5</span></li>
@@ -330,10 +300,10 @@
                 </ul>
             </div>
             
-            <div class="photo-box landscape mt-12 mx-auto w-5/6" id="box-toc" onclick="triggerFile('input-toc')">
+            <div class="photo-box landscape mt-4 mx-auto" id="box-toc" onclick="triggerFile('input-toc')">
                 <img id="img-toc" src="">
-                <div class="placeholder" id="ph-toc"><span class="text-5xl mb-2">🌳</span><span class="font-bold">Scenic School View</span></div>
-                <div class="photo-overlay">Click to change</div>
+                <div class="placeholder" id="ph-toc"><span class="text-4xl mb-2">🌳</span><span class="font-bold">Scenic School View</span></div>
+                <div class="photo-overlay">Crop Photo</div>
                 <button class="remove-btn" onclick="removeImage(event, 'box-toc', 'img-toc', 'ph-toc')">X</button>
                 <input type="file" id="input-toc" accept="image/*" onchange="loadImage(event, 'box-toc', 'img-toc', 'ph-toc')">
             </div>
@@ -344,27 +314,24 @@
     <!-- PAGE 4: Introduction -->
     <div class="a4-page">
         <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Introduction</span></div>
-        <div class="flex-grow pt-8">
+        <div class="flex-grow flex flex-col justify-center">
             <h2 class="chapter-title">Introduction: The Heart of Chamakkal</h2>
-            
             <p class="drop-cap">
-                Nestled comfortably against the breathtaking, lush green backdrop of the Western Ghats, within the hilly village panchayat of Payyavoor in the Kannur district, lies our beloved village of Chamakkal. It is right here that G.L.P.S. Chamakkal has stood as a warm beacon of learning, joyful growth, and community spirit for over six decades. 
+                Nestled comfortably against the breathtaking, lush green backdrop of the Western Ghats, within the hilly village panchayat of Payyavoor in the Kannur district, lies our beloved village of Chamakkal. It is right here that G.L.P.S. Chamakkal has stood as a warm beacon of learning for over six decades. 
             </p>
             <p>
-                When we lovingly look back at our humble beginnings in 1957, starting merely as a single-teacher institution, it fills our collective hearts with immense pride to see the vibrant, colorful educational hub we have blossomed into today. We are far more than just a building where a syllabus is taught; we are a joyful second home to our young children.
+                When we lovingly look back at our humble beginnings in 1957, starting merely as a single-teacher institution, it fills our collective hearts with immense pride to see the vibrant, colorful educational hub we have blossomed into today. We are a joyful second home to our young children.
             </p>
 
-            <div class="photo-box large" id="box-intro1" onclick="triggerFile('input-intro1')">
+            <div class="photo-box large my-4" id="box-intro1" onclick="triggerFile('input-intro1')">
                 <img id="img-intro1" src="">
-                <div class="placeholder" id="ph-intro1"><span class="text-5xl mb-2">🏫</span><span class="font-bold">School Exterior</span></div>
-                <div class="photo-overlay">Click to change</div>
+                <div class="placeholder" id="ph-intro1"><span class="text-4xl mb-2">🏫</span><span class="font-bold">School Exterior</span></div>
+                <div class="photo-overlay">Crop Photo</div>
                 <button class="remove-btn" onclick="removeImage(event, 'box-intro1', 'img-intro1', 'ph-intro1')">X</button>
                 <input type="file" id="input-intro1" accept="image/*" onchange="loadImage(event, 'box-intro1', 'img-intro1', 'ph-intro1')">
             </div>
-            <span class="photo-caption">The welcoming facade of G.L.P.S. Chamakkal.</span>
-
-            <p class="mt-6">
-                Our educational philosophy has always been to go leaps and bounds beyond prescribed textbooks. We firmly believe that true education prepares a child for the unpredictable daily challenges of life outside the classroom walls.
+            <p class="mt-2">
+                Our educational philosophy has always been to go leaps and bounds beyond prescribed textbooks. We firmly believe that true education prepares a child for the unpredictable daily challenges of life.
             </p>
         </div>
         <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">1</span></div>
@@ -373,28 +340,24 @@
     <!-- PAGE 5: Introduction 2 -->
     <div class="a4-page">
         <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Introduction</span></div>
-        <div class="flex-grow pt-8">
+        <div class="flex-grow flex flex-col justify-center">
             <p>
-                We introduced the highly effective <strong>"Mother's phone is mine"</strong> concept to gently regulate the overwhelming surge of smartphone usage among our young minds. Furthermore, we gave our students their very own powerful voice through <strong>"Radio Cham,"</strong> the school's internal, fun-filled broadcast system run by the children themselves. We actively addressed nutritional needs and childhood joy through our targeted program <strong>"Good Food is Good Mood."</strong> 
-            </p>
-            <p>
-                Our campus itself is designed to be a magical canvas of joy, featuring vibrantly painted walls, and our famous <strong>"Varna Koodaram" (Color Tents)</strong> provide beautiful, shaded play areas that naturally stimulate creativity, laughter, and peace among our little ones.
+                We introduced the highly effective <strong>"Mother's phone is mine"</strong> concept to gently regulate the overwhelming surge of smartphone usage among our young minds. Furthermore, we gave our students their very own powerful voice through <strong>"Radio Cham,"</strong> the school's internal, fun-filled broadcast system run by the children themselves.
             </p>
 
-            <div class="grid grid-cols-2 gap-6 mt-8 mb-4">
-                <div class="photo-box portrait w-full m-0 h-[320px]" id="box-intro2a" onclick="triggerFile('input-intro2a')">
-                    <img id="img-intro2a" src=""><div class="placeholder" id="ph-intro2a"><span class="font-bold">Activity Photo</span></div>
-                    <div class="photo-overlay">Change</div><button class="remove-btn" onclick="removeImage(event, 'box-intro2a', 'img-intro2a', 'ph-intro2a')">X</button>
+            <div class="grid grid-cols-2 gap-4 mt-4 mb-4">
+                <div class="photo-box portrait w-full m-0" id="box-intro2a" onclick="triggerFile('input-intro2a')">
+                    <img id="img-intro2a" src=""><div class="placeholder" id="ph-intro2a"><span class="font-bold">Activity 1</span></div>
+                    <div class="photo-overlay">Crop</div><button class="remove-btn" onclick="removeImage(event, 'box-intro2a', 'img-intro2a', 'ph-intro2a')">X</button>
                     <input type="file" id="input-intro2a" accept="image/*" onchange="loadImage(event, 'box-intro2a', 'img-intro2a', 'ph-intro2a')">
                 </div>
-                <div class="photo-box portrait w-full m-0 h-[320px]" id="box-intro2b" onclick="triggerFile('input-intro2b')">
-                    <img id="img-intro2b" src=""><div class="placeholder" id="ph-intro2b"><span class="font-bold">Campus Life</span></div>
-                    <div class="photo-overlay">Change</div><button class="remove-btn" onclick="removeImage(event, 'box-intro2b', 'img-intro2b', 'ph-intro2b')">X</button>
+                <div class="photo-box portrait w-full m-0" id="box-intro2b" onclick="triggerFile('input-intro2b')">
+                    <img id="img-intro2b" src=""><div class="placeholder" id="ph-intro2b"><span class="font-bold">Activity 2</span></div>
+                    <div class="photo-overlay">Crop</div><button class="remove-btn" onclick="removeImage(event, 'box-intro2b', 'img-intro2b', 'ph-intro2b')">X</button>
                     <input type="file" id="input-intro2b" accept="image/*" onchange="loadImage(event, 'box-intro2b', 'img-intro2b', 'ph-intro2b')">
                 </div>
             </div>
-
-            <p class="mt-8">
+            <p class="mt-4">
                 It is exactly within this fertile, incredibly supportive ground of continuous innovation and deep community care that our most ambitious project yet found its roots: the comprehensive road safety initiative known as <strong>"Surakshit Marg"</strong>.
             </p>
         </div>
@@ -404,25 +367,25 @@
     <!-- PAGE 6: Vision -->
     <div class="a4-page">
         <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>The Vision</span></div>
-        <div class="flex-grow pt-8">
+        <div class="flex-grow flex flex-col justify-center">
             <h2 class="chapter-title">The Vision: Surakshit Marg</h2>
             <p class="drop-cap">
-                Every single day, we wake up to heartbreaking news of accidents on our roads. Often, the root cause is not a grand mechanical failure, but a fleeting moment of minor negligence or a casual disregard for established traffic rules. As the number of vehicles multiplies exponentially, the risk to our precious children multiplies with it.
+                Every single day, we wake up to heartbreaking news of accidents on our roads. Often, the root cause is not a grand mechanical failure, but a fleeting moment of minor negligence. As the number of vehicles multiplies, the risk to our precious children multiplies with it.
             </p>
             <p>
                 This pressing social issue caught the undivided attention of two major societal powerhouses: the <strong>Kuttukaran Group</strong> and the <strong>SCMS Group</strong>. Together, they conceptualized "Surakshit Marg" (Safe Path)—a beautifully designed road safety awareness program with a specific target audience: school children.
             </p>
 
-            <div class="photo-box large my-8" id="box-vis1" onclick="triggerFile('input-vis1')">
+            <div class="photo-box landscape my-4" id="box-vis1" onclick="triggerFile('input-vis1')">
                 <img id="img-vis1" src="">
-                <div class="placeholder" id="ph-vis1"><span class="text-5xl mb-2">🚩</span><span class="font-bold">Project Banner</span></div>
-                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-vis1', 'img-vis1', 'ph-vis1')">X</button>
+                <div class="placeholder" id="ph-vis1"><span class="text-4xl mb-2">🚩</span><span class="font-bold">Project Banner</span></div>
+                <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-vis1', 'img-vis1', 'ph-vis1')">X</button>
                 <input type="file" id="input-vis1" accept="image/*" onchange="loadImage(event, 'box-vis1', 'img-vis1', 'ph-vis1')">
             </div>
 
-            <h3 class="sub-heading">Why Start With Schools?</h3>
+            <h3 class="sub-heading mt-0">Why Start With Schools?</h3>
             <p>
-                History shows us that a culture of safe driving cannot be aggressively forced onto adults overnight. However, if we meticulously and playfully instill this traffic culture in our little children from the very beginning, we are organically molding a generation that will naturally respect the roads.
+                History shows us that a culture of safe driving cannot be aggressively forced onto adults overnight. By meticulously and playfully instilling this traffic culture in our little children from the beginning, we are organically molding a generation that naturally respects the roads.
             </p>
         </div>
         <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">3</span></div>
@@ -431,18 +394,18 @@
     <!-- PAGE 7: Vision 2 -->
     <div class="a4-page">
         <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>The Vision</span></div>
-        <div class="flex-grow pt-8">
+        <div class="flex-grow flex flex-col justify-center">
             <p>
                 Children are undeniably the best, most persistent ambassadors of change. When a sweet child innocently asks their parent to buckle a seatbelt or secure a helmet, the emotional impact is immediate and far greater than the threat of any police fine. 
             </p>
 
-            <div class="photo-box full-page mt-6" id="box-vis2" onclick="triggerFile('input-vis2')">
+            <div class="photo-box full-page my-4" id="box-vis2" onclick="triggerFile('input-vis2')">
                 <img id="img-vis2" src="">
                 <div class="placeholder" id="ph-vis2"><span class="text-5xl mb-2">👨‍👧</span><span class="font-bold">Student & Parent</span></div>
-                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-vis2', 'img-vis2', 'ph-vis2')">X</button>
+                <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-vis2', 'img-vis2', 'ph-vis2')">X</button>
                 <input type="file" id="input-vis2" accept="image/*" onchange="loadImage(event, 'box-vis2', 'img-vis2', 'ph-vis2')">
             </div>
-            <span class="photo-caption mt-4">Children act as the primary catalysts for changing adult behavior regarding road safety.</span>
+            <span class="photo-caption">Children act as primary catalysts for changing adult behavior.</span>
         </div>
         <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">4</span></div>
     </div>
@@ -450,24 +413,24 @@
     <!-- PAGE 8: Chapter 1 -->
     <div class="a4-page">
         <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 1</span></div>
-        <div class="flex-grow pt-8">
+        <div class="flex-grow flex flex-col justify-center">
             <h2 class="chapter-title">Chapter 1: The Grand Inauguration</h2>
             <p class="drop-cap">
-                Every great journey begins with meticulous planning. Long before the public knew about our exciting involvement in Surakshit Marg, the wheels were already in motion inside the school. The PTA and the Staff Council convened multiple times. Our dedicated Coordinator, Ms. P. Shilpa, took the floor to present a comprehensive, year-long roadmap of fun-filled activities.
+                Every great journey begins with meticulous planning. Long before the public knew about our exciting involvement in Surakshit Marg, the wheels were already in motion inside the school. Our dedicated Coordinator presented a comprehensive, year-long roadmap of fun-filled activities.
             </p>
             <p>
                 The official dawn of the project arrived on November 2nd. We decided to make it a memorable, grand, and joyful event for the children. 
             </p>
 
-            <div class="photo-box large my-6" id="box-ch1a" onclick="triggerFile('input-ch1a')">
+            <div class="photo-box large my-4" id="box-ch1a" onclick="triggerFile('input-ch1a')">
                 <img id="img-ch1a" src="">
-                <div class="placeholder" id="ph-ch1a"><span class="text-5xl mb-2">🎤</span><span class="font-bold">Inauguration Stage</span></div>
-                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch1a', 'img-ch1a', 'ph-ch1a')">X</button>
+                <div class="placeholder" id="ph-ch1a"><span class="text-4xl mb-2">🎤</span><span class="font-bold">Inauguration Stage</span></div>
+                <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-ch1a', 'img-ch1a', 'ph-ch1a')">X</button>
                 <input type="file" id="input-ch1a" accept="image/*" onchange="loadImage(event, 'box-ch1a', 'img-ch1a', 'ph-ch1a')">
             </div>
 
-            <p class="mt-6">
-                We were deeply honored to have Sub-Inspector Sri P. P. Prabhakaran from the Payyavoor Police Station as our esteemed chief guest to officially inaugurate the initiative. Seeing a high-ranking police officer in uniform initially brought wide-eyed awe to the children, but his warm manner quickly turned that awe into joyful participation. 
+            <p class="mt-2">
+                We were deeply honored to have Sub-Inspector Sri P. P. Prabhakaran from the Payyavoor Police Station as our esteemed chief guest.
             </p>
         </div>
         <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">5</span></div>
@@ -476,26 +439,26 @@
     <!-- PAGE 9: Chapter 1 Cont -->
     <div class="a4-page">
         <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 1</span></div>
-        <div class="flex-grow pt-8">
+        <div class="flex-grow flex flex-col justify-center">
             <p>
-                SI Prabhakaran didn't just give a monotonous speech; he stepped right down and interacted with the students, explaining the critical nuances of traffic awareness in a simple, playful language they could easily grasp. He officially released the beautifully designed Surakshit Marg project logo to thunderous applause.
+                SI Prabhakaran didn't just give a monotonous speech; he stepped right down and interacted with the students, explaining the critical nuances of traffic awareness in a playful language they could easily grasp. He officially released the Surakshit Marg project logo.
             </p>
 
-            <div class="grid grid-cols-2 gap-6 my-8">
-                <div class="photo-box portrait w-full m-0 h-[340px]" id="box-ch1b" onclick="triggerFile('input-ch1b')">
+            <div class="grid grid-cols-2 gap-4 my-4">
+                <div class="photo-box portrait w-full m-0" id="box-ch1b" onclick="triggerFile('input-ch1b')">
                     <img id="img-ch1b" src=""><div class="placeholder" id="ph-ch1b"><span class="font-bold">SI Interacting</span></div>
-                    <div class="photo-overlay">Change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch1b', 'img-ch1b', 'ph-ch1b')">X</button>
+                    <div class="photo-overlay">Crop</div><button class="remove-btn" onclick="removeImage(event, 'box-ch1b', 'img-ch1b', 'ph-ch1b')">X</button>
                     <input type="file" id="input-ch1b" accept="image/*" onchange="loadImage(event, 'box-ch1b', 'img-ch1b', 'ph-ch1b')">
                 </div>
-                <div class="photo-box portrait w-full m-0 h-[340px]" id="box-ch1c" onclick="triggerFile('input-ch1c')">
+                <div class="photo-box portrait w-full m-0" id="box-ch1c" onclick="triggerFile('input-ch1c')">
                     <img id="img-ch1c" src=""><div class="placeholder" id="ph-ch1c"><span class="font-bold">Logo Release</span></div>
-                    <div class="photo-overlay">Change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch1c', 'img-ch1c', 'ph-ch1c')">X</button>
+                    <div class="photo-overlay">Crop</div><button class="remove-btn" onclick="removeImage(event, 'box-ch1c', 'img-ch1c', 'ph-ch1c')">X</button>
                     <input type="file" id="input-ch1c" accept="image/*" onchange="loadImage(event, 'box-ch1c', 'img-ch1c', 'ph-ch1c')">
                 </div>
             </div>
 
             <p>
-                The event concluded on a wonderfully sweet note—quite literally. The Payyavoor Police surprised our children by distributing yummy sweets to everyone present, cementing a highly positive, friendly relationship between the young students and law enforcement right from day one.
+                The event concluded on a wonderfully sweet note—quite literally. The Payyavoor Police surprised our children by distributing yummy sweets to everyone present.
             </p>
         </div>
         <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">6</span></div>
@@ -504,25 +467,25 @@
     <!-- PAGE 10: Chapter 2 -->
     <div class="a4-page">
         <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 2</span></div>
-        <div class="flex-grow pt-8">
+        <div class="flex-grow flex flex-col justify-center">
             <h2 class="chapter-title">Chapter 2: Marking Our Territory</h2>
             <p class="drop-cap">
-                Awareness needs to be highly visible and colorful to be truly effective. If we truly wanted the community to know that our little G.L.P.S. Chamakkal was now a central hub for road safety, we needed to make a bold, unmissable statement right at our doorstep. 
+                Awareness needs to be highly visible and colorful to be truly effective. If we truly wanted the community to know that our little G.L.P.S. Chamakkal was now a central hub for road safety, we needed to make a bold statement. 
             </p>
-            <h3 class="sub-heading">The Surakshit Marg Gateway</h3>
+            <h3 class="sub-heading mt-0">The Surakshit Marg Gateway</h3>
             <p>
-                On November 3rd, we transformed the main entrance of our school. A beautifully designed, highly attractive Surakshit Marg board was erected prominently right at the school gate. Every student skipping in, and every parent dropping them off, immediately knows that safety is our ultimate priority.
+                On November 3rd, we transformed the main entrance of our school. A beautifully designed, highly attractive Surakshit Marg board was erected prominently right at the school gate.
             </p>
 
-            <div class="photo-box landscape my-8" id="box-ch2a" onclick="triggerFile('input-ch2a')">
+            <div class="photo-box landscape my-4" id="box-ch2a" onclick="triggerFile('input-ch2a')">
                 <img id="img-ch2a" src="">
-                <div class="placeholder" id="ph-ch2a"><span class="text-5xl mb-2">🖼️</span><span class="font-bold">Gateway Board</span></div>
-                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch2a', 'img-ch2a', 'ph-ch2a')">X</button>
+                <div class="placeholder" id="ph-ch2a"><span class="text-4xl mb-2">🖼️</span><span class="font-bold">Gateway Board</span></div>
+                <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-ch2a', 'img-ch2a', 'ph-ch2a')">X</button>
                 <input type="file" id="input-ch2a" accept="image/*" onchange="loadImage(event, 'box-ch2a', 'img-ch2a', 'ph-ch2a')">
             </div>
 
-            <p class="mt-6">
-                But our deep sense of responsibility extended far beyond our iron gates. The Payyavoor-Kunnathur road that runs directly near our school is a bustling, often dangerous stretch. Years ago, a warning board had been placed there, but time and heavy rain had completely destroyed it.
+            <p class="mt-4">
+                But our deep sense of responsibility extended far beyond our iron gates. The Payyavoor-Kunnathur road that runs directly near our school is a bustling, often dangerous stretch.
             </p>
         </div>
         <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">7</span></div>
@@ -531,22 +494,18 @@
     <!-- PAGE 11: Chapter 2 Cont -->
     <div class="a4-page">
         <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 2</span></div>
-        <div class="flex-grow pt-8">
+        <div class="flex-grow flex flex-col justify-center">
             <h3 class="sub-heading mt-0">Protecting the Community</h3>
             <p>
                 Recognizing this danger to our little ones, on November 8th, stepping up as true community guardians, we utilized the project framework and funds to securely install a brand new, highly reflective Speed Restriction Warning Board right on the road. 
             </p>
 
-            <div class="photo-box full-page my-6" id="box-ch2b" onclick="triggerFile('input-ch2b')">
+            <div class="photo-box full-page my-4" id="box-ch2b" onclick="triggerFile('input-ch2b')">
                 <img id="img-ch2b" src="">
-                <div class="placeholder" id="ph-ch2b"><span class="text-5xl mb-2">🛑</span><span class="font-bold">Warning Board Installation</span></div>
-                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch2b', 'img-ch2b', 'ph-ch2b')">X</button>
+                <div class="placeholder" id="ph-ch2b"><span class="text-5xl mb-2">🛑</span><span class="font-bold">Warning Board</span></div>
+                <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-ch2b', 'img-ch2b', 'ph-ch2b')">X</button>
                 <input type="file" id="input-ch2b" accept="image/*" onchange="loadImage(event, 'box-ch2b', 'img-ch2b', 'ph-ch2b')">
             </div>
-            
-            <p class="mt-6">
-                This bright board was strategically placed in a manner that it not only effectively controls vehicle speeds near our own school, but it also immensely benefits the neighboring school located further down the road. It was our first tangible, structural contribution to the public infrastructure under this project.
-            </p>
         </div>
         <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">8</span></div>
     </div>
@@ -554,24 +513,24 @@
     <!-- PAGE 12: Chapter 3 -->
     <div class="a4-page">
         <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 3</span></div>
-        <div class="flex-grow pt-8">
-            <h2 class="chapter-title">Chapter 3: The Crown Jewel - 'Kuttikkavala'</h2>
+        <div class="flex-grow flex flex-col justify-center">
+            <h2 class="chapter-title">Chapter 3: The Crown Jewel</h2>
             <p class="drop-cap">
-                If there is one single aspect of our Surakshit Marg journey that fills our hearts with absolute joy, unparalleled pride, and constant amusement, it is the creation of <strong>'Kuttikkavala'</strong>—our very own, fully functional, beautifully colorful Children's Traffic Junction.
+                If there is one single aspect of our journey that fills our hearts with absolute joy, it is the creation of <strong>'Kuttikkavala'</strong>—our fully functional, beautifully colorful Children's Traffic Junction.
             </p>
             <p>
-                We wanted to move drastically beyond boring, theoretical blackboard lectures. How do you effectively teach a lively five-year-old about the absolute sanctity of a zebra crossing in a way they will never, ever forget? You put them in the driver's seat of a miniature car!
+                How do you effectively teach a lively five-year-old about the absolute sanctity of a zebra crossing in a way they will never forget? You put them in the driver's seat of a miniature car!
             </p>
 
-            <div class="photo-box large my-6" id="box-ch3a" onclick="triggerFile('input-ch3a')">
+            <div class="photo-box large my-4" id="box-ch3a" onclick="triggerFile('input-ch3a')">
                 <img id="img-ch3a" src="">
-                <div class="placeholder" id="ph-ch3a"><span class="text-5xl mb-2">🛣️</span><span class="font-bold">Kuttikkavala Wide Shot</span></div>
-                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch3a', 'img-ch3a', 'ph-ch3a')">X</button>
+                <div class="placeholder" id="ph-ch3a"><span class="text-4xl mb-2">🛣️</span><span class="font-bold">Kuttikkavala View</span></div>
+                <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-ch3a', 'img-ch3a', 'ph-ch3a')">X</button>
                 <input type="file" id="input-ch3a" accept="image/*" onchange="loadImage(event, 'box-ch3a', 'img-ch3a', 'ph-ch3a')">
             </div>
 
-            <p class="mt-6">
-                We purposefully selected a specific, wide area of our interlocked courtyard. Here, with incredible attention to engineering detail and scale perfectly suited for little legs, we constructed a highly realistic model road system right next to the Varna Koodaram. 
+            <p class="mt-4">
+                We constructed a highly realistic model road system right next to the Varna Koodaram. It features distinct, bright road markings and perfectly spaced black-and-white zebra crossings.
             </p>
         </div>
         <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">9</span></div>
@@ -580,27 +539,27 @@
     <!-- PAGE 13: Chapter 3 Cont -->
     <div class="a4-page">
         <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 3</span></div>
-        <div class="flex-grow pt-8">
+        <div class="flex-grow flex flex-col justify-center">
             <p>
-                The 'Kuttikkavala' is absolutely not just a few lines hastily painted on the ground. It features distinct, bright road markings, perfectly spaced black-and-white zebra crossings, proper lane dividers, and even real convex mirrors strategically placed at "blind curves". To make it truly immersive, we provided fun, miniature drivable vehicles.
+                It even has real convex mirrors strategically placed at "blind curves". To make it truly immersive, we provided fun, miniature drivable vehicles for the kids to navigate safely around each other.
             </p>
 
-            <div class="grid grid-cols-2 gap-6 my-8">
-                <div class="photo-box portrait w-full m-0 h-[320px]" id="box-ch3b" onclick="triggerFile('input-ch3b')">
+            <div class="grid grid-cols-2 gap-4 my-4">
+                <div class="photo-box portrait w-full m-0" id="box-ch3b" onclick="triggerFile('input-ch3b')">
                     <img id="img-ch3b" src=""><div class="placeholder" id="ph-ch3b"><span class="font-bold">Zebra Crossing</span></div>
-                    <div class="photo-overlay">Change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch3b', 'img-ch3b', 'ph-ch3b')">X</button>
+                    <div class="photo-overlay">Crop</div><button class="remove-btn" onclick="removeImage(event, 'box-ch3b', 'img-ch3b', 'ph-ch3b')">X</button>
                     <input type="file" id="input-ch3b" accept="image/*" onchange="loadImage(event, 'box-ch3b', 'img-ch3b', 'ph-ch3b')">
                 </div>
-                <div class="photo-box portrait w-full m-0 h-[320px]" id="box-ch3c" onclick="triggerFile('input-ch3c')">
+                <div class="photo-box portrait w-full m-0" id="box-ch3c" onclick="triggerFile('input-ch3c')">
                     <img id="img-ch3c" src=""><div class="placeholder" id="ph-ch3c"><span class="font-bold">Convex Mirror</span></div>
-                    <div class="photo-overlay">Change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch3c', 'img-ch3c', 'ph-ch3c')">X</button>
+                    <div class="photo-overlay">Crop</div><button class="remove-btn" onclick="removeImage(event, 'box-ch3c', 'img-ch3c', 'ph-ch3c')">X</button>
                     <input type="file" id="input-ch3c" accept="image/*" onchange="loadImage(event, 'box-ch3c', 'img-ch3c', 'ph-ch3c')">
                 </div>
             </div>
 
-            <h3 class="sub-heading">An Open-Air Classroom</h3>
+            <h3 class="sub-heading mt-0">An Open-Air Classroom</h3>
             <p>
-                Teachers rapidly began using this space for their daily lessons. Students practically learn complex concepts of measurements in Mathematics by measuring the road width. Chapters strictly related to transportation in EVS are no longer just read; they are physically enacted on our model road.
+                Teachers rapidly began using this space for daily lessons. Students practically learn complex concepts of measurements in Mathematics by measuring the road width!
             </p>
         </div>
         <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">10</span></div>
@@ -609,15 +568,15 @@
     <!-- PAGE 14: Chapter 3 Full Page -->
     <div class="a4-page">
         <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 3</span></div>
-        <div class="flex-grow pt-8">
+        <div class="flex-grow flex flex-col justify-center">
             <p>
-                This practical, hands-on experience is entirely invaluable. It teaches them traffic rules through muscle memory and lived experience. The astounding success of 'Kuttikkavala' caught fire in the local media. We began receiving waves of visitors from other regional schools who wanted to see this marvel. 
+                This practical, hands-on experience is entirely invaluable. It teaches them traffic rules through muscle memory and lived experience. The astounding success of 'Kuttikkavala' caught fire in the local media. 
             </p>
 
-            <div class="photo-box full-page mt-6" style="height: 520px;" id="box-ch3d" onclick="triggerFile('input-ch3d')">
+            <div class="photo-box full-page mt-4" id="box-ch3d" onclick="triggerFile('input-ch3d')">
                 <img id="img-ch3d" src="">
                 <div class="placeholder" id="ph-ch3d"><span class="text-5xl mb-2">🧑‍🏫</span><span class="font-bold">Outdoor Class in Session</span></div>
-                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch3d', 'img-ch3d', 'ph-ch3d')">X</button>
+                <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-ch3d', 'img-ch3d', 'ph-ch3d')">X</button>
                 <input type="file" id="input-ch3d" accept="image/*" onchange="loadImage(event, 'box-ch3d', 'img-ch3d', 'ph-ch3d')">
             </div>
         </div>
@@ -627,24 +586,24 @@
     <!-- PAGE 15: Chapter 4 -->
     <div class="a4-page">
         <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 4</span></div>
-        <div class="flex-grow pt-8">
+        <div class="flex-grow flex flex-col justify-center">
             <h2 class="chapter-title">Chapter 4: Pledges & Signatures</h2>
             <p class="drop-cap">
-                Commitment is drastically stronger when it is declared aloud and signed in ink. To ensure the vital message of road safety lingered in living rooms and inside vehicles long after school hours ended, we boldly initiated the Road Safety Pledge campaign.
+                Commitment is drastically stronger when it is declared aloud and signed in ink. To ensure the vital message of road safety lingered in living rooms, we boldly initiated the Road Safety Pledge campaign.
             </p>
             <p>
-                We carefully designed and printed beautiful, high-quality, colorful Road Safety Pledge Cards. These weren't mere pieces of paper; they contained essential traffic concepts, emergency numbers, and solemn promises written in a way children could understand. Every single little student received one.
+                We carefully designed and printed beautiful, high-quality, colorful Road Safety Pledge Cards. These contained essential traffic concepts, emergency numbers, and solemn promises.
             </p>
 
-            <div class="photo-box large my-8" id="box-ch4a" onclick="triggerFile('input-ch4a')">
+            <div class="photo-box large my-4" id="box-ch4a" onclick="triggerFile('input-ch4a')">
                 <img id="img-ch4a" src="">
-                <div class="placeholder" id="ph-ch4a"><span class="text-5xl mb-2">📜</span><span class="font-bold">Pledge Cards</span></div>
-                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch4a', 'img-ch4a', 'ph-ch4a')">X</button>
+                <div class="placeholder" id="ph-ch4a"><span class="text-4xl mb-2">📜</span><span class="font-bold">Pledge Cards</span></div>
+                <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-ch4a', 'img-ch4a', 'ph-ch4a')">X</button>
                 <input type="file" id="input-ch4a" accept="image/*" onchange="loadImage(event, 'box-ch4a', 'img-ch4a', 'ph-ch4a')">
             </div>
 
-            <p class="mt-6">
-                But we absolutely didn't stop at our own students. We handed these cards out as sweet gifts to our school van and bus drivers. We stepped out of our comfort zone and presented them to random drivers passing by our school, and to every guest who visited our campus.
+            <p class="mt-4">
+                We absolutely didn't stop at our own students. We handed these cards out as sweet gifts to our school van and bus drivers, and to random drivers passing by our school.
             </p>
         </div>
         <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">12</span></div>
@@ -653,21 +612,21 @@
     <!-- PAGE 16: Chapter 4 Cont -->
     <div class="a4-page">
         <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 4</span></div>
-        <div class="flex-grow pt-8">
+        <div class="flex-grow flex flex-col justify-center">
             <h3 class="sub-heading mt-0">Reading the Language of the Road</h3>
             <p>
-                The absolute foundation of traffic literacy is understanding road signs. They are the universal language of safety, spoken identically across the globe. To ensure our young students became utterly fluent in this language, we made a substantial permanent investment.
+                The absolute foundation of traffic literacy is understanding road signs. They are the universal language of safety. To ensure our young students became utterly fluent in this language, we made a substantial permanent investment.
             </p>
 
-            <div class="photo-box landscape my-8" style="height: 380px;" id="box-ch4b" onclick="triggerFile('input-ch4b')">
+            <div class="photo-box landscape my-4" id="box-ch4b" onclick="triggerFile('input-ch4b')">
                 <img id="img-ch4b" src="">
                 <div class="placeholder" id="ph-ch4b"><span class="text-5xl mb-2">🚸</span><span class="font-bold">Permanent Wall Signs</span></div>
-                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch4b', 'img-ch4b', 'ph-ch4b')">X</button>
+                <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-ch4b', 'img-ch4b', 'ph-ch4b')">X</button>
                 <input type="file" id="input-ch4b" accept="image/*" onchange="loadImage(event, 'box-ch4b', 'img-ch4b', 'ph-ch4b')">
             </div>
 
-            <p class="mt-8">
-                Through high-quality aluminum fabrication, we created and permanently displayed various essential road traffic signs across the school premises. Teachers regularly conduct identification games with these signs. This constant visual reinforcement ensures they can instantly, without hesitation, recognize a "No Entry" or "Pedestrian Crossing" sign anywhere in the real world.
+            <p class="mt-4">
+                Through high-quality aluminum fabrication, we created and permanently displayed various essential road traffic signs across the school premises. Teachers regularly conduct identification games with these signs.
             </p>
         </div>
         <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">13</span></div>
@@ -676,24 +635,21 @@
     <!-- PAGE 17: Chapter 5 -->
     <div class="a4-page">
         <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 5</span></div>
-        <div class="flex-grow pt-8">
+        <div class="flex-grow flex flex-col justify-center">
             <h2 class="chapter-title">Chapter 5: Art & Collaboration</h2>
             <p class="drop-cap">
-                The Surakshit Marg initiative was deliberately not an isolated school bubble; it was designed as a powerful magnet for regional collaboration. One of our most phenomenally fruitful partnerships was with the highly active NSS (National Service Scheme) Unit of the PKM College of Education, Madampam.
-            </p>
-            <p>
-                During their intense seven-day community camp, the NSS volunteers dedicated an entire day to exclusively visiting our school. Our Headmaster, Sri E. P. Jayaprakash, conducted a highly detailed special seminar for the volunteers, explicitly detailing our Surakshit Marg methodology.
+                The Surakshit Marg initiative was designed as a powerful magnet for regional collaboration. One of our most phenomenally fruitful partnerships was with the highly active NSS Unit of the PKM College of Education, Madampam.
             </p>
 
-            <div class="photo-box large my-8" id="box-ch5a" onclick="triggerFile('input-ch5a')">
+            <div class="photo-box large my-4" id="box-ch5a" onclick="triggerFile('input-ch5a')">
                 <img id="img-ch5a" src="">
                 <div class="placeholder" id="ph-ch5a"><span class="text-5xl mb-2">🤝</span><span class="font-bold">NSS Seminar</span></div>
-                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch5a', 'img-ch5a', 'ph-ch5a')">X</button>
+                <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-ch5a', 'img-ch5a', 'ph-ch5a')">X</button>
                 <input type="file" id="input-ch5a" accept="image/*" onchange="loadImage(event, 'box-ch5a', 'img-ch5a', 'ph-ch5a')">
             </div>
             
-            <p class="mt-6">
-                Deeply inspired by our foundational work, the NSS volunteers decided they needed to leave a permanent, visible mark on our campus walls.
+            <p class="mt-4">
+                During their intense community camp, the NSS volunteers dedicated a day to visiting our school. Deeply inspired by our foundational work, they decided to leave a permanent, visible mark on our campus walls.
             </p>
         </div>
         <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">14</span></div>
@@ -702,20 +658,20 @@
     <!-- PAGE 18: Chapter 5 Cont -->
     <div class="a4-page">
         <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 5</span></div>
-        <div class="flex-grow pt-8">
+        <div class="flex-grow flex flex-col justify-center">
             <p>
-                Over the following days, the immensely talented artists among the volunteers miraculously transformed the blank exterior walls of our classrooms into vibrant, stunning murals depicting essential traffic rules and complex road safety scenarios. 
+                Over the following days, the immensely talented artists among the volunteers miraculously transformed the blank exterior walls of our classrooms into vibrant, stunning murals depicting essential traffic rules. 
             </p>
 
-            <div class="grid grid-cols-2 gap-6 my-8">
-                <div class="photo-box portrait w-full m-0 h-[320px]" id="box-ch5b" onclick="triggerFile('input-ch5b')">
+            <div class="grid grid-cols-2 gap-4 my-4">
+                <div class="photo-box portrait w-full m-0" id="box-ch5b" onclick="triggerFile('input-ch5b')">
                     <img id="img-ch5b" src=""><div class="placeholder" id="ph-ch5b"><span class="font-bold">Painting Process</span></div>
-                    <div class="photo-overlay">Change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch5b', 'img-ch5b', 'ph-ch5b')">X</button>
+                    <div class="photo-overlay">Crop</div><button class="remove-btn" onclick="removeImage(event, 'box-ch5b', 'img-ch5b', 'ph-ch5b')">X</button>
                     <input type="file" id="input-ch5b" accept="image/*" onchange="loadImage(event, 'box-ch5b', 'img-ch5b', 'ph-ch5b')">
                 </div>
-                <div class="photo-box portrait w-full m-0 h-[320px]" id="box-ch5c" onclick="triggerFile('input-ch5c')">
+                <div class="photo-box portrait w-full m-0" id="box-ch5c" onclick="triggerFile('input-ch5c')">
                     <img id="img-ch5c" src=""><div class="placeholder" id="ph-ch5c"><span class="font-bold">Completed Mural</span></div>
-                    <div class="photo-overlay">Change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch5c', 'img-ch5c', 'ph-ch5c')">X</button>
+                    <div class="photo-overlay">Crop</div><button class="remove-btn" onclick="removeImage(event, 'box-ch5c', 'img-ch5c', 'ph-ch5c')">X</button>
                     <input type="file" id="input-ch5c" accept="image/*" onchange="loadImage(event, 'box-ch5c', 'img-ch5c', 'ph-ch5c')">
                 </div>
             </div>
@@ -730,21 +686,21 @@
     <!-- PAGE 19: Chapter 5 Art Comp -->
     <div class="a4-page">
         <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 5</span></div>
-        <div class="flex-grow pt-8">
+        <div class="flex-grow flex flex-col justify-center">
             <h3 class="sub-heading mt-0">Colors of Safety</h3>
             <p>
-                To effectively harness our own students' burgeoning creativity, we organized a special, highly anticipated Road Safety Drawing Competition on January 28th. The competition was enthusiastically opened to all students, ranging from the tiny tots in pre-primary all the way up to the fourth standard.
+                To effectively harness our own students' burgeoning creativity, we organized a special, highly anticipated Road Safety Drawing Competition on January 28th. The competition was enthusiastically opened to all students.
             </p>
 
-            <div class="photo-box full-page my-6" id="box-ch5d" onclick="triggerFile('input-ch5d')">
+            <div class="photo-box full-page my-4" id="box-ch5d" onclick="triggerFile('input-ch5d')">
                 <img id="img-ch5d" src="">
                 <div class="placeholder" id="ph-ch5d"><span class="text-5xl mb-2">🎨</span><span class="font-bold">Drawing Competition</span></div>
-                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch5d', 'img-ch5d', 'ph-ch5d')">X</button>
+                <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-ch5d', 'img-ch5d', 'ph-ch5d')">X</button>
                 <input type="file" id="input-ch5d" accept="image/*" onchange="loadImage(event, 'box-ch5d', 'img-ch5d', 'ph-ch5d')">
             </div>
 
-            <p class="mt-8">
-                Watching the little ones mentally translate their understanding of traffic rules onto paper with wax crayons and watercolors was a deeply moving experience. The best artworks were carefully curated into a beautiful school exhibition, and highly attractive prizes were awarded.
+            <p class="mt-4">
+                Watching the little ones mentally translate their understanding of traffic rules onto paper with wax crayons and watercolors was a deeply moving experience.
             </p>
         </div>
         <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">16</span></div>
@@ -753,26 +709,22 @@
     <!-- PAGE 20: Chapter 6 -->
     <div class="a4-page">
         <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 6</span></div>
-        <div class="flex-grow pt-8">
+        <div class="flex-grow flex flex-col justify-center">
             <h2 class="chapter-title">Chapter 6: Action & Drama</h2>
             <p class="drop-cap">
                 Information is retained best when it is experienced with genuine emotion and physical action. As part of the prestigious National Road Safety Month observances, our school buzzed with theatrical, dramatic energy.
             </p>
-            <h3 class="sub-heading">The Safe Life Skit</h3>
+            <h3 class="sub-heading mt-0">The Safe Life Skit</h3>
             <p>
-                On December 2nd, the brave third-standard students aggressively took to the 'Kuttikkavala'. Based entirely on the "Safe Life" chapter from their EVS syllabus, the children brilliantly wrote, directed, and performed a highly engaging skit about navigating dangerous traffic safely.
+                On December 2nd, the brave third-standard students aggressively took to the 'Kuttikkavala'. Based entirely on the "Safe Life" chapter from their EVS syllabus, they brilliantly performed an engaging skit.
             </p>
 
-            <div class="photo-box large my-8" id="box-ch6a" onclick="triggerFile('input-ch6a')">
+            <div class="photo-box large my-4" id="box-ch6a" onclick="triggerFile('input-ch6a')">
                 <img id="img-ch6a" src="">
                 <div class="placeholder" id="ph-ch6a"><span class="text-5xl mb-2">🎭</span><span class="font-bold">Drama / Skit</span></div>
-                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch6a', 'img-ch6a', 'ph-ch6a')">X</button>
+                <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-ch6a', 'img-ch6a', 'ph-ch6a')">X</button>
                 <input type="file" id="input-ch6a" accept="image/*" onchange="loadImage(event, 'box-ch6a', 'img-ch6a', 'ph-ch6a')">
             </div>
-
-            <p class="mt-6">
-                Utilizing the miniature road, the painted lines, and the signs as their highly realistic set, they acted out complex scenarios of crossing the road safely and dealing with reckless drivers. 
-            </p>
         </div>
         <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">17</span></div>
     </div>
@@ -780,21 +732,21 @@
     <!-- PAGE 21: Chapter 6 Candy -->
     <div class="a4-page">
         <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 6</span></div>
-        <div class="flex-grow pt-8">
+        <div class="flex-grow flex flex-col justify-center">
             <h3 class="sub-heading mt-0">"A Candy for a Helmet"</h3>
             <p>
-                Of all our many initiatives, absolutely none captured the public's imagination and the media's lenses quite like our bold "A Candy for a Helmet" campaign. Led fiercely by our teachers, the dedicated Safety Club members lined up safely by the side of the busy main road right in front of our school. 
+                Of all our many initiatives, absolutely none captured the public's imagination and the media's lenses quite like our bold "A Candy for a Helmet" campaign. Led fiercely by our teachers, the Safety Club lined up by the busy main road.
             </p>
 
-            <div class="photo-box full-page my-6" id="box-ch6b" onclick="triggerFile('input-ch6b')">
+            <div class="photo-box full-page my-4" id="box-ch6b" onclick="triggerFile('input-ch6b')">
                 <img id="img-ch6b" src="">
                 <div class="placeholder" id="ph-ch6b"><span class="text-5xl mb-2">🍬</span><span class="font-bold">Offering Candy</span></div>
-                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch6b', 'img-ch6b', 'ph-ch6b')">X</button>
+                <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-ch6b', 'img-ch6b', 'ph-ch6b')">X</button>
                 <input type="file" id="input-ch6b" accept="image/*" onchange="loadImage(event, 'box-ch6b', 'img-ch6b', 'ph-ch6b')">
             </div>
 
-            <p class="mt-6">
-                Every single time a two-wheeler passed by with the rider securely wearing a helmet, or a car passed with the driver safely wearing a seatbelt, our enthusiastic students would gesture them to stop. They would then offer the bewildered but happy driver a sweet candy with a massive, bright smile.
+            <p class="mt-4">
+                Every single time a two-wheeler passed by with the rider securely wearing a helmet, our enthusiastic students would gesture them to stop and offer a sweet candy with a massive, bright smile.
             </p>
         </div>
         <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">18</span></div>
@@ -803,20 +755,20 @@
     <!-- PAGE 22: Chapter 6 Candy 2 -->
     <div class="a4-page">
         <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 6</span></div>
-        <div class="flex-grow pt-8">
+        <div class="flex-grow flex flex-col justify-center">
             <p>
-                For those unfortunate few who were found violating the rules, there was absolutely no anger, only polite, firm education. The students respectfully handed them a Road Safety Pledge card, gently looking them in the eye and requesting them to protect their own lives. 
+                For those unfortunate few who were found violating the rules, there was absolutely no anger, only polite, firm education. The students respectfully handed them a Road Safety Pledge card, gently requesting them to protect their own lives. 
             </p>
 
-            <div class="photo-box landscape my-8" style="height: 350px;" id="box-ch6c" onclick="triggerFile('input-ch6c')">
+            <div class="photo-box landscape my-4" id="box-ch6c" onclick="triggerFile('input-ch6c')">
                 <img id="img-ch6c" src="">
                 <div class="placeholder" id="ph-ch6c"><span class="text-5xl mb-2">👮</span><span class="font-bold">Police at Campaign</span></div>
-                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch6c', 'img-ch6c', 'ph-ch6c')">X</button>
+                <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-ch6c', 'img-ch6c', 'ph-ch6c')">X</button>
                 <input type="file" id="input-ch6c" accept="image/*" onchange="loadImage(event, 'box-ch6c', 'img-ch6c', 'ph-ch6c')">
             </div>
 
-            <p class="mt-8">
-                The highly visible event was officially inaugurated by Payyavoor SI Tomy Thomas. The shocking sight of tiny children teaching grown adults about the critical importance of helmets and seatbelts was powerful. It resonated deeply with the riders and garnered immense news coverage.
+            <p class="mt-4">
+                The highly visible event was officially inaugurated by Payyavoor SI Tomy Thomas. The shocking sight of tiny children teaching grown adults about the critical importance of helmets was powerful.
             </p>
         </div>
         <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">19</span></div>
@@ -825,20 +777,20 @@
     <!-- PAGE 23: Chapter 7 -->
     <div class="a4-page">
         <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 7</span></div>
-        <div class="flex-grow pt-8">
+        <div class="flex-grow flex flex-col justify-center">
             <h2 class="chapter-title">Chapter 7: Community Engagement</h2>
             <p class="drop-cap">
-                The final, culminating phase of our intense year-long project involved stepping entirely out of our comfort zone, beyond the school gates, and taking direct civic action. We wanted our children to deeply understand how civil society, local infrastructure, and law enforcement operate together.
+                The final, culminating phase of our intense year-long project involved stepping entirely out of our comfort zone, beyond the school gates, and taking direct civic action.
             </p>
-            <h3 class="sub-heading">Restoring the Warnings</h3>
+            <h3 class="sub-heading mt-0">Restoring the Warnings</h3>
             <p>
-                The main Payyavoor-Kunnathur road had several old road warning signs that had faded to the point of being completely invisible. Armed heavily with cleaning supplies and brand new, highly reflective stickers, the students and teachers scrubbed the old boards clean and meticulously applied the new warning stickers.
+                The main Payyavoor-Kunnathur road had several old road warning signs that had faded. Armed heavily with cleaning supplies and brand new, highly reflective stickers, the students and teachers scrubbed the old boards clean.
             </p>
 
-            <div class="photo-box large my-8" id="box-ch7a" onclick="triggerFile('input-ch7a')">
+            <div class="photo-box large my-4" id="box-ch7a" onclick="triggerFile('input-ch7a')">
                 <img id="img-ch7a" src="">
                 <div class="placeholder" id="ph-ch7a"><span class="text-5xl mb-2">🧽</span><span class="font-bold">Cleaning Boards</span></div>
-                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch7a', 'img-ch7a', 'ph-ch7a')">X</button>
+                <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-ch7a', 'img-ch7a', 'ph-ch7a')">X</button>
                 <input type="file" id="input-ch7a" accept="image/*" onchange="loadImage(event, 'box-ch7a', 'img-ch7a', 'ph-ch7a')">
             </div>
         </div>
@@ -848,24 +800,21 @@
     <!-- PAGE 24: Chapter 7 Police -->
     <div class="a4-page">
         <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Chapter 7</span></div>
-        <div class="flex-grow pt-8">
+        <div class="flex-grow flex flex-col justify-center">
             <h3 class="sub-heading mt-0">A Day with the Police</h3>
             <p>
-                To completely demystify law enforcement and remove the inherent fear of police from young minds, we organized an official field trip for the Safety Club members to the Payyavoor Police Station. It was an unprecedented, historic event for our school.
-            </p>
-            <p>
-                The children were welcomed with incredible warmth. They sat down confidently for a formal, structured interview with the Sub-Inspector. With professional notepads in hand, these young, sharp reporters asked pressing questions about road accidents and traffic laws.
+                To completely demystify law enforcement and remove the inherent fear of police from young minds, we organized an official field trip for the Safety Club members to the Payyavoor Police Station.
             </p>
 
-            <div class="photo-box full-page my-6" style="height: 400px;" id="box-ch7b" onclick="triggerFile('input-ch7b')">
+            <div class="photo-box full-page my-4" id="box-ch7b" onclick="triggerFile('input-ch7b')">
                 <img id="img-ch7b" src="">
                 <div class="placeholder" id="ph-ch7b"><span class="text-5xl mb-2">📝</span><span class="font-bold">Police Interview</span></div>
-                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-ch7b', 'img-ch7b', 'ph-ch7b')">X</button>
+                <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-ch7b', 'img-ch7b', 'ph-ch7b')">X</button>
                 <input type="file" id="input-ch7b" accept="image/*" onchange="loadImage(event, 'box-ch7b', 'img-ch7b', 'ph-ch7b')">
             </div>
 
-            <p class="mt-6">
-                But they absolutely weren't just there to ask questions; they came with a very specific civic purpose. The students officially submitted a formal, written petition to the police force, formally requesting the immediate installation of a new, larger warning board in front of the school zone. The officers celebrated this amazing, historic moment by sharing sweets with the children.
+            <p class="mt-4">
+                The students officially submitted a formal, written petition to the police force, formally requesting the immediate installation of a new warning board in front of the school zone.
             </p>
         </div>
         <div class="page-footer"><span>Project Report 2025-26</span><span class="page-number">21</span></div>
@@ -874,23 +823,20 @@
     <!-- PAGE 25: Conclusion -->
     <div class="a4-page">
         <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Conclusion</span></div>
-        <div class="flex-grow pt-8">
+        <div class="flex-grow flex flex-col justify-center">
             <h2 class="chapter-title">Conclusion: The Road Ahead</h2>
             <p class="drop-cap">
                 As we meticulously compile the final pages of this report, we sit back and reflect heavily on the monumental, undeniable shift that has occurred within G.L.P.S. Chamakkal and the surrounding Payyavoor community. What started simply as a mandate under the 'Surakshit Marg' project evolved rapidly into a passionate, fiery movement led by our youngest, bravest citizens.
             </p>
-            <p>
-                Through a diverse, non-stop array of activities—from the highly immersive play at 'Kuttikkavala' to the bold, direct "Candy for a Helmet" campaign, from vibrant art on the walls to formal petitions at the police station—we have proven beyond a shadow of a doubt that no school is too small to make a massive, life-altering impact. 
-            </p>
 
-            <div class="photo-box large my-8" id="box-conc" onclick="triggerFile('input-conc')">
+            <div class="photo-box large my-4" id="box-conc" onclick="triggerFile('input-conc')">
                 <img id="img-conc" src="">
                 <div class="placeholder" id="ph-conc"><span class="text-5xl mb-2">🌟</span><span class="font-bold">Final Group Shot</span></div>
-                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-conc', 'img-conc', 'ph-conc')">X</button>
+                <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-conc', 'img-conc', 'ph-conc')">X</button>
                 <input type="file" id="input-conc" accept="image/*" onchange="loadImage(event, 'box-conc', 'img-conc', 'ph-conc')">
             </div>
 
-            <p class="mt-6">
+            <p class="mt-4">
                 None of this miracle would have been remotely possible without the guiding light of the Surakshit Marg project team. To the Kuttukaran Group, the SCMS Institute, the local police force, our incredibly hardworking teachers, dedicated parents, and most importantly, our wonderful 87 students: Thank you. The journey for safer roads doesn't end here; it has only just begun.
             </p>
         </div>
@@ -900,28 +846,28 @@
     <!-- PAGE 26: Gallery -->
     <div class="a4-page">
         <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Gallery</span></div>
-        <div class="flex-grow pt-8">
+        <div class="flex-grow flex flex-col justify-center">
             <h2 class="chapter-title text-center" style="border:none;">Memories in Pictures</h2>
             
-            <div class="grid grid-cols-2 gap-4 mt-8">
-                <div class="photo-box portrait w-full m-0 h-[380px]" id="box-g1" onclick="triggerFile('input-g1')">
+            <div class="grid grid-cols-2 gap-4 mt-4">
+                <div class="photo-box portrait w-full m-0 h-[340px]" id="box-g1" onclick="triggerFile('input-g1')">
                     <img id="img-g1" src=""><div class="placeholder" id="ph-g1"><span class="font-bold">Gallery Photo 1</span></div>
-                    <div class="photo-overlay">Change</div><button class="remove-btn" onclick="removeImage(event, 'box-g1', 'img-g1', 'ph-g1')">X</button>
+                    <div class="photo-overlay">Crop</div><button class="remove-btn" onclick="removeImage(event, 'box-g1', 'img-g1', 'ph-g1')">X</button>
                     <input type="file" id="input-g1" accept="image/*" onchange="loadImage(event, 'box-g1', 'img-g1', 'ph-g1')">
                 </div>
-                <div class="photo-box portrait w-full m-0 h-[380px]" id="box-g2" onclick="triggerFile('input-g2')">
+                <div class="photo-box portrait w-full m-0 h-[340px]" id="box-g2" onclick="triggerFile('input-g2')">
                     <img id="img-g2" src=""><div class="placeholder" id="ph-g2"><span class="font-bold">Gallery Photo 2</span></div>
-                    <div class="photo-overlay">Change</div><button class="remove-btn" onclick="removeImage(event, 'box-g2', 'img-g2', 'ph-g2')">X</button>
+                    <div class="photo-overlay">Crop</div><button class="remove-btn" onclick="removeImage(event, 'box-g2', 'img-g2', 'ph-g2')">X</button>
                     <input type="file" id="input-g2" accept="image/*" onchange="loadImage(event, 'box-g2', 'img-g2', 'ph-g2')">
                 </div>
-                <div class="photo-box portrait w-full m-0 h-[380px]" id="box-g3" onclick="triggerFile('input-g3')">
+                <div class="photo-box portrait w-full m-0 h-[340px]" id="box-g3" onclick="triggerFile('input-g3')">
                     <img id="img-g3" src=""><div class="placeholder" id="ph-g3"><span class="font-bold">Gallery Photo 3</span></div>
-                    <div class="photo-overlay">Change</div><button class="remove-btn" onclick="removeImage(event, 'box-g3', 'img-g3', 'ph-g3')">X</button>
+                    <div class="photo-overlay">Crop</div><button class="remove-btn" onclick="removeImage(event, 'box-g3', 'img-g3', 'ph-g3')">X</button>
                     <input type="file" id="input-g3" accept="image/*" onchange="loadImage(event, 'box-g3', 'img-g3', 'ph-g3')">
                 </div>
-                <div class="photo-box portrait w-full m-0 h-[380px]" id="box-g4" onclick="triggerFile('input-g4')">
+                <div class="photo-box portrait w-full m-0 h-[340px]" id="box-g4" onclick="triggerFile('input-g4')">
                     <img id="img-g4" src=""><div class="placeholder" id="ph-g4"><span class="font-bold">Gallery Photo 4</span></div>
-                    <div class="photo-overlay">Change</div><button class="remove-btn" onclick="removeImage(event, 'box-g4', 'img-g4', 'ph-g4')">X</button>
+                    <div class="photo-overlay">Crop</div><button class="remove-btn" onclick="removeImage(event, 'box-g4', 'img-g4', 'ph-g4')">X</button>
                     <input type="file" id="input-g4" accept="image/*" onchange="loadImage(event, 'box-g4', 'img-g4', 'ph-g4')">
                 </div>
             </div>
@@ -932,20 +878,20 @@
     <!-- PAGE 27: Media Gallery -->
     <div class="a4-page">
         <div class="page-header"><span>G.L.P.S. Chamakkal</span><span>Media</span></div>
-        <div class="flex-grow pt-8">
+        <div class="flex-grow flex flex-col justify-center">
             <h2 class="chapter-title text-center" style="border:none;">In The News</h2>
             
-            <div class="photo-box full-page mt-8" style="height: 380px;" id="box-n1" onclick="triggerFile('input-n1')">
+            <div class="photo-box full-page mt-4" style="height: 340px;" id="box-n1" onclick="triggerFile('input-n1')">
                 <img id="img-n1" src="">
                 <div class="placeholder" id="ph-n1"><span class="text-5xl mb-2">📰</span><span class="font-bold">Newspaper Clipping 1</span></div>
-                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-n1', 'img-n1', 'ph-n1')">X</button>
+                <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-n1', 'img-n1', 'ph-n1')">X</button>
                 <input type="file" id="input-n1" accept="image/*" onchange="loadImage(event, 'box-n1', 'img-n1', 'ph-n1')">
             </div>
             
-            <div class="photo-box full-page mt-8" style="height: 380px;" id="box-n2" onclick="triggerFile('input-n2')">
+            <div class="photo-box full-page mt-4" style="height: 340px;" id="box-n2" onclick="triggerFile('input-n2')">
                 <img id="img-n2" src="">
                 <div class="placeholder" id="ph-n2"><span class="text-5xl mb-2">📰</span><span class="font-bold">Newspaper Clipping 2</span></div>
-                <div class="photo-overlay">Click to change</div><button class="remove-btn" onclick="removeImage(event, 'box-n2', 'img-n2', 'ph-n2')">X</button>
+                <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-n2', 'img-n2', 'ph-n2')">X</button>
                 <input type="file" id="input-n2" accept="image/*" onchange="loadImage(event, 'box-n2', 'img-n2', 'ph-n2')">
             </div>
         </div>
@@ -957,24 +903,24 @@
         <div class="cover-border">
             <div class="cover-inner justify-center items-center" style="background-color: #166534;">
                 
-                <div class="photo-box portrait" style="height: 350px; width: 350px; border-radius: 50%; border: 6px solid white; background-color: white; overflow: hidden; margin-top: 4rem; box-shadow: 0 10px 25px rgba(0,0,0,0.5);" id="box-back" onclick="triggerFile('input-back')">
+                <div class="photo-box portrait" style="height: 300px; width: 300px; border-radius: 50%; border: 6px solid white; background-color: white; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.5);" id="box-back" onclick="triggerFile('input-back')">
                     <img id="img-back" src="">
                     <div class="placeholder" id="ph-back"><span class="text-6xl mb-2">😊</span><span class="font-bold text-maroon-700 mt-2">Closing Image</span></div>
-                    <div class="photo-overlay">Change</div><button class="remove-btn" onclick="removeImage(event, 'box-back', 'img-back', 'ph-back')">X</button>
+                    <div class="photo-overlay">Crop Photo</div><button class="remove-btn" onclick="removeImage(event, 'box-back', 'img-back', 'ph-back')">X</button>
                     <input type="file" id="input-back" accept="image/*" onchange="loadImage(event, 'box-back', 'img-back', 'ph-back')">
                 </div>
 
-                <h2 class="text-white text-[45pt] font-extrabold kid-font mt-12 mb-2 tracking-wide drop-shadow-md">G.L.P.S. Chamakkal</h2>
-                <p class="text-yellow-300 text-[22pt] font-serif italic mb-12 drop-shadow">Building a Safer, Brighter Tomorrow</p>
+                <h2 class="text-white text-[38pt] sm:text-[45pt] font-extrabold kid-font mt-10 mb-2 tracking-wide drop-shadow-md text-center">G.L.P.S. Chamakkal</h2>
+                <p class="text-yellow-300 text-[18pt] sm:text-[22pt] font-serif italic mb-10 drop-shadow text-center">Building a Safer, Brighter Tomorrow</p>
                 
-                <div class="text-white font-bold tracking-[4px] uppercase text-xl mt-auto kid-font border-t-2 border-white/50 pt-4 w-1/2 mx-auto text-center mb-8">
+                <div class="text-white font-bold tracking-[4px] uppercase text-xl mt-auto kid-font border-t-2 border-white/50 pt-4 w-3/4 sm:w-1/2 mx-auto text-center mb-6">
                     Thank You
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- CROPPER JS LOGIC -->
+    <!-- SOLID, UNBREAKABLE CROPPER LOGIC -->
     <script>
         let cropper = null;
         let activeTargets = { boxId: null, imgId: null, phId: null };
@@ -986,30 +932,39 @@
         function loadImage(event, boxId, imgId, phId) {
             const file = event.target.files[0];
             if (file) {
-                // Store active targets for saving later
                 activeTargets = { boxId, imgId, phId };
                 
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    // Open Modal
-                    document.getElementById('cropperModal').style.display = 'flex';
+                    
+                    // Display the solid modal block
+                    const modal = document.getElementById('solidCropOverlay');
+                    modal.style.display = 'block'; 
+                    document.body.style.overflow = 'hidden'; // Stop background scrolling
+                    
                     const imageElement = document.getElementById('imageToCrop');
                     imageElement.src = e.target.result;
                     
-                    // Calculate exact Aspect Ratio of the target box on page
                     const targetBox = document.getElementById(boxId);
-                    // Handle the perfectly circular back cover differently (1:1 ratio)
                     const isCircle = boxId === 'box-back'; 
                     const targetRatio = isCircle ? 1 : (targetBox.clientWidth / targetBox.clientHeight);
 
-                    // Initialize Cropper.js
                     if (cropper) { cropper.destroy(); }
+                    
+                    // Initialize cropper with strict boundaries
                     cropper = new Cropper(imageElement, {
                         aspectRatio: targetRatio,
-                        viewMode: 1,
-                        dragMode: 'move', // Default to panning
-                        background: false,
-                        zoomable: true
+                        viewMode: 1, // Restrict crop box to not exceed canvas
+                        dragMode: 'move', 
+                        background: false, // Turn off checkerboard to use our solid black background
+                        zoomable: true,
+                        restore: false,
+                        guides: true,
+                        center: true,
+                        highlight: false,
+                        cropBoxMovable: false,
+                        cropBoxResizable: false,
+                        toggleDragModeOnDblclick: false,
                     });
                 }
                 reader.readAsDataURL(file); 
@@ -1019,7 +974,6 @@
         function saveCrop() {
             if (!cropper) return;
             
-            // Get cropped image data
             const canvas = cropper.getCroppedCanvas({
                 imageSmoothingEnabled: true,
                 imageSmoothingQuality: 'high'
@@ -1027,7 +981,6 @@
             
             const croppedDataUrl = canvas.toDataURL('image/jpeg', 0.9);
             
-            // Apply to target
             const imgElement = document.getElementById(activeTargets.imgId);
             imgElement.src = croppedDataUrl;
             imgElement.style.display = 'block';
@@ -1036,19 +989,19 @@
             document.getElementById(activeTargets.boxId).classList.add('has-image');
             document.getElementById(activeTargets.boxId).style.borderStyle = 'none';
             
-            // Close modal
             closeModal();
         }
 
         function cancelCrop() {
-            // Clear the file input so they can re-select the same file if needed
             const inputId = activeTargets.boxId.replace('box-', 'input-');
             document.getElementById(inputId).value = "";
             closeModal();
         }
 
         function closeModal() {
-            document.getElementById('cropperModal').style.display = 'none';
+            const modal = document.getElementById('solidCropOverlay');
+            modal.style.display = 'none';
+            document.body.style.overflow = ''; 
             if (cropper) {
                 cropper.destroy();
                 cropper = null;
@@ -1070,7 +1023,7 @@
         }
 
         function prepareAndPrint() {
-            alert("PDF PRINTING CHECKLIST:\n\n1. Destination: 'Save as PDF'\n2. Paper Size: 'A4'\n3. Margins: Set to 'Default' or 'None'\n4. MUST CHECK: 'Background graphics' (This makes the borders and colors visible!)");
+            alert("PDF PRINTING CHECKLIST:\n\n1. Destination: 'Save as PDF'\n2. Paper Size: 'A4'\n3. Margins: 'None' or 'Default'\n4. MUST CHECK: 'Background graphics' (This makes the borders and colors visible!)");
             window.print();
         }
     </script>
