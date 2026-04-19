@@ -6,19 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Surakshit Marg 2025-26 - G.L.P.S. Chamakkal</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Cropper.js for Image Cropping -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+
     <style>
         :root {
-            --maroon: #3d0c10; /* Darker, more professional maroon */
-            --green: #15803d; /* Vibrant leaf green */
-            --yellow: #f59e0b; /* Warm amber/yellow */
+            --maroon: #3d0c10; 
+            --green: #15803d; 
+            --yellow: #f59e0b; 
             --bg-cream: #fdfbf7; 
             --box-bg: #eaf5ec; 
         }
 
         body {
             font-family: 'Nunito', sans-serif;
-            background-color: #cbd5e1; /* Darker gray background for contrast behind the pages */
+            background-color: #cbd5e1;
             color: #333;
             line-height: 1.8;
             -webkit-font-smoothing: antialiased;
@@ -42,7 +49,7 @@
             border-right: 1px solid #e2e8f0;
         }
 
-        /* Decorative Corners for Inner Pages */
+        /* Decorative Corners */
         .a4-page::before, .a4-page::after {
             content: ''; position: absolute; width: 40px; height: 40px; pointer-events: none;
         }
@@ -52,7 +59,7 @@
             border-top-right-radius: 12px;
         }
         .a4-page::after {
-            bottom: 10mm; left: 30mm; /* align with binding margin */
+            bottom: 10mm; left: 30mm; 
             border-bottom: 3px solid var(--yellow); border-left: 3px solid var(--yellow);
             border-bottom-left-radius: 12px;
         }
@@ -97,7 +104,7 @@
         .photo-box:hover { border-color: #166534; background-color: #dcfce7; transform: translateY(-2px); box-shadow: 0 8px 15px rgba(0,0,0,0.05);}
         .photo-box input[type="file"] { display: none; }
         .photo-box img {
-            width: 100%; height: 100%; object-fit: contain; object-position: center;
+            width: 100%; height: 100%; object-fit: cover; object-position: center; /* PERFECT FIT */
             display: none; border-radius: 8px; background-color: white; z-index: 5; position: relative;
         }
         .placeholder {
@@ -105,7 +112,6 @@
             height: 100%; padding: 2rem; color: var(--green); position: absolute; top:0; left:0; right:0; bottom:0;
         }
         
-        /* Interactive Elements for uploaded photos */
         .photo-overlay {
             position: absolute; top: 0; left: 0; right: 0; bottom: 0;
             background: rgba(0,0,0,0.6); color: white; display: none; align-items: center; justify-content: center;
@@ -137,7 +143,7 @@
         .cover-border {
             border: 10px solid var(--bg-cream); margin: 0; height: 100%;
             background: repeating-linear-gradient(45deg, var(--green), var(--green) 15px, var(--yellow) 15px, var(--yellow) 30px);
-            padding: 8px; /* Inner spacing to show the striped border */
+            padding: 8px; 
         }
         .cover-inner {
             background: var(--bg-cream); height: 100%;
@@ -156,10 +162,7 @@
 
         @media print {
             body { background-color: white; margin: 0; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important;}
-            .a4-page {
-                margin: 0; box-shadow: none; width: 210mm; height: 297mm;
-                padding: 20mm 20mm 20mm 30mm; border: none;
-            }
+            .a4-page { margin: 0; box-shadow: none; width: 210mm; height: 297mm; padding: 20mm 20mm 20mm 30mm; border: none; }
             .cover-page { padding: 0 !important; }
             @page { size: A4; margin: 0; }
             .no-print { display: none !important; }
@@ -168,13 +171,52 @@
             .placeholder, .photo-overlay, .remove-btn { display: none !important; }
             .photo-box img { display: block !important; border-radius: 8px;}
             
-            /* Clean look for empty boxes when printing */
             .photo-box:not(.has-image) { border: 2px solid #cbd5e1 !important; background: #f8fafc !important; }
             .photo-box:not(.has-image)::after { content: "Photo Space"; display: flex; align-items: center; justify-content: center; height: 100%; color: #94a3b8; font-family: 'Nunito', sans-serif;}
         }
+
+        /* Cropper Modal Styles */
+        .cropper-modal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); z-index: 9999; flex-direction: column; align-items: center; justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+        .cropper-container-box {
+            background: white; width: 90%; max-width: 800px; height: 80vh; border-radius: 12px;
+            display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        .cropper-header {
+            padding: 1rem 1.5rem; background: var(--maroon); color: white; font-family: 'Fredoka', sans-serif;
+            font-size: 1.25rem; display: flex; justify-content: space-between; align-items: center;
+        }
+        .cropper-body {
+            flex-grow: 1; background: #e2e8f0; position: relative; overflow: hidden;
+        }
+        .cropper-footer {
+            padding: 1rem 1.5rem; background: white; display: flex; justify-content: flex-end; gap: 1rem; border-top: 1px solid #cbd5e1;
+        }
+        .btn-cancel { background: #94a3b8; color: white; padding: 0.5rem 1.5rem; border-radius: 8px; font-weight: bold; cursor: pointer; }
+        .btn-save { background: var(--green); color: white; padding: 0.5rem 1.5rem; border-radius: 8px; font-weight: bold; cursor: pointer; }
     </style>
 </head>
 <body>
+
+    <!-- Image Cropper Modal -->
+    <div id="cropperModal" class="cropper-modal no-print">
+        <div class="cropper-container-box">
+            <div class="cropper-header">
+                <span>Crop Photo to Fit</span>
+                <span class="text-sm opacity-80 font-normal">Scroll to zoom. Drag to move.</span>
+            </div>
+            <div class="cropper-body">
+                <img id="imageToCrop" src="" style="max-width: 100%; display: block;">
+            </div>
+            <div class="cropper-footer">
+                <button onclick="cancelCrop()" class="btn-cancel">Cancel</button>
+                <button onclick="saveCrop()" class="btn-save">Save & Place Image</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Print UI Elements -->
     <div class="print-btn-container no-print">
@@ -183,7 +225,7 @@
             Print Document
         </button>
         <div class="bg-white p-3 rounded-lg shadow-xl mt-3 text-sm text-center font-bold text-green-700 border-2 border-green-200">
-            Click dashed boxes to add photos.<br>Hover to change or remove.
+            Click dashed boxes to add & crop photos.
         </div>
     </div>
 
@@ -192,33 +234,27 @@
         <div class="cover-border">
             <div class="cover-inner relative">
                 
-                <!-- Left Aligned Report Text -->
                 <div class="w-full mt-4 text-left">
                     <p class="text-gray-500 font-bold tracking-[3px] text-sm uppercase mb-6">Project Report</p>
                 </div>
                 
-                <!-- Centered Title Block -->
                 <div class="w-full text-center">
                     <h1 class="text-[52pt] font-extrabold leading-none flex justify-center items-center text-[#1f2937]">
                         Surakshit<span class="text-green-700 italic ml-2 relative">Marg
-                            <!-- Decorative leaf above the M -->
                             <svg class="absolute -top-3 -left-2 w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 24 24"><path d="M17.5,2.5C17.5,2.5,12.5,2.5,7.5,7.5C2.5,12.5,2.5,17.5,2.5,17.5C2.5,17.5,7.5,17.5,12.5,12.5C17.5,7.5,17.5,2.5,17.5,2.5M14,14L10,10L14,14Z"/></svg>
                         </span>
                     </h1>
                     <h2 class="text-[40pt] text-[#3f3f46] font-extrabold mt-1 mb-8">2025-26</h2>
                 </div>
 
-                <!-- Left Aligned "Report By" -->
                 <div class="w-full text-left">
                     <p class="text-gray-600 text-xl font-semibold mb-1">Report by</p>
                 </div>
 
-                <!-- Centered School Name -->
                 <div class="w-full text-center mb-1">
                     <h3 class="text-[30pt] text-[#3f3f46] font-extrabold tracking-wide drop-shadow-sm">G.L.P.S. CHAMAKKAL</h3>
                 </div>
 
-                <!-- Left Aligned Address -->
                 <div class="w-full text-left mb-4">
                     <p class="text-gray-700 text-xl font-medium leading-tight">Payyavoor PO<br>Kannur District, Kerala</p>
                 </div>
@@ -938,7 +974,11 @@
         </div>
     </div>
 
+    <!-- CROPPER JS LOGIC -->
     <script>
+        let cropper = null;
+        let activeTargets = { boxId: null, imgId: null, phId: null };
+
         function triggerFile(inputId) {
             document.getElementById(inputId).click();
         }
@@ -946,18 +986,72 @@
         function loadImage(event, boxId, imgId, phId) {
             const file = event.target.files[0];
             if (file) {
+                // Store active targets for saving later
+                activeTargets = { boxId, imgId, phId };
+                
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    const imgElement = document.getElementById(imgId);
-                    imgElement.src = e.target.result;
-                    imgElement.style.display = 'block';
+                    // Open Modal
+                    document.getElementById('cropperModal').style.display = 'flex';
+                    const imageElement = document.getElementById('imageToCrop');
+                    imageElement.src = e.target.result;
                     
-                    document.getElementById(phId).style.display = 'none';
-                    document.getElementById(boxId).classList.add('has-image');
-                    // Remove borders when an image is loaded so it looks clean
-                    document.getElementById(boxId).style.borderStyle = 'none';
+                    // Calculate exact Aspect Ratio of the target box on page
+                    const targetBox = document.getElementById(boxId);
+                    // Handle the perfectly circular back cover differently (1:1 ratio)
+                    const isCircle = boxId === 'box-back'; 
+                    const targetRatio = isCircle ? 1 : (targetBox.clientWidth / targetBox.clientHeight);
+
+                    // Initialize Cropper.js
+                    if (cropper) { cropper.destroy(); }
+                    cropper = new Cropper(imageElement, {
+                        aspectRatio: targetRatio,
+                        viewMode: 1,
+                        dragMode: 'move', // Default to panning
+                        background: false,
+                        zoomable: true
+                    });
                 }
                 reader.readAsDataURL(file); 
+            }
+        }
+
+        function saveCrop() {
+            if (!cropper) return;
+            
+            // Get cropped image data
+            const canvas = cropper.getCroppedCanvas({
+                imageSmoothingEnabled: true,
+                imageSmoothingQuality: 'high'
+            });
+            
+            const croppedDataUrl = canvas.toDataURL('image/jpeg', 0.9);
+            
+            // Apply to target
+            const imgElement = document.getElementById(activeTargets.imgId);
+            imgElement.src = croppedDataUrl;
+            imgElement.style.display = 'block';
+            
+            document.getElementById(activeTargets.phId).style.display = 'none';
+            document.getElementById(activeTargets.boxId).classList.add('has-image');
+            document.getElementById(activeTargets.boxId).style.borderStyle = 'none';
+            
+            // Close modal
+            closeModal();
+        }
+
+        function cancelCrop() {
+            // Clear the file input so they can re-select the same file if needed
+            const inputId = activeTargets.boxId.replace('box-', 'input-');
+            document.getElementById(inputId).value = "";
+            closeModal();
+        }
+
+        function closeModal() {
+            document.getElementById('cropperModal').style.display = 'none';
+            if (cropper) {
+                cropper.destroy();
+                cropper = null;
             }
         }
 
@@ -969,7 +1063,6 @@
             
             document.getElementById(phId).style.display = 'flex';
             document.getElementById(boxId).classList.remove('has-image');
-            // Put the dashed border back
             document.getElementById(boxId).style.borderStyle = 'dashed';
             
             const inputId = boxId.replace('box-', 'input-');
@@ -977,14 +1070,6 @@
         }
 
         function prepareAndPrint() {
-            const totalBoxes = document.querySelectorAll('.photo-box').length;
-            const filledBoxes = document.querySelectorAll('.photo-box.has-image').length;
-            
-            if(filledBoxes < totalBoxes) {
-                const proceed = confirm(`You have only added ${filledBoxes} out of ${totalBoxes} photos.\n\nEmpty boxes will print as neat, labeled placeholders.\n\nDo you want to proceed to print?`);
-                if(!proceed) return;
-            }
-
             alert("PDF PRINTING CHECKLIST:\n\n1. Destination: 'Save as PDF'\n2. Paper Size: 'A4'\n3. Margins: Set to 'Default' or 'None'\n4. MUST CHECK: 'Background graphics' (This makes the borders and colors visible!)");
             window.print();
         }
@@ -992,3 +1077,5 @@
 </body>
 </html>
 
+
+```
